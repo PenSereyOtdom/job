@@ -1,0 +1,16 @@
+/* button */
+.btn-primary{background-color: #C629DB !important; border-color: transparent !important ; color: #fff !important; border-radius: 0 !important; font-weight: 300 !important;}
+.btn-secondary {background: #04385D !important;color: #fff !important;border-radius: 0 !important;border-color: #fff !important;}
+.btn-outline-primary {background: #fff !important;color: #000 !important;border-radius: 0 !important;border-color: #000 !important;}
+.btn-link{color: #000 !important;}
+.form-control{border-radius: 0 !important;}
+.input-group-text{border-radius: 0px !important;}
+a{color: #000;}
+.card{border-radius: 0 !important;}
+
+
+/* Payment */
+.payment .nav-pills .nav-link{border-radius: 0px !important; color: #000 !important;}
+.payment .nav-pills .nav-link.active{background-color: #04385D !important; color: #fff !important;}
+.pay .nav-pills .nav-link{border-radius: 0px !important; color: #000 !important;}
+.pay .nav-pills .nav-link.active{background-color: #fff !important; color: #000 !important; font-weight: bold !important;}

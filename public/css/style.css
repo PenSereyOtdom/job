@@ -1,0 +1,213 @@
+/* Font */
+* {margin: 0;padding: 0;box-sizing: border-box;list-style: none;text-decoration: none;font-family: 'Roboto', sans-serif;}
+@media (max-width: 576px) {
+    p, a{font-size: 0.7rem;}
+}
+@media (min-width: 576px) {
+    p, a{font-size: 0.8rem;}
+}
+@media (min-width: 768px) {
+    p, a{font-size: 0.9rem;}
+}
+@media (min-width: 992px) {
+    p, a{font-size: 1rem;}
+}
+
+/* Sign in and Register alert */
+.register-section{background-color: #f2f2f2;}
+
+/* Login & Register */
+.login-container{height: 100vh;width: 100%; background-color: #F2F2F2;}
+.login{width:400px; background-color: #fff;}
+.login .nav-pills .pill-name {background-color: transparent; color: black; }
+.login .nav-pills .active{background-color: transparent; color: black; font-weight: bold; text-decoration: underline;}
+.login .tab-content .active{background-color: transparent;}
+
+
+/* Button */
+.btn-outline-secondary {background-color: transparent !important;border-color: #fff !important;color: #fff !important;border-radius: 0 !important;position: relative;}
+.btn-primary {background: linear-gradient(0deg, rgba(251,167,7,1) 0%, rgba(231,248,128,1) 100%) !important;color: #04385D !important;border-radius: 0 !important;border: 0px !important;}
+.btn-outline-primary{background-color: transparent !important;border-color: #04385D !important;color: #04385D !important;border-radius: 0 !important;}
+
+/* Form Control */
+.form-control{border-radius: 0 !important;}
+
+/* Link */
+.link{color: #04385D !important; font-weight: bold !important; text-decoration: none;}
+
+/* Footer */
+.footer{background-color: #04385D;}
+@media (max-width: 576px) {
+    .footer .d-flex .px-3{padding: 0px 15px !important;}
+}
+
+/* Language Bar */
+.lang-bar{background-color: #f2f2f2;}
+.lang-bar .active{background-color: transparent !important; border-bottom: 3px solid #04385D !important;}
+
+/* Navbar */
+.wrapper{width: 100%;}
+.wrapper .top-nav{width: 100%;height: 65px;background: #fff;padding: 0 50px;display: flex;justify-content: space-between; ;align-items: center;} 
+.wrapper .bottom-nav{width: 100%;height: auto;padding-bottom: 5px; background-color: #04385D;}
+.navbar{padding: 0 !important;}
+.nav-link{color: #000;width: 200px;}
+.navbar-nav{background-color: #F2F2F2;}
+.navbar-light .navbar-nav .nav-link{color: #000 !important;}
+.navbar-nav .active .nav-link{color: #fff;}
+.active{background-color: #04385D;}
+.active a{color: #fff;}
+.navbar-light .navbar-nav .active>.nav-link{color:#fff !important;}
+.navbar-nav .dropdown-menu{background-color: transparent !important;border: transparent !important; padding: 0 !important;}
+.menu {width:33px;height:33px;position:relative;}
+.line {position: absolute;height: 5px;width:100%;background:#04385D;border-radius:8px;transition: all cubic-bezier(0.26, 0.1, 0.27, 1.55) 0.35s;}
+.top {top:18%;}
+.middle {top:48%;}
+.bottom {top:78%;}
+.icon.close .top {transform:rotate(45deg);top:48%;}
+.icon.close .middle, .icon.close .bottom {transform:rotate(-45deg);top:48%;}
+
+/* Nav Bar Responsive */
+@media (min-width: 0px) {
+    .navbar-nav{text-align: justify;}
+    .top-nav{padding: 0px 20px !important;}
+    .wrapper .img-fluid{width: 60% !important;}
+    .bottom-nav .nav-item .nav-link{padding:0.5rem 3rem;}
+    .bottom-nav .d-none{display: block !important}
+    .collapse-jobseeker {display: none;}
+    .profile-nav .d-flex{display: none !important;}
+    /* Menu */
+    .menu {width:25px !important;height:25px !important;}
+    .line {height: 4px !important;}
+}
+@media (min-width: 576px) {
+    .navbar-nav{text-align: justify;}
+    .top-nav{padding: 0px 50px !important;}
+    .wrapper .img-fluid{width: 70% !important;}
+    .bottom-nav .nav-item .nav-link{padding:0.5rem 3rem;}
+    .bottom-nav .d-none{display: block !important}
+    .collapse-jobseeker {display: none;}
+    .profile-nav .d-flex{display: none !important;}
+    /* Menu */
+    .menu {width:27px !important;height:27px !important;}
+    .line {height: 4px !important;}
+}
+@media (min-width: 768px) {
+.navbar-nav{text-align: justify;}
+    .top-nav{padding: 0px 60px !important;}
+    .wrapper .img-fluid{width: 80% !important;}
+    .bottom-nav .nav-item .nav-link{padding:0.5rem 3rem;}
+    .bottom-nav .d-none{display: block !important}
+    .collapse-jobseeker {display: none;}
+    .profile-nav .d-flex{display: none !important;}
+    /* Menu */
+    .menu {width:33px !important;height:33px !important;}
+    .line {height: 5px !important;}
+}
+@media (min-width: 992px) {
+.navbar-nav{text-align: center;}
+    .wrapper .img-fluid{width: 100% !important;}
+    .top-nav{padding: 0px 100px !important;}
+    .bottom-nav .d-none{display: none !important}
+    .jobseeker-dropdown {display: none;}
+    .collapse-jobseeker {display: block;}
+    .profile-nav .d-flex{display: flex !important;}
+    /* Menu */
+    .menu{display: none;}
+}
+@media (min-width: 1400px) {
+    .navbar-nav{text-align: center;}
+    .wrapper .img-fluid{width: 100% !important;}
+    .top-nav{padding: 0px 200px !important;}
+    .jobseeker-dropdown {display: none;}
+    .collapse-jobseeker {display: block;}
+    /* Menu */
+    .menu{display: none;}
+}
+
+/* Nav Dropdown */
+.dropdown-menu{border-radius: 0px !important; min-width: 14rem !important;top: 150% !important;left: -25% !important;}
+.dropdown-item{padding: 0.5rem 1.5rem !important;}
+  
+/* Image Section */
+.image-section{background-color: #56A3BA; padding-top: 20px;}
+@media (min-width: 992px) {
+    .image-section .text-center{text-align: left !important;}
+}
+
+/* Quick Search Section */
+.quick-search-section{background-color: #F2F2F2;}
+@media (min-width: 992px) {
+    .quick-search-section{display: block;}
+}
+@media (max-width: 992px) {
+    .quick-search-section{display: none;}
+}
+
+/* Job Search and Filter section */
+.filter{background-color: #003154;}
+.search-section{background-color: #04385D;}
+.filter .btn-secondary{border-radius: 0 !important; background-color: transparent !important;border-color: #04385D !important;}
+.filter .collapse .card{border-radius: 0 !important;}
+.fa-angle-up.angle {transform:rotate(180deg);}
+@media (max-width: 576px) {
+    .form-check-label{font-size: 1rem !important; margin-left: 2px; margin-top: 1px;}
+}
+
+/* Filter */
+@media (max-width: 768px) {
+    .filter .d-flex{display: block !important;}
+    .filter .desktop{display: none !important;} 
+}
+@media (min-width: 768px) {
+    .filter .d-flex{display: flex !important;}
+    .filter .w-100{width: auto !important;}
+    .filter .float-right{float: none !important;}
+    .filter .text-left{text-align: center !important;}
+    .filter .tablet{display: none !important;}
+}
+
+/* Search Bar */
+@media (min-width: 992px) {
+    .search-form .input-group .w-100{width: auto !important;}
+    .search-form .text-right{text-align: center !important;}
+}
+
+/* Job Section */
+.job-post{background-color: #fff;}
+.job-section{background-color: #F2F2F2;}
+.job-section ul li .active{background-color: #04385D !important; color: #fff !important;}
+.job-section .nav-pills{text-align: center;}
+.job-section .nav-pills .nav-link{color: #000 !important;}
+.job-section .nav-pills .nav-link.active{border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; background-color: #04385D !important; color: #fff !important; font-weight: bold !important;}
+@media (max-width: 576px) {
+    .job-section .nav-link{width: 100px;}
+}
+/* Job Detail */
+@media (max-width: 768px) {
+    hr.m-2{display: none;}
+}
+
+/* Pagination */
+.pagination .page-item .page-link{border-radius: 0px; color: black;}
+.pagination .page-item .active .page-link{background-color: #04385D !important;}
+
+/* Career Advise */
+.card-footer{border-style: none !important; background-color: #fff !important;}
+
+/* Profile */
+.square-picture{width: 80px;height: 80px;margin: 0px auto;overflow: hidden;}
+.profile-nav .active{background-color: transparent !important; border-bottom: 2px solid #04385D; color: #04385D; font-weight: bold;}
+.profile{min-height: 400px;}
+@media (max-width: 576px) {
+    .square-picture{width: 50px;height: 50px;margin: 0px auto;overflow: hidden;}
+}
+
+/* CV */
+.cv{min-height: 200px;}
+
+/* About Us */
+.about-us ul li{list-style-type: disc !important;}
+
+/* Contact Us */
+.map{width:100% !important;height:500px !important; border: transparent !important;}
+
