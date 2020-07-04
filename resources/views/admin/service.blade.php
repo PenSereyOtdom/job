@@ -16,23 +16,23 @@
                             <button class="btn btn-link" type="submit"><i type="submit" class="fas fa-edit"></i></button>       
                         </form>
                     </div>
-                    <h3 class="font-weight-bold mb-4">Trail Plan</h3>
+                    <h3 class="font-weight-bold mb-4">@lang('admin.trail')</h3>
                     <div class="form-group row">
-                        <label class="col-sm-3 form-control-label">Price</label>
+                        <label class="col-sm-3 form-control-label">@lang('admin.price')</label>
                         <div class="col-sm-9">
                         <p>{{$trial->price}}</p>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-3 form-control-label">Number of Post</label>
+                        <label class="col-sm-3 form-control-label">@lang('admin.numberofpost')</label>
                         <div class="col-sm-9">
                         <p>{{$trial->number_of_post}}</p>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-3 form-control-label">Valid days</label>
+                        <label class="col-sm-3 form-control-label">@lang('admin.valid')</label>
                         <div class="col-sm-9">
                         <p>{{$trial->valid_days}}</p>
                         </div>
@@ -117,22 +117,20 @@
     <div class="service container">
         <div class="profile card mb-2">
             <div class="container px-5 py-4">
-                @foreach($service_premium as $premium)   
-
-                        <div class="float-right">              
-                            <form action="{{action('Admin\ServicesController@edit', $premium->id)}}" method="post">
-                                {{csrf_field()}}
-                                <button class="btn btn-link" type="submit"><i type="submit" class="fas fa-edit"></i></button>       
-                            </form>
-                        </div>    
-
-                        <h3 class="font-weight-bold mb-4">Premium Plan</h3>
-                        <div class="form-group row">
-                            <label class="col-sm-3 form-control-label">Price</label>
-                            <div class="col-sm-9">
-                            <p>{{$premium->price}}</p>
-                            </div>
+                @foreach($service_premium as $premium)                 
+                    <div class="float-right">              
+                    <form action="{{action('Admin\ServicesController@edit', $premium->id)}}" method="post">
+                            {{csrf_field()}}
+                            <button class="btn btn-link" type="submit"><i type="submit" class="fas fa-edit"></i></button>       
+                        </form>
+                    </div>
+                    <h3 class="font-weight-bold mb-4">Premium Plan</h3>
+                    <div class="form-group row">
+                        <label class="col-sm-3 form-control-label">Price</label>
+                        <div class="col-sm-9">
+                        <p>{{$premium->price}}</p>
                         </div>
+                    </div>
 
                     <div class="form-group row">
                         <label class="col-sm-3 form-control-label">Number of Post</label>

@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 use DB;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -36,8 +35,7 @@ class AppServiceProvider extends ServiceProvider
         $business_industries = DB::table('business_industries')
         ->get();
         $experience_levels = DB::table('experience_levels')
-        ->get();    
-
+        ->get();
 
         view()->share('job_classifications', $job_classifications);
         view()->share('job_types', $job_types);

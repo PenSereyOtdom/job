@@ -45,11 +45,11 @@ class CompanyBuyPlan extends Notification
         if($this->companyName)
             return [
                 'companyId'=> $this->companyId,
-                'adminMessage'=> $this->companyName.' request packge plan. '
+                'adminMessage'=> $this->companyName.' request packge plan '
             ];
         else
             return [
-                'message'=> $this->companyName.' request packge plan. ',
+                'message'=> $this->companyName.' request packge plan ',
                 'companyId'=> $this->companyId,
             ];
     }

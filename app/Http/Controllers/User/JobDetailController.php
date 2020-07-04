@@ -26,7 +26,6 @@ class JobDetailController extends Controller
             ->where('job_post_id', '=', $request->get('id'))
             ->first();
 
-
         if (is_null($apply)) {
             $apply = new Apply([
                 'user_id' => Auth::user()->id,
@@ -39,7 +38,6 @@ class JobDetailController extends Controller
 
         $job_post_id = $apply->job_post_id;
         $job_post = JobPost::find($job_post_id);
-
 
         if($request->get('confirmed')==1) {
             //notify company that user has applied & notify admin
@@ -62,29 +60,29 @@ class JobDetailController extends Controller
         $user_id = Auth::id();
         $save = SaveJob::where('user_id', '=', $user_id)
             ->where('job_post_id', '=', $request->get('id'))
-            ->first();  
-
+            ->first();
 
         if (is_null($save)) {
             $save = new SaveJob([
                 'user_id' => Auth::user()->id,
                 'job_post_id' => $request->get('id'),
-                'saved' => 1
+                'saved' => $request->get('saved')
             ]);
-            $save->save();
         } else {
-            $save->delete();
+            $save->saved = $request->get('saved');
         }
 
+        $job_post_id = $save->job_post_id;
+        $job_post = JobPost::find($job_post_id);
+
+        $save->save();
 
         return redirect()->back();
     }
-
-    
     
     public function show($id)
     {
-    
+
         $user_id = Auth::id();
         $jobDetail = DB::table('job_posts')
             ->join('companies', 'job_posts.company_id', '=', 'companies.id')
@@ -97,41 +95,12 @@ class JobDetailController extends Controller
                 )
             ->where('job_posts.id','=', $id)
             ->get();
-            
-        $classification = DB::table('job_posts')
-            ->where('job_posts.id','=', $id)
-            ->select('job_classification')
-            ->first();
 
-        $relatedJobs = DB::table('job_posts')  
-            ->where('job_classification','=', $classification ->job_classification )
-            ->where('status', '=','active')
-            ->join('companies', 'job_posts.company_id', '=', 'companies.id')
-            ->select(                
-                'companies.name as company_name',
-                'job_posts.*'
-                )
-            ->paginate(5);
-
-        $company_id = DB::table('job_posts')
-            ->where('job_posts.id','=', $id)
-            ->select('company_id')
-            ->first();
-
-        $jobFromCompany = DB::table('job_posts')  
-            ->where('company_id','=', $company_id ->company_id )
-            ->where('status', '=','active')
-            ->join('companies', 'job_posts.company_id', '=', 'companies.id')
-            ->select(                
-                'companies.name as company_name',
-                'job_posts.*'
-                )
-            ->paginate(4);        
+        
 
         $apply = Apply::where('user_id', '=', $user_id)
             ->where('job_post_id', '=', $id)
             ->first();
-            
         if (is_null($apply)) {
             $apply = new Apply;
             $apply->confirmed = 0;
@@ -154,8 +123,7 @@ class JobDetailController extends Controller
             ->where('user_id', '=', $user_id)
             ->get();
         $count_cv = count($cv);
-
-        return view('user.jobDetail', compact('jobDetail', 'apply', 'save', 'count_accept', 'count_cv','relatedJobs', 'jobFromCompany'));
+        return view('user.jobDetail', compact('jobDetail', 'apply', 'save', 'count_accept', 'count_cv'));
 
     }
 }

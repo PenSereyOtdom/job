@@ -5,8 +5,12 @@
                 <div class=""></div>
                 <div class="float-right">
                     <ul class="d-flex mb-0">
-                        <li class="nav-item mr-2 active">EN</li>
-                        <li class="nav-item">KH</li>
+                        <li class="nav-item mr-2 active" href="locale/en">
+                            <a href="">EN</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="">KH</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -23,10 +27,10 @@
                 <div class="dropdown show">
                     <a href="#" class="link" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }} <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="/profile"><i class="fa fa-user mr-3"></i>My Profile</a>
-                        <a class="dropdown-item" href="/cv"><i class="fa fa-file mr-3"></i>My Resume</a>
-                        <a class="dropdown-item" href="/savedJob"><i class="fa fa-star mr-3"></i>Saved Jobs</a>
-                        <a class="dropdown-item" href="/appliedJob"><i class="fa fa-check mr-3"></i>Applied Jobs</a>
+                        <a class="dropdown-item" href="/profile"><i class="fa fa-user mr-3"></i>@lang('home.myprofile_menu')</a>
+                        <a class="dropdown-item" href="/cv"><i class="fa fa-file mr-3"></i>@lang('home.myresume_menu')</a>
+                        <a class="dropdown-item" href="/savedJob"><i class="fa fa-star mr-3"></i>@lang('home.savejob_menu')</a>
+                        <a class="dropdown-item" href="/appliedJob"><i class="fa fa-check mr-3"></i>@lang('home.applyjob_menu')</a>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out mr-3"></i>{{ __('Logout') }}</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
@@ -34,7 +38,7 @@
                     </div>
                 </div>
             @else
-                <p class="mb-0"><a href="/login">Sign in</a> or <a class="pr-2" href="/register">Register</a> | <a class="pl-2" href="{{ url('/recruiter')}}">Recruiter Site</a></p>
+                <p class="mb-0"><a class="link" href="/login">{{__('home.signin_menu')}}</a> or <a class="link" href="/register">@lang('home.register_menu')</a> | <a class="link" href="{{ url('/recruiter')}}">@lang('home.recruiter_menu')</a></p>
             @endif
             </div>
         </div>
@@ -51,11 +55,11 @@
                         </div>
                         @endif
                     </li>
-                    <li id="home" class="nav-item"><a href="/" class="nav-link">Home</a></li>
-                    <li id="jobs" class="nav-item"><a href="/jobs" class="nav-link">Jobs</a></li>
-                    <li id="hotJobs" class="nav-item"><a href="/hotJobs" class="nav-link">Urgent Jobs</a></li>
-                    <li id="careerAdvise" class="nav-item"><a href="/careerAdvise" class="nav-link">Career Advise</a></li>
-                    <li id="profile" class="nav-item"><a href="/profile" class="nav-link">My Profile</a></li>
+                    <li id="home" class="nav-item"><a href="/" class="nav-link">@lang('home.home_menu')</a></li>
+                    <li id="jobs" class="nav-item"><a href="/jobs" class="nav-link">@lang('home.job_menu')</a></li>
+                    <li id="hotJobs" class="nav-item"><a href="/hotJobs" class="nav-link">@lang('home.urgentjob_menu')</a></li>
+                    <li id="careerAdvise" class="nav-item"><a href="/careerAdvise" class="nav-link">@lang('home.careeradvise_menu')</a></li>
+                    <li id="profile" class="nav-item"><a href="/profile" class="nav-link">@lang('home.myprofile_menu')</a></li>
                 </ul>
             </div>
         </div>

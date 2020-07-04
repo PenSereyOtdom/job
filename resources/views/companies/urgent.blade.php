@@ -73,14 +73,9 @@
 
                 </form>
                 @elseif ($service_approval__check[0]->approve == 0)
-                    <h3 class="font-weight-bold pb-3">You have purchased Urgent Plan.</h3>
-                    <p>Your Request has been sent to Admin.</p>
-                    <p>We will contact you soon.</p>
-                    <p>Thank You!</p>
+                    <p>Status pending {{$service_approval__check[0]->approve}}</p>
                 @else
-                    <h3 class="font-weight-bold pb-3">Urgent Plan.</h3>
-                    <p>You cannot purchase more ticket. Please use your remaining first.</p>
-                    <p>Your remainding ticket: {{$service_approval__check[0]->post_number}}.</p>  
+                    <p>your reminding {{$service_approval__check[0]->post_number}}</p>  
                 @endif
             </div>
         </div>

@@ -16,6 +16,7 @@ class CreateServicesTable extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('admin_id')->default(1);
+            $table->unsignedInteger('companies_id')->nullable();
             $table->string('title')->nullable();
             $table->string('price')->nullable();
             $table->string('type')->nullable();
@@ -23,6 +24,7 @@ class CreateServicesTable extends Migration
             $table->string('valid_days')->nullable();
             $table->timestamps();
             $table->foreign('admin_id')->references('id')->on('admins');
+            $table->foreign('companies_id')->references('id')->on('companies')->onDelete('cascade');
         });
     }
 

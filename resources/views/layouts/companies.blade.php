@@ -1,4 +1,4 @@
-<!doctype html>
+ <!doctype html>
 <html>
     <head>
     <title>Job Now - @yield('title')</title>
@@ -13,7 +13,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
         <!-- bootstrap -->
         <link rel="stylesheet" href="{{asset('https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css')}}" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+
     </head>
 
     <body>
@@ -115,9 +116,9 @@
                         <div class="picture-container">
                             <div class="nav-picture">
                                 @if( Auth::guard('company')->user()->company_profile )
-                                    <img src="{{ asset('storage/company_profile/' . Auth::guard('company')->user()->company_profile) }}" alt="..." class="picture-src">
+                                    <img src="{{ asset('storage/company_profile/' . Auth::guard('company')->user()->company_profile) }}" class="picture-src" id="wizardPicturePreview" title="">
                                 @else
-                                    <img src="{{asset('/img/user_company.jpg')}}" class="picture-src">
+                                    <img src="{{asset('/img/user_company.jpg')}}" class="picture-src" id="wizardPicturePreview" title="">
                                 @endif
                             </div>
                         </div>

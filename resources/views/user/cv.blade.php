@@ -63,7 +63,7 @@
                         <div class="form-group row mb-0">
                             <label class="col-sm-3 form-control-label">Contact</label>
                             <div class="col-sm-9">
-                                <p>+855{{$cv->phone_number}}</p>
+                                <p>0{{$cv->phone_number}}</p>
                             </div>
                         </div>
 

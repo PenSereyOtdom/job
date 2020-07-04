@@ -81,18 +81,6 @@ class ProfileController extends Controller
         return view('user.appliedJob', compact('appliedJobs', 'count_applied'));
     }
 
-    public function deletedJob(Request $request)
-    {
-        $appliedJobs = DB::table('applies')
-            ->where('user_id', '=', auth()->user()->id)
-            ->where('confirmed', '=', '1')
-            ->where('job_post_id','=',$request['id']);
-
-        $appliedJobs->delete();
-
-        return redirect()->back();
-    }
-
     public function savedJob(Request $request)
     {
         $savedJobs = DB::table('save_jobs')

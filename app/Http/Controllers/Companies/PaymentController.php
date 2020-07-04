@@ -18,23 +18,7 @@ class PaymentController extends Controller
 {
     public function index()
     {
-        $payment_cash = DB::table('payments')
-            ->where('type_of_payment', '=', 'Cash')
-            ->get();
-
-        $payment_aba = DB::table('payments')
-            ->where('type_of_payment', '=', 'ABA')
-            ->get();
-
-        $payment_wing = DB::table('payments')
-            ->where('type_of_payment', '=', 'Wing')
-            ->get();
-
-        $contact = DB::table('payments')
-            ->where('type_of_payment', '=', 'Contact')
-            ->get();
-
-        return view('companies.payment', compact('payment_cash', 'payment_aba', 'payment_wing', 'contact'));
+        return view('companies.payment');
     }
     public function indexbasic(Request $request,$service_id)
     {
@@ -160,7 +144,8 @@ class PaymentController extends Controller
     }
     
     public function storepremium(Request $request)
-    {       
+    {
+        
 
         $payment_package = [$request->get('admin_id'),$request->get('payment_id'),$request->get('service_id'),
                             $request->get('transaction_aba'), $request->get('transaction_wing')];
@@ -191,16 +176,14 @@ class PaymentController extends Controller
         return view('companies.payment', compact('edit_cash','editPayment','edit_aba','edit_wing'));
     }
 
-   private function servicecheck($service_id) 
-   {
+   private function servicecheck($service_id) {
        return $service_approval__check = DB::table('service_approvals')
        ->where('company_id', '=',Auth::guard('company')->user()->id)
        ->where('service_id', '=',$service_id)
        ->get();
    }
 
-   private function checkPayment($service_approval) 
-   {
+   private function checkPayment($service_approval) {
         $service = DB::table("services")
         ->where('id','=',$service_approval[2])
         ->first();
@@ -208,6 +191,7 @@ class PaymentController extends Controller
         $service_check = DB::table('service_approvals')
         ->where('company_id','=',Auth::guard('company')->user()->id)
         ->where('service_id','=',$service_approval[2]);
+
        
         if(count($service_check->get()) == 0) {
             $service_approval = new ServiceApproval([
