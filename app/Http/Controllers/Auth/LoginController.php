@@ -95,5 +95,13 @@ class LoginController extends Controller
         return back()->withInput($request->only('phone_number', 'remember'));
         
     }
+
+    public function logout(Request $request) {
+        Auth::logout();
+        Auth::guard('company')->logout();
+        Auth::guard('admin')->logout();
+        return redirect('/');
+    }
+
     
 }

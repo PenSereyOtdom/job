@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-lg-8 mt-5">
                 <!-- Job Detail layout -->
-                <div class="card mb-4">
+                <div class="card">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-9">
@@ -175,33 +175,6 @@
                         @endif
                     </div>
                 </div>
-            
-
-                <!-- More jobs from this company -->
-                <div class="card my-5">
-                    <div class="card-body">
-                        <h4 class="mb-4 font-weight-bold">More jobs form this company</h4>
-                        <div class="row">
-                            <div class="col-lg-10">
-                                <h5 class="card-title mb-0 font-weight-bold"><a href="#">Senior Accountant</a></h5>
-                                <small class="card-text">ABA Bank Co.Ltd</small>
-                            </div>
-                            <div class="col-lg-2 my-auto">
-                                <p class="text-warning font-weight-bold">Negotiable</p>
-                            </div>
-                        </div>
-                        <hr class="my-2">
-                        <div class="row">
-                            <div class="col-lg-10">
-                                <h5 class="card-title mb-0 font-weight-bold"><a href="#">Senior Accountant</a></h5>
-                                <small class="card-text">ABA Bank Co.Ltd</small>
-                            </div>
-                            <div class="col-lg-2 my-auto">
-                                <p class="text-warning font-weight-bold">Negotiable</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <!-- Sidebar Column -->
@@ -232,43 +205,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Related Job -->
-                <div class="card my-4">
-                    <div class="card-body">
-                        <h4 class="mb-4 font-weight-bold">Related Jobs</h4>
-                        <div class="row">
-                            <div class="col-lg-10">
-                                <h5 class="card-title mb-0 font-weight-bold"><a href="#">Senior Accountant</a></h5>
-                                <small class="card-text mb-0 text-secondary">ABA Bank Co.Ltd</small>
-                                <p class="mb-0"><small class="text-warning">500$</small></p>
-                            </div>
-                        </div>
-                        <hr class="my-2">
-                        <div class="row">
-                            <div class="col-lg-10">
-                                <h5 class="card-title mb-0 font-weight-bold"><a href="#">Senior Accountant</a></h5>
-                                <small class="card-text mb-0 text-secondary">ABA Bank Co.Ltd</small>
-                                <p class="mb-0"><small class="text-warning">Negotiable</small></p>
-                            </div>
-                            <div class="col-lg-2">
-                                <p class="text-warning font-weight-bold">Hot</p>
-                            </div>
-                        </div>
-                        <hr class="my-2">
-                        <div class="row">
-                            <div class="col-lg-10">
-                                <h5 class="card-title mb-0 font-weight-bold"><a href="#">Senior Accountant</a></h5>
-                                <small class="card-text mb-0 text-secondary">ABA Bank Co.Ltd</small>
-                                <p class="mb-0"><small class="text-warning">Negotiable</small></p>
-                            </div>
-                            <div class="col-lg-2">
-                                <p class="text-warning font-weight-bold">Hot</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+                <!-- Modal Pop Up -->
             @if($count_cv == '1')
                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -276,13 +213,14 @@
                             <form action="{{url('jobDetail', $job->id)}}" method="POST">
                                 @csrf
                                 <input name="id" value="{{$job->id}}" type="hidden">
-                                <input name="confirmed" value="{{$apply->confirmed ^ 1}}" type="hidden">
                                 <div class="modal-header">
                                     <h5 class="font-weight-bold" id="exampleModalLongTitle">
                                     @if($apply->confirmed == '1')
                                         Withdrawing Application
+                                        <input name="confirmed" value="0" type="hidden">
                                     @else
                                         Applying Job
+                                        <input name="confirmed" value="1" type="hidden">
                                     @endif
                                     </h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -311,7 +249,7 @@
                         </div>
                     </div>
                 </div>
-                @else
+            @else
                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="border border-0 modal-content bg-danger">
@@ -326,9 +264,52 @@
                         </div>
                     </div>
                 </div>
-                @endif
+            @endif
+                <!-- Related Job -->
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="mb-4 font-weight-bold">Related Jobs</h4>
+                        @foreach($relatedJobs as $job)
+                        <hr class="my-2">
+                        <div class="row">
+                            <div class="col-9">
+                                <h5 class="card-title mb-0 font-weight-bold"><a href="{{url('/jobDetail' ,$job->id)}}">{{$job->job_title}}</a></h5>
+                                <small class="card-text mb-0 text-secondary">{{$job->company_name}}</small>
+                            </div>
+                            @if($job->job_priority == 'Urgent')
+                            <div class="col-3">
+                                <p class="text-warning font-weight-bold">Urgent</p>
+                            </div>
+                            @endif
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
-        @endforeach
-    </div>
-@endsection
 
+            <!-- More jobs from this company -->
+            <div class="col-lg-8">
+                <div class="card my-5">
+                    <div class="card-body">
+                        <h4 class="mb-4 font-weight-bold">More jobs form this company</h4>
+                        @foreach($jobFromCompany as $job)
+                        <hr class="my-2">
+                        <div class="row">
+                            <div class="col-10">
+                                <h5 class="card-title mb-0 font-weight-bold"><a href="{{url('/jobDetail' ,$job->id)}}">{{$job->job_title}}</a></h5>
+                                <small class="card-text">{{$job->company_name}}</small>
+                            </div>
+                            @if($job->job_priority == 'Urgent')
+                            <div class="col-2">
+                                <p class="text-warning font-weight-bold">Urgent</p>
+                            </div>
+                            @endif
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+</div>
+@endsection

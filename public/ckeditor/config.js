@@ -7,14 +7,14 @@ CKEDITOR.editorConfig = function( config ) {
 	config.toolbarGroups = [
 		{ name: 'styles', groups: [ 'styles' ] },
 		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
-		{ name: 'links', groups: [ 'links' ] },
-		{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
 		{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
 		{ name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
-		{ name: 'forms', groups: [ 'forms' ] },
 		{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] },
-		'/',
+		{ name: 'forms', groups: [ 'forms' ] },
+		{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
+		{ name: 'links', groups: [ 'links' ] },
 		{ name: 'insert', groups: [ 'insert' ] },
+		'/',
 		'/',
 		{ name: 'colors', groups: [ 'colors' ] },
 		{ name: 'tools', groups: [ 'tools' ] },
@@ -24,5 +24,5 @@ CKEDITOR.editorConfig = function( config ) {
 
 	config.height = 300;
 
-	config.removeButtons = 'Source,Save,NewPage,Preview,Print,Templates,Replace,Cut,Undo,Find,SelectAll,Scayt,PasteFromWord,PasteText,Paste,Copy,Redo,Form,Checkbox,Radio,TextField,Textarea,Button,ImageButton,HiddenField,Select,Superscript,Subscript,Strike,CopyFormatting,RemoveFormat,Indent,Outdent,Blockquote,JustifyCenter,CreateDiv,JustifyRight,JustifyBlock,JustifyLeft,BidiLtr,BidiRtl,Language,Anchor,Table,Flash,Smiley,SpecialChar,PageBreak,Iframe,HorizontalRule,Image,BGColor,ShowBlocks,Maximize,TextColor,About,Font,FontSize';
-};	
+	config.removeButtons = 'Source,Save,NewPage,Templates,Preview,Print,Cut,Copy,Paste,PasteText,PasteFromWord,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Strike,Subscript,Superscript,RemoveFormat,CopyFormatting,Replace,Find,SelectAll,Scayt,Outdent,Blockquote,CreateDiv,BidiRtl,Language,Indent,BidiLtr,Anchor,JustifyBlock,JustifyRight,JustifyCenter,JustifyLeft,Flash,HorizontalRule,Table,Smiley,SpecialChar,PageBreak,Iframe,Font,FontSize,TextColor,BGColor,ShowBlocks,Maximize,About,Undo,Redo';
+};

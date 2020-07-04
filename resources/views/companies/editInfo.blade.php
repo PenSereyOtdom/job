@@ -91,7 +91,7 @@
                                 <input type="text" name="website" class="form-control" value="{{$edit_info->website}}">
                                 </div>
                             </div>
-                            <div class="float-right mb-4">
+                            <div class="mb-4">
                                 <button type="submit" class="btn btn-primary">@lang('company.savechange')</button>
                                 <a class="btn btn-outline-primary" href="/company/setting">@lang('company.cancel')</a>
                             </div>

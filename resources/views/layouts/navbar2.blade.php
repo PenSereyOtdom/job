@@ -5,12 +5,10 @@
                 <div class=""></div>
                 <div class="float-right">
                     <ul class="d-flex mb-0">
-                        <li class="nav-item mr-2 active" href="locale/en">
-                            <a href="{{ route(Route::currentRouteName(), 'en') }}">EN</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route(Route::currentRouteName(), 'kh') }}">KH</a>
-                        </li>
+
+                        <li class="nav-item mr-2 active">EN</li>
+                        <li class="nav-item">KH</li>
+>>>>>>> 1cb8dea7e30bd25548d73b8f52482890e2aae674
                     </ul>
                 </div>
             </div>
@@ -38,7 +36,7 @@
                     </div>
                 </div>
             @else
-                <p class="mb-0"><a href="login">Sign in</a> or <a href="/register">Register</a> | <a href="{{ url("login/company")}}">Recruiter Site</a></p>
+                <p class="mb-0"><a href="/login">Sign in</a> or <a class="pr-2" href="/register">Register</a> | <a class="pl-2" href="{{ url('/recruiter')}}">Recruiter Site</a></p>
             @endif
             </div>
         </div>

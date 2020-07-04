@@ -61,7 +61,7 @@
                   <hr>
 
                   <div class="form-group row">
-                    <label class="col-sm-3 form-control-label">School Name</label>
+                    <label class="col-sm-3 form-control-label">School Name <span class="text-danger text-bold">*</span></label>
                     <div class="col-sm-9">
                       <input type="text" name="school_name[]" value="{{$edu->school_name}}"
                         placeholder="Please enter your school name..." class="form-control">
@@ -69,7 +69,7 @@
                   </div>
 
                   <div class="form-group row">
-                    <label class="col-sm-3 form-control-label">Major</label>
+                    <label class="col-sm-3 form-control-label">Major <span class="text-danger text-bold">*</span></label>
                     <div class="col-sm-9">
                       <input type="text" name="major[]" value="{{$edu->major}}" placeholder="Please enter your major..."
                         class="form-control">
@@ -77,7 +77,7 @@
                   </div>
 
                   <div class="form-group row">
-                    <label class="col-sm-3 form-control-label">Start Date</label>
+                    <label class="col-sm-3 form-control-label">Start Date <span class="text-danger text-bold">*</span></label>
                     <div class="col-sm-9">
                       <input type="date" name="edu_start_date[]" value="{{$edu->edu_start_date}}"
                         placeholder="Please enter your start date..." class="form-control">
@@ -85,7 +85,7 @@
                   </div>
 
                   <div class="form-group row">
-                    <label class="col-sm-3 form-control-label">End Date</label>
+                    <label class="col-sm-3 form-control-label">End Date <span class="text-danger text-bold">*</span></label>
                     <div class="col-sm-9">
                       <input type="date" name="edu_end_date[]" value="{{$edu->edu_end_date}}"
                         placeholder="Please enter your end date..." class="form-control">
@@ -93,8 +93,7 @@
                   </div>
 
                   <div class="form-group row">
-                    <label class="col-sm-3 form-control-label" for="exampleFormControlTextarea1">Education
-                      Detail</label>
+                    <label class="col-sm-3 form-control-label" for="exampleFormControlTextarea1">Education Detail <span class="text-danger text-bold">*</span></label>
                     <div class="col-sm-9">
                       <textarea class="form-control" name="edu_detail[]" id="exampleFormControlTextarea1"
                         rows="3" placeholder="Please enter your education detail...">{{$edu->edu_detail}}</textarea>
@@ -118,14 +117,14 @@
                   <input type="hidden" name="exp_id[]" value="{{$exp->id}}"></input>
                   <hr>
                   <div class="form-group row">
-                    <label class="col-sm-3 form-control-label">Workplace Name</label>
+                    <label class="col-sm-3 form-control-label">Workplace Name <span class="text-danger text-bold">*</span></label>
                     <div class="col-sm-9">
                       <input type="text" name="exp_workplace_name[]" value="{{$exp->exp_workplace_name}}"
                         placeholder="Please enter your workplace name..." class="form-control">
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label class="col-sm-3 form-control-label">Experience Title</label>
+                    <label class="col-sm-3 form-control-label">Experience Title <span class="text-danger text-bold">*</span></label>
                     <div class="col-sm-9">
                       <input type="text" name="exp_title[]" value="{{$exp->exp_title}}"
                         placeholder="Please enter your experience..." class="form-control">
@@ -133,7 +132,7 @@
                   </div>
 
                   <div class="form-group row">
-                    <label class="col-sm-3 form-control-label">Start Date</label>
+                    <label class="col-sm-3 form-control-label">Start Date <span class="text-danger text-bold">*</span></label>
                     <div class="col-sm-9">
                       <input class="form-control" name="exp_start_date[]" value="{{$exp->exp_start_date}}"
                         type="date" placeholder="Please enter your start date...">
@@ -141,7 +140,7 @@
                   </div>
 
                   <div class="form-group row">
-                    <label class="col-sm-3 form-control-label">End Date</label>
+                    <label class="col-sm-3 form-control-label">End Date <span class="text-danger text-bold">*</span></label>
                     <div class="col-sm-9">
                       <input class="form-control" name="exp_end_date[]" value="{{$exp->exp_end_date}}"
                         type="date" placeholder="Please enter your end date...">
@@ -149,8 +148,7 @@
                   </div>
 
                   <div class="form-group row">
-                    <label class="col-sm-3 form-control-label" for="exampleFormControlTextarea1">Experience
-                      Detail</label>
+                    <label class="col-sm-3 form-control-label" for="exampleFormControlTextarea1">Experience Detail <span class="text-danger text-bold">*</span></label>
                     <div class="col-sm-9">
                       <textarea class="form-control" name="exp_detail[]" id="exampleFormControlTextarea1"
                         rows="3" placeholder="Please enter your experience detail...">{{$exp->exp_detail}}</textarea>
@@ -175,7 +173,7 @@
                   <hr>
 
                   <div class="form-group row">
-                    <label class="col-sm-3 form-control-label">Achievement Title</label>
+                    <label class="col-sm-3 form-control-label">Achievement Title <span class="text-danger text-bold">*</span></label>
                     <div class="col-sm-9">
                       <input type="text" name="ach_title[]" value="{{$ach->ach_title}}"
                         placeholder="Please enter your title..." class="form-control">
@@ -183,7 +181,7 @@
                   </div>
 
                   <div class="form-group row">
-                    <label class="col-sm-3 form-control-label">Date</label>
+                    <label class="col-sm-3 form-control-label">Date <span class="text-danger text-bold">*</span></label>
                     <div class="col-sm-9">
                       <input type="date" name="ach_date[]" value="{{$ach->ach_date}}"
                         placeholder="Please enter your achievement date..." class="form-control">
@@ -191,8 +189,7 @@
                   </div>
 
                   <div class="form-group row">
-                    <label class="col-sm-3 form-control-label" for="exampleFormControlTextarea1">Achievement
-                      Detail</label>
+                    <label class="col-sm-3 form-control-label" for="exampleFormControlTextarea1">Achievement Detail <span class="text-danger text-bold">*</span></label>
                     <div class="col-sm-9">
                       <textarea class="form-control" name="ach_detail[]" id="exampleFormControlTextarea1"
                         rows="3" placeholder="Please enter your achievement detail...">{{$ach->ach_detail}}</textarea>
@@ -217,14 +214,14 @@
                 <div class="lang-element">
                   <hr>
                   <div class="form-group row">
-                    <label class="col-sm-3 form-control-label">Language</label>
+                    <label class="col-sm-3 form-control-label">Language <span class="text-danger text-bold">*</span></label>
                     <div class="col-sm-9">
                       <input type="text" name="lang[]" value="{{$lang->lang}}" placeholder="Please enter your language..."
                         class="form-control">
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label class="col-sm-3 form-control-label">Level</label>
+                    <label class="col-sm-3 form-control-label">Level <span class="text-danger text-bold">*</span></label>
                     <div class="col-sm-9">
                       <select class="form-control" name="level[]">
                         <option>Choose your level</option>

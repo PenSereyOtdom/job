@@ -13,9 +13,9 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>@lang('admin.comname')</th>
-                                <th>@lang('admin.packname')</th>
-                                <th>@lang('admin.status')</th>
+                                <th>Company Name</th>
+                                <th>Package Name</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -25,9 +25,9 @@
                                     <td><a href="{{url('/verifyPackge', $approvals->company_id)}}">{{$approvals->company_name}}</a></td>
                                     <td>{{$approvals->service_title}}</td>
                                     @if($approvals->approve == 0)
-                                    <td>@lang('admin.notveri')</td>
+                                    <td>Not Verify Yet</td>
                                     @else
-                                    <td>@lang('admin.veri')</td>
+                                    <td>Verified</td>
                                     @endif
                                 </tr>
                             @endforeach

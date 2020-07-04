@@ -12,7 +12,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header d-flex align-items-center">
-                    <h3 class="h4">@lang('admin.editblog')</h3>
+                    <h3 class="h4">Edit Blog</h3>
                 </div>
                 <div class="card-body">
                     <form class="form-horizontal" method="POST" action="{{action('Admin\CareerController@update', $editCareer->id)}}" enctype="multiple/form-data">
@@ -20,17 +20,17 @@
                                                
                         <div class="line"></div>
                         <div class="form-group row">
-                        <label class="col-sm-3 form-control-label" for="exampleFormControlTextarea1">@lang('admin.titleblog')</label>
+                        <label class="col-sm-3 form-control-label" for="exampleFormControlTextarea1">Title Blog</label>
                         <div class="col-sm-9">
-                            <textarea class="form-control" id="name" name="name" placeholder="Please enter employee benefit...">{{$editCareer->name}}</textarea>
+                            <textarea class="form-control" id="title" name="title" placeholder="Please enter employee benefit...">{{$editCareer->title}}</textarea>
                         </div>
                         </div>
 
                         <div class="line"></div>
                         <div class="form-group row">
-                        <label class="col-sm-3 form-control-label" for="exampleFormControlTextarea1">@lang('admin.bodyblog')</label>
+                        <label class="col-sm-3 form-control-label" for="exampleFormControlTextarea1">Body Blog</label>
                         <div class="col-sm-9">
-                            <textarea class="form-control" id="body" name="body" placeholder="Please enter employee benefit...">{{$editCareer->body}}</textarea>
+                            <textarea class="form-control" id="content" name="content" placeholder="Please enter employee benefit...">{{$editCareer->content}}</textarea>
                         </div>
                         </div>
 
@@ -38,7 +38,7 @@
                         <div class="form-group row">
                             <div class="col-sm-4 offset-sm-3">
                             <input name="on_off" value="checked" type="hidden">
-                            <button type="submit" class="btn btn-primary">@lang('admin.save')</button>
+                            <button type="submit" class="btn btn-primary">Save Change</button>
                             </div>
                         </div>
                     </form>
@@ -52,9 +52,9 @@
 <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
   <script>
       //CKEditor
-      CKEDITOR.replace( 'name' );
+      CKEDITOR.replace( 'title' );
       window.onload = function() {
-      CKEDITOR.replace( 'body', {
+      CKEDITOR.replace( 'content', {
         filebrowserUploadUrl: '{{ route('upload',['_token' => csrf_token() ]) }}',
         filebrowserUploadMethod: 'form'
       });

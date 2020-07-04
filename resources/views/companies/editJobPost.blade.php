@@ -126,9 +126,13 @@
                     <div class="form-group">
                         <label class="form-control-label">@lang('company.jobpriority')</label>
                         <select data-placeholder="Choose Job Priority..." name="job_priority" class="form-control">
+<<<<<<< HEAD
                             <option value="{{$edit_jobPost->job_priority}}">{{$edit_jobPost->job_priority}}</option>
                             <option value="Normal Job">@lang('company.normaljob')</option>
                             <option value="Hot Job">@lang('company.hotjob')</option>
+=======
+                            <option value="{{$edit_jobPost->job_priority}}">{{$edit_jobPost->job_priority}}</option>    
+>>>>>>> 1cb8dea7e30bd25548d73b8f52482890e2aae674
                         </select>
                     </div>
                 </div>
@@ -146,7 +150,7 @@
                 <div class="col-lg-4">
                     <div class="form-group">
                         <label class="form-control-label">@lang('company.closing')</label>
-                        <input type="date" name="closing_date" value="{{$edit_jobPost->closing_date}}" class="form-control">
+                        <input type="date" name="closing_date" value="{{$edit_jobPost->closing_date}}" class="form-control" readonly>
                     </div>
                 </div>
             </div>

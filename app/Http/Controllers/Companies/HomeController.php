@@ -47,8 +47,6 @@ class HomeController extends Controller
                 'services.number_of_post as numbers')
             ->get();
         
-        // dd($count_applied_candidate);
-
         return view('companies.home', compact('count_jobpost', 'count_active_job','count_draft_job','count_applied_candidate','services'));
 
     }
