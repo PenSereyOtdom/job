@@ -5,38 +5,40 @@
 @section('content')
 @include('layouts.navbar')
 <!-- Page Content -->
-<div class="container">
+<div class="my-profile container">
     <!-- Profile Nav -->
     @include('layouts.profileNav')
     <!-- Profile Section -->
-    <div class="profile card mb-5">
+    <div class="card mb-5">
         <div class="container p-5">
         @foreach ($user_info as $user)
             <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-12">
+                <div class="col-lg-3 col-md-12 text-center">
                     @if($user->user_profile)
-                    <img src="{{asset('storage/user_profile/' . $user->user_profile)}}" class="img-fluid rounded-circle">
+                    <img src="{{asset('storage/user_profile/' . $user->user_profile)}}" class="profile-pic-preview rounded-circle img-thumbnail">
                     @else
-                    <img src="{{asset('/img/user_male.png')}}" class="img-fluid rounded-circle">
+                    <img src="{{asset('/img/user_male.png')}}" class="profile-pic-preview rounded-circle img-thumbnail">
                     @endif
                 </div>
-                <div class="col-lg-9 col-md-9 col-sm-12 my-auto">
-                    <h4 class="font-weight-bold">My Profile</h4>
+                <div class="col-lg-9 col-md-12 my-auto">
+                    <h4 class="font-weight-bold p-2">My Profile</h4>
                     <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-3">
+                        <div class="col-md-3 col-6">
                             <p class="small p-2">Username:</p>
                         </div>
-                        <div class="col-lg-9 col-md-9 col-sm-9">
+                        <div class="col-md-9 col-6">
                             <p class="small p-2 font-weight-bold">{{ $user->name }}</p>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-3">
+                        <div class="col-md-3 col-6">
                             <p class="small p-2">Phone Number:</p>
                         </div>
-                        <div class="col-lg-9 col-md-9 col-sm-9">
+                        <div class="col-md-9 col-6">
                             <p class="small p-2">{{ $user->phone_number }}</p>
                         </div>
                     </div>
-                    <button class="btn btn-outline-primary w-25" data-toggle="modal" data-target="#updateInfo">Edit Profile</button>
+                    <div class="button-center">
+                        <button class="btn btn-outline-primary" data-toggle="modal" data-target="#updateInfo">Edit Profile</button>
+                    </div>
                 </div>
             </div>
         @endforeach
@@ -58,41 +60,27 @@
                 <form class="form-horizontal" action="{{action('User\ProfileController@update', $edit_info->id)}}" method="post" enctype="multipart/form-data">
                     {!! csrf_field() !!}
                     <div class="modal-body">
-                        <div class="container ">
-                            <div class="text-center" style="margin-bottom: 25px;">
+                        <div class="container">
+                            <div class="text-center mb-4">
                                 @if($edit_info->user_profile)
-                                <img class="card-img-top profile-pic img-thumbnail rounded-circle w-25" src="{{ asset('storage/user_profile/' . $edit_info->user_profile) }}"/>
-                                <div class="p-image" style="text-align: center; padding-top: 5px;">
-                                    <i class="fa fa-camera upload-button fa-2x"></i>
-                                    <input class="file-upload" name="user_profile" type="file" id="" accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps" style="display:none;">
-                                </div>
+                                    <img class="profile-pic rounded-circle img-thumbnail" src="{{ asset('storage/user_profile/' . $edit_info->user_profile) }}"/>
                                 @else
-                                <img class="card-img-top profile-pic img-thumbnail rounded-circle w-25" src="{{asset('/img/user_male.png')}}"/>
-                                <div class="p-image" style="text-align: center; padding-top: 5px;">
-                                    <i class="fa fa-camera upload-button fa-2x"></i>
+                                    <img class="profile-pic rounded-circle img-thumbnail" src="{{asset('/img/user_male.png')}}"/>
+                                @endif
+                                <div class="p-image mt-2">
+                                    <i class="fa fa-camera upload-button"></i>
                                     <input class="file-upload" name="user_profile" type="file" id="" accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps" style="display:none;">
                                 </div>
-                                @endif
                             </div>
 
                             <div class="row form-group">
-                                <div class="col-1">
-                                    <span class="icon-user"></span>
-                                </div>
-                                <div class="col-3">
-                                    <label for="profession">Username</label>
-                                </div>
-                                <div class="col-8">
-                                    <input type="text" name="name" id="name" value="{{$edit_info->name}}" placeholder="Please enter your Reference..." class="form-control">
-                                </div>
+                                <div class="col-4"><label for="name">Username</label></div>
+                                <div class="col-8"><input type="text" name="name" id="name" value="{{$edit_info->name}}" placeholder="Please enter your Reference..." class="form-control"></div>
                             </div>
 
                             <div class="row form-group">
-                                <div class="col-1"><span class="icon-phone"></span></div>
-                                <div class="col-3"><p>Phone Number</p></div>
-                                <div class="col-8">
-                                <input type="text" name="phone_number" id="phone_number" value="{{$edit_info->phone_number}}" placeholder="Please enter your Reference..." class="form-control">
-                                </div>
+                                <div class="col-4"><label for="phone_number">Phone Number</label></div>
+                                <div class="col-8"><input type="text" name="phone_number" id="phone_number" value="{{$edit_info->phone_number}}" placeholder="Please enter your Reference..." class="form-control"></div>
                             </div>
 
                         </div>
@@ -107,11 +95,11 @@
     </div>
 
     <!-- Change password -->
-    <div class="container mt-5">
-        <div class=" card mb-5">
+    <div class="my-profile container mt-5">
+        <div class="card mb-5">
             <div class="container p-5">
                 <div class="d-flex align-items-center">
-                    <div class="col-md-8 col-md-offset-2">
+                    <div class="col-12">
                         <div class="panel panel-default">
                             <h4 class="font-weight-bold">Change password</h4><br>
 
@@ -132,7 +120,7 @@
                                     <div class="form-group{{ $errors->has('current-password') ? ' has-error' : '' }}">
                                         <label for="current-password" class="col-md-4 control-label">Current Password</label>
 
-                                        <div class="col-md-6">
+                                        <div class="col-lg-6 col-12">
                                             <input id="current-password" type="password" class="form-control" name="current-password" required>
 
                                             @if ($errors->has('current-password'))
@@ -146,7 +134,7 @@
                                     <div class="form-group{{ $errors->has('new-password') ? ' has-error' : '' }}">
                                         <label for="new-password" class="col-md-4 control-label">New Password</label>
 
-                                        <div class="col-md-6">
+                                        <div class="col-lg-6 col-12">
                                             <input id="new-password" type="password" class="form-control" name="new-password" required>
 
                                             @if ($errors->has('new-password'))
@@ -158,15 +146,15 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="new-password-confirm" class="col-md-4 control-label">Confirm New Password</label>
+                                        <label for="new-password-confirm" class="col-md-5 control-label">Confirm New Password</label>
 
-                                        <div class="col-md-6">
+                                        <div class="col-lg-6 col-12">
                                             <input id="new-password-confirm" type="password" class="form-control" name="new-password_confirmation" required>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <div class="col-md-6 col-md-offset-4">
+                                        <div class="col-lg-6 col-12">
                                             <button type="submit" class="btn btn-primary">
                                                 Change Password
                                             </button>

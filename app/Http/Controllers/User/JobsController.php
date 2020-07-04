@@ -5,8 +5,10 @@ namespace App\Http\Controllers\User;
 use DB;
 use App\JobPost;
 use App\Company;
+use App\SaveJob;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class JobsController extends Controller
 {
@@ -14,6 +16,7 @@ class JobsController extends Controller
     {
         $jobs = DB::table('job_posts')
         ->where('status', '=', 'Active')
+        ->where('closing_date', '>=', date('Y-m-d'))
         ->join('companies', 'job_posts.company_id', '=', 'companies.id')
         ->select('companies.name as name',
                 'companies.company_profile as profile',
@@ -29,67 +32,193 @@ class JobsController extends Controller
         )
         ->orderBy('created_at', 'desc')
         ->paginate(10);
-         
+        $user_id = Auth::id();
+        $saves = SaveJob::where('user_id', '=', $user_id)
+        ->get();  
 
         $count_jobs = count($jobs);
+        $count_saves = count($saves);
         // dd($search_keywords);
 
-        return view('user.jobs', compact('jobs', 'search_keywords','count_jobs'));
+        return view('user.jobs', compact('jobs', 'search_keywords','count_jobs','saves'));
 
     }
-
-
-
     public function jobs(Request $request)
     {
-        
-        $location = isset($_POST['location']) ? $_POST['location'] : NULL ;
-        $search = isset($_POST['search']) ? $_POST['search'] : NULL ;
-        $job_classification = isset($_POST['job_classification']) ? $_POST['job_classification'] : NULL ;
-        $job_industry = isset($_POST['job_industry']) ? $_POST['job_industry'] : NULL ;
-        $job_type = isset($_POST['job_type']) ? $_POST['job_type'] : NULL ;
-        $salary = isset($_POST['salary']) ? $_POST['salary'] : NULL ;
-        $experience_level = isset($_POST['experience_level']) ? $_POST['experience_level'] : NULL ;
+       
+        $location = isset($_GET['location']) ? $_GET['location'] : NULL ;
+        $search = isset($_GET['search']) ? $_GET['search'] : NULL ;
+        $job_classification = isset($_GET['job_classification']) ? $_GET['job_classification'] : NULL ;
+        $job_industry = isset($_GET['job_industry']) ? $_GET['job_industry'] : NULL ;
+        $job_type = isset($_GET['job_type']) ? $_GET['job_type'] : NULL ;
+        $salary = isset($_GET['salary']) ? $_GET['salary'] : NULL ;
+        $experience_level = isset($_GET['experience_level']) ? $_GET['experience_level'] : NULL ;
+        $user_id = Auth::id();
 
-  
+        $saves = SaveJob::where('user_id', '=', $user_id)
+        ->get();
+            
 
-        if($request->isMethod('post')){
-            $jobs = DB::table('job_posts')
+        $jobs = DB::table('job_posts')
             ->where('status', '=', 'Active')
+            ->where('closing_date', '>=', date('Y-m-d'))
             ->join('companies', 'job_posts.company_id', '=', 'companies.id')
             ->select('companies.name as name',
                     'companies.company_profile as profile',
                     'job_posts.*'
-            )
-            ->where(
-                function ($query) use($location,$search ,$job_classification,$job_industry,$job_type,$salary,$experience_level ) {
-                    $query->where('job_title', 'like',  '%' . $search.'%');
-                    $query->where('job_classification', 'like',  '%' . $job_classification.'%');
-                    $query->where('job_industry', 'like',  '%' . $job_industry .'%');
-                    $query->where('job_type', 'like',  '%' . $job_type .'%');
-                    $query->where('salary', 'like',  '%' . $salary .'%');
-                    $query->where('experience_level', 'like',  '%' . $experience_level  .'%');
+        )
+        ->where(
+            function ($query) use($location,$job_classification,$job_industry,$job_type,$salary,$experience_level ) {
+
+                if($location != NULL) {
                     $query->where('location', 'like', '%'.$location.'%');
                 }
-            )
-            ->orderBy('created_at', 'desc')
-            ->paginate(10);
 
-        } else {
-            $jobs = DB::table('job_posts')
+                if($job_classification != NULL ){
+                    foreach($job_classification as $job) {
+                        $query->where('job_classification', 'like',  '%' . $job.'%');
+                    }
+                }
+
+                if($job_industry != NULL){
+                    foreach($job_industry as $job) {
+                        $query->where('job_industry', 'like',  '%' . $job.'%');
+                    }
+                }
+
+                if($job_type != NULL){
+                    foreach($job_type as $job) {
+                        $query->where('job_type', 'like',  '%' . $job.'%');
+                    }
+                }
+
+                if($job_industry != NULL){
+                    foreach($job_industry as $job) {
+                        $query->where('job_industry', 'like',  '%' . $job.'%');
+                    }
+                }
+
+                if( $salary != NULL){
+                    foreach($salary as $job) {
+                        $query->where('salary', 'like',  '%' . $job.'%');
+                    }
+                }
+
+
+                if($experience_level != NULL){
+                    foreach($experience_level as $job) {
+                        $query->where('experience_level', 'like',  '%' . $job.'%');
+                    }
+                }
+
+               
+            }
+        )
+        ->where(
+            function ($query) use($search) {
+                if($search != NULL) {
+                    $query->orWhere('job_title', 'like',  '%' .$search.'%');
+                    $query->orWhere('name', 'like',  '%' .$search.'%');
+                }  
+            }
+        )
+        ->orderBy('created_at', 'desc')
+        ->paginate(10);
+        $count_jobs = count($jobs);
+        $count_saves = count($saves);
+        
+        
+        return view('user.jobs', compact('jobs','count_jobs','saves','count_saves'));
+
+    }
+
+    public function hotjobs(Request $request)
+    {
+        
+        $location = isset($_GET['location']) ? $_GET['location'] : NULL ;
+        $search = isset($_GET['search']) ? $_GET['search'] : NULL ;
+        $job_classification = isset($_GET['job_classification']) ? $_GET['job_classification'] : NULL ;
+        $job_industry = isset($_GET['job_industry']) ? $_GET['job_industry'] : NULL ;
+        $job_type = isset($_GET['job_type']) ? $_GET['job_type'] : NULL ;
+        $salary = isset($_GET['salary']) ? $_GET['salary'] : NULL ;
+        $experience_level = isset($_GET['experience_level']) ? $_GET['experience_level'] : NULL ;
+        $user_id = Auth::id();
+
+        $saves = SaveJob::where('user_id', '=', $user_id)
+        ->get();
+            
+
+        $jobs = DB::table('job_posts')
             ->where('status', '=', 'Active')
+            ->where('closing_date', '>=', date('Y-m-d'))
             ->join('companies', 'job_posts.company_id', '=', 'companies.id')
             ->select('companies.name as name',
                     'companies.company_profile as profile',
                     'job_posts.*'
-            )
-            ->orderBy('created_at', 'desc')
-            ->paginate(10);
-        }
+        )
+        ->where(
+            function ($query) use($location,$job_classification,$job_industry,$job_type,$salary,$experience_level ) {
 
+                if($location != NULL) {
+                    $query->where('location', 'like', '%'.$location.'%');
+                }
+
+                if($job_classification != NULL ){
+                    foreach($job_classification as $job) {
+                        $query->where('job_classification', 'like',  '%' . $job.'%');
+                    }
+                }
+
+                if($job_industry != NULL){
+                    foreach($job_industry as $job) {
+                        $query->where('job_industry', 'like',  '%' . $job.'%');
+                    }
+                }
+
+                if($job_type != NULL){
+                    foreach($job_type as $job) {
+                        $query->where('job_type', 'like',  '%' . $job.'%');
+                    }
+                }
+
+                if($job_industry != NULL){
+                    foreach($job_industry as $job) {
+                        $query->where('job_industry', 'like',  '%' . $job.'%');
+                    }
+                }
+
+                if( $salary != NULL){
+                    foreach($salary as $job) {
+                        $query->where('salary', 'like',  '%' . $job.'%');
+                    }
+                }
+
+
+                if($experience_level != NULL){
+                    foreach($experience_level as $job) {
+                        $query->where('experience_level', 'like',  '%' . $job.'%');
+                    }
+                }
+
+               
+            }
+        )
+        ->where(
+            function ($query) use($search) {
+                if($search != NULL) {
+                    $query->orWhere('job_title', 'like',  '%' .$search.'%');
+                    $query->orWhere('name', 'like',  '%' .$search.'%');
+                }  
+            }
+        )
+        ->orderBy('created_at', 'desc')
+        ->paginate(10);
         $count_jobs = count($jobs);
-
-        return view('user.jobs', compact('jobs','count_jobs'));
+        $count_saves = count($saves);
+    
+        return view('user.hotjobs', compact('jobs','count_jobs','saves','count_saves'));
 
     }
+
+
 }

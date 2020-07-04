@@ -10,29 +10,29 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="card container py-3">
-                        <h4 class="font-weight-bold">@lang('admin.candidate')</h4>
+                        <h4 class="font-weight-bold">Candidate Statistics</h4>
                         <div class="row">
                             <div class="col-6">
                                 <div class="text-center px-4">
-                                    <h1 class="text-bold">30</h1>
-                                    <p>@lang('admin.usercrcv')</p>
+                                    <h1 class="text-bold">{{$count_cv}}</h1>
+                                    <p>User Created CV</p>
                                     <select class="form-control">
-                                        <option>@lang('admin.last30')</option>
-                                        <option>@lang('admin.last7')</option>
-                                        <option>@lang('admin.yesterday')</option>
-                                        <option>@lang('admin.today')</option>
+                                        <option>Last 30 Days</option>
+                                        <option>Last 7 Days</option>
+                                        <option>Yesterday</option>
+                                        <option>Today</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-6 border-left">
                                 <div class="text-center px-4">
-                                    <h1 class="text-bold">120</h1>
-                                    <p>@lang('admin.userapplyjob')</p>
+                                    <h1 class="text-bold">{{$count_applies}}</h1>
+                                    <p>User Applied Jobs</p>
                                     <select class="form-control">
-                                        <option>@lang('admin.last30')</option>
-                                        <option>@lang('admin.last7')</option>
-                                        <option>@lang('admin.yesterday')</option>
-                                        <option>@lang('admin.today')</option>
+                                        <option>Last 30 Days</option>
+                                        <option>Last 7 Days</option>
+                                        <option>Yesterday</option>
+                                        <option>Today</option>
                                     </select>
                                 </div>
                             </div>
@@ -46,9 +46,9 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>@lang('admin.user')</th>
-                                <th>@lang('admin.membersince')</th>
-                                <th>@lang('admin.noapplyjob')</th>
+                                <th>Username</th>
+                                <th>Member Since</th>
+                                <th>No. of applieds Jobs</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -57,9 +57,9 @@
                                     <th scope="row">{{ ++$count }}</th>
                                     <td><a href="{{url('/candidateDetails',$users->id)}}">{{$users->name}}</a></td>
                                     <td>{{ Carbon\Carbon::parse($users->created_at)->diffForHumans()}}</td>
+                                    <td>10000</td>
                                 </tr>
                             @endforeach
-
                         </tbody>
                     </table>
                 </div>

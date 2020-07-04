@@ -1,17 +1,5 @@
 /* Font */
-* {margin: 0;padding: 0;box-sizing: border-box;list-style: none;text-decoration: none;font-family: 'Roboto', sans-serif;}
-@media (max-width: 576px) {
-    p, a{font-size: 0.7rem;}
-}
-@media (min-width: 576px) {
-    p, a{font-size: 0.8rem;}
-}
-@media (min-width: 768px) {
-    p, a{font-size: 0.9rem;}
-}
-@media (min-width: 992px) {
-    p, a{font-size: 1rem;}
-}
+* {margin: 0;padding: 0;box-sizing: border-box;list-style: none;text-decoration: none;font-family: 'Roboto', sans-serif;}   
 
 /* Sign in and Register alert */
 .register-section{background-color: #f2f2f2;}
@@ -28,6 +16,7 @@
 .btn-outline-secondary {background-color: transparent !important;border-color: #fff !important;color: #fff !important;border-radius: 0 !important;position: relative;}
 .btn-primary {background: linear-gradient(0deg, rgba(251,167,7,1) 0%, rgba(231,248,128,1) 100%) !important;color: #04385D !important;border-radius: 0 !important;border: 0px !important;}
 .btn-outline-primary{background-color: transparent !important;border-color: #04385D !important;color: #04385D !important;border-radius: 0 !important;}
+.btn-link{color: #04385D !important; font-weight: bold !important;}
 
 /* Form Control */
 .form-control{border-radius: 0 !important;}
@@ -186,6 +175,10 @@
 @media (max-width: 768px) {
     hr.m-2{display: none;}
 }
+@media (max-width: 576px) {
+    .card-img-top{display: none !important;}
+}
+.card-img-top{width: 100px !important; height: 100px !important;}
 
 /* Pagination */
 .pagination .page-item .page-link{border-radius: 0px; color: black;}
@@ -195,11 +188,17 @@
 .card-footer{border-style: none !important; background-color: #fff !important;}
 
 /* Profile */
-.square-picture{width: 80px;height: 80px;margin: 0px auto;overflow: hidden;}
+.profile-pic-preview{width: 200px !important;height: 200px !important;margin: 0px auto;overflow: hidden;}
+.profile-pic{width: 150px !important;height: 150px !important;margin: 0px auto;overflow: hidden;}
 .profile-nav .active{background-color: transparent !important; border-bottom: 2px solid #04385D; color: #04385D; font-weight: bold;}
 .profile{min-height: 400px;}
 @media (max-width: 576px) {
     .square-picture{width: 50px;height: 50px;margin: 0px auto;overflow: hidden;}
+    .my-profile .p-5{padding: 10px !important;}
+    .button-center{text-align: center;}
+}
+@media(max-width: 992px){
+    .profile-pic-preview{width: 150px !important;height: 150px !important;}
 }
 
 /* CV */

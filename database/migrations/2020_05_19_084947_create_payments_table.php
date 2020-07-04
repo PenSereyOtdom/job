@@ -16,17 +16,18 @@ class CreatePaymentsTable extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('admin_id')->default(1);
-            $table->unsignedInteger('service_id')->nullable();
             $table->string('type_of_payment')->nullable();
             $table->string('address')->nullable();
             $table->string('map')->nullable();
             $table->string('acc_name')->nullable();
             $table->string('acc_number')->nullable();
-            $table->string('contact')->nullable();
-            $table->string('transaction')->nullable();
+            $table->string('contact1')->nullable();
+            $table->string('contact2')->nullable();
+            $table->string('gmail')->nullable();
+            $table->string('qr_aba')->nullable();
+            $table->string('qr_wing')->nullable();
             $table->timestamps();
             $table->foreign('admin_id')->references('id')->on('admins');
-            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
         });
     }
 
