@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
@@ -52,4 +52,7 @@ class ResetPasswordController extends Controller
     {
         return ['password.regex' => 'The password must contain some characters'];
     }
+
+
+    
 }

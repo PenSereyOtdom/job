@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use DB;
+use PDF;
 use App\Cv;
 use App\User;
 use App\Apply;

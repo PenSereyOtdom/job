@@ -16,9 +16,8 @@ class CreateCareersTable extends Migration
         Schema::create('careers', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('admin_id')->default(1);
-            $table->string('cover')->nullable();
             $table->string('title')->nullable();
-            $table->longtext('content');
+            $table->longtext('content')->nullable();
             $table->timestamps();
             $table->foreign('admin_id')->references('id')->on('admins');
 

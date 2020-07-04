@@ -126,9 +126,7 @@
                     <div class="form-group">
                         <label class="form-control-label">Job Priority</label>
                         <select data-placeholder="Choose Job Priority..." name="job_priority" class="form-control">
-                            <option value="{{$edit_jobPost->job_priority}}">{{$edit_jobPost->job_priority}}</option>
-                            <option value="Normal Job">Normal Job</option>
-                            <option value="Hot Job">Hot Job</option>
+                            <option value="{{$edit_jobPost->job_priority}}">{{$edit_jobPost->job_priority}}</option>    
                         </select>
                     </div>
                 </div>
@@ -146,7 +144,7 @@
                 <div class="col-lg-4">
                     <div class="form-group">
                         <label class="form-control-label">Closing Date</label>
-                        <input type="date" name="closing_date" value="{{$edit_jobPost->closing_date}}" class="form-control">
+                        <input type="date" name="closing_date" value="{{$edit_jobPost->closing_date}}" class="form-control" readonly>
                     </div>
                 </div>
             </div>

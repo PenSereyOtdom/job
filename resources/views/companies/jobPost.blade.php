@@ -6,14 +6,26 @@
 
 @section('content')
 
-<div class="container">
 
+<div class="container">
+    <a href="{{url('jobPost/selectPackage')}}"><button class="btn btn-primary">Create Job Post</button></a>
     @if(count($jobPost) > '0')
     <div class="card mt-5">
         <table class="table mb-0">
             <thead>
                 <tr>
-                <th scope="col"><input type="text" class="form-control" name="search" placeholder="Search term..."></th>
+                <h2 class="heading-title mb-4">Search Your Job</h2>
+                <form method="GET" action="/jobPost">
+                <div class="form-group row">
+                    <div class="input-group col-sm-12">
+                    <input name="search" type="text" placeholder="Search" class="form-control form-control-md" aria-label="Search">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i> Search</button>
+                        </div>
+                    </div>
+                </div>
+                </form>
+
                 <th colspan="2">
                     <select class="form-control">
                         <option>All</option>

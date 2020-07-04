@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Candidate Details')
+@section('title', 'Recruiter Management')
 
 @section('content')
     <div class="container">
@@ -16,11 +16,11 @@
                             @endif
                         </div>
                         <div class="col-lg-4 my-auto">
-                        <h4 class="font-weight-bold">@lang('admin.userinfo')</h4>
+                        <h4 class="font-weight-bold p-2">User Information</h4>
                             <div class="row">
                                 <div class="col-lg-5">
-                                    <p class="small p-2">@lang('admin.comname'):</p>
-                                    <p class="small p-2">@lang('admin.phone'):</p>
+                                    <p class="small p-2">Company Name:</p>
+                                    <p class="small p-2">Phone Number:</p>
                                 </div>
                                 <div class="col-lg-7">
                                     <p class="small p-2">{{ $company->name }}</p>                        
@@ -42,8 +42,8 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>@lang('admin.jobtitle')</th>
-                                <th>@lang('admin.postdate')</th>
+                                <th>Job Title</th>
+                                <th>Posted Date</th>
 
                             </tr>
                         </thead>

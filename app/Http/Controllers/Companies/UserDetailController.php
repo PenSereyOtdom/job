@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Companies;
 
 use DB;
+use PDF;
+use File;
 use App\Cv;
 use App\User;
 use App\Admin;
@@ -51,6 +53,34 @@ class UserDetailController extends Controller
             ->get();
 
         return view('companies.userDetail', compact('users','userDetail', 'display_experience', 'display_education', 'display_achievement', 'display_language','apply'));
+    }
+
+    public function downloadPDF(Request $request, $id) 
+    {
+        set_time_limit(60000);
+        $display_cv = Cv::find($id);
+
+        $users = User::find($id)
+            ->where('id', '=', $id)
+            ->get();
+
+        $display_education = Education::find($id)
+            ->where('user_id', '=', $id)
+            ->get();
+        $display_experience = Experience::find($id)
+            ->where('user_id', '=', $id)
+            ->get();
+        $display_achievement = Achievement::find($id)
+            ->where('user_id', '=', $id)
+            ->get();
+        $display_language = Language::find($id)
+            ->where('user_id', '=', $id)
+            ->get();
+
+        $pdf = PDF::loadView('companies.pdf', compact('display_cv', 'display_experience','users',
+                            'display_education', 'display_achievement', 'display_language'));
+        
+        return $pdf->download('cv.pdf');
     }
 
 }

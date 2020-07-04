@@ -31,7 +31,9 @@
                                     <p class="small p-2">Packge Name:</p>
                                     <p class="small p-2">Price:</p>
                                     <p class="small p-2">Payment Method:</p>
+                                    @if(isset($apl->transaction_wing) || isset($apl->transaction_aba))
                                     <p class="small p-2">Transation Number:</p>
+                                    @endif
                                 </div>
                                 <div class="col-lg-9">
                                     <p class="small p-2">{{ $apl->company_name }}</p>                        
@@ -41,8 +43,9 @@
                                     <p class="small p-2">{{ $apl->type_of_payment }}</p> 
                                     @if(isset($apl->transaction_wing))
                                         <p class="small p-2">{{ $apl->transaction_wing }}</p>
-                                    @else
-                                    <p class="small p-2">{{ $apl->transaction_aba }}</p>         
+                                    @elseif(isset($apl->transaction_aba))
+                                        <p class="small p-2">{{ $apl->transaction_aba }}</p>
+                                    @else       
                                     @endif
                                 </div>
                             </div>

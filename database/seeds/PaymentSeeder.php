@@ -12,34 +12,52 @@ class PaymentSeeder extends Seeder
 
             [                        
                 'type_of_payment'=> 'Cash',
-                'address' => 'ex',
+                'address' => '#21, St. 2004, Songkat ABC, Khan Por Sen Chey, Phnom Penh, Cambodia.',
                 'map' => 'map',
                 'acc_name' => '',
                 'acc_number' => '',
-                'contact' => '012345679',
-                'transaction' => ''
+                'contact1' => '',
+                'contact2' => '',
+                'gmail' => '',
+                'qr_aba' => '',
+                'qr_wing' => '',
         
             ],[
              
                 'type_of_payment'=> 'ABA',
                 'address' => '',
                 'map' => '',
-                'acc_name' => 'acc name',
-                'acc_number' => 'acc number',
-                'contact' => '012345679',
-                'transaction' => ''
-
+                'acc_name' => 'JOBNOW COMPANY',
+                'acc_number' => '000 211 222',
+                'contact1' => '',
+                'contact2' => '',
+                'gmail' => '',
+                'qr_aba' => '',
+                'qr_wing' => '',
         
             ],[
                         
                 'type_of_payment'=> 'Wing',
                 'address' => '',
                 'map' => '',
-                'acc_name' => 'acc name',
-                'acc_number' => 'acc number',
-                'contact' => '012345679',
-                'transaction' => ''
-        
+                'acc_name' => 'JOBNOW COMPANY',
+                'acc_number' => '000 211 222',
+                'contact1' => '',
+                'contact2' => '',
+                'gmail' => '',
+                'qr_aba' => '',
+                'qr_wing' => '',        
+            ],[                        
+                'type_of_payment'=> 'Contact',
+                'address' => '',
+                'map' => '',
+                'acc_name' => '',
+                'acc_number' => '',
+                'contact1' => '012 222 222',
+                'contact2' => '012 222 222',
+                'gmail' => 'ex@gmail.com',
+                'qr_aba' => '',
+                'qr_wing' => '',        
             ]
         ]);
     }

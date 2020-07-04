@@ -21,22 +21,63 @@ use \Datetime;
 
 class JobPostController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
 
-        $company_id = Auth::guard('company')->user()->id;
-        $jobPost = DB::table('job_posts')
-            ->where('company_id', '=', $company_id)
-            ->join('companies', 'job_posts.company_id', '=', 'companies.id')
-            ->select('companies.name as name',
-                    'companies.company_profile as profile',
-                    'job_posts.*'
-                    )
-            ->paginate(10);
+        $search_keywords = $request->get('search');
+        $keywords_list = explode(' ', $search_keywords);
+
+        if(is_null($search_keywords))
+        {
+            $company_id = Auth::guard('company')->user()->id;
+            $jobPost = DB::table('job_posts')
+                ->where('company_id', '=', $company_id)
+                ->join('companies', 'job_posts.company_id', '=', 'companies.id')
+                ->select('companies.name as name',
+                        'companies.company_profile as profile',
+                        'job_posts.*'
+                        )
+                ->orderBy('created_at', 'desc')
+                ->paginate(10);
+        }
+        else{
+            $company_id = Auth::guard('company')->user()->id;
+            $jobPost = DB::table('job_posts')
+                ->where('company_id', '=', $company_id)
+                ->join('companies', 'job_posts.company_id', '=', 'companies.id')
+                ->select('companies.name as name',
+                        'companies.company_profile as profile',
+                        'job_posts.*'
+                        )
+                ->where(
+                    function ($query) use($keywords_list) {
+                        foreach ($keywords_list as $word){
+                            $query->orWhere('job_title', 'like',  '%' . $word .'%');
+                            $query->orWhere('job_classification', 'like',  '%' . $word .'%');
+                            $query->orWhere('job_industry', 'like',  '%' . $word .'%');
+                            $query->orWhere('job_type', 'like',  '%' . $word .'%');
+                            $query->orWhere('salary', 'like',  '%' . $word .'%');
+                            $query->orWhere('qualification', 'like',  '%' . $word .'%');
+                            $query->orWhere('number_of_hiring', 'like',  '%' . $word .'%');
+                            $query->orWhere('status', 'like', '%'.$word.'%');
+                            $query->orWhere('experience_level', 'like',  '%' . $word .'%');
+                            $query->orWhere('language', 'like',  '%' . $word .'%');
+                            $query->orWhere('location', 'like', '%'.$word.'%');
+                            $query->orWhere('description', 'like', '%'.$word.'%');
+                            $query->orWhere('email', 'like', '%'.$word.'%');
+                            $query->orWhere('requirement', 'like', '%'.$word.'%');
+                            $query->orWhere('closing_date', 'like', '%'.$word.'%');
+                            $query->orWhere('condition', 'like', '%'.$word.'%');
+                            $query->orWhere('name', 'like', '%'.$word.'%');
+                        }
+                    }
+                )
+                ->orderBy('created_at', 'desc')
+                ->paginate(10);
+        }
         
         return view('companies.jobPost', compact('jobPost'));
     }
-
     public function create(Request $request, $service_id)
     {
 
@@ -67,15 +108,28 @@ class JobPostController extends Controller
         return view('companies.createJobPost', compact('max_date','service_id','service_type','display_jobType','display_jobClassification','display_experienceLevel','display_salary',
                                                         'display_businessIndustry','display_qualification'));
     }
-
     public function store(Request $request)
     {
 
         $request->validate([
-            'phone_number' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:8'
-        ]);
-        
 
+                'job_title' => 'required',
+                'job_classification' => 'required',
+                'job_industry' => 'required',
+                'job_type' => 'required',
+                'location' => 'required',
+                'salary' => 'required',
+                'number_of_hiring' => 'required',
+                'qualification' => 'required',
+                'experience_level' => 'required',
+                'language' => 'required',
+                'description' => 'required',
+                'requirement' => 'required',
+                'email' => 'required',
+                'condition' => 'required',
+
+                'phone_number' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:8'
+        ]);
         
         $service_check = DB::table('service_approvals')
         ->where('company_id','=',Auth::guard('company')->user()->id)
@@ -120,10 +174,9 @@ class JobPostController extends Controller
         $service_id = $request->get('service_id');
 
         $jobPost->save();
-        return redirect('/company');
+        return redirect('/jobPost');
         
     }
-
     public function edit($id)
     {
         $edit_jobPost = JobPost::find($id);
@@ -148,8 +201,6 @@ class JobPostController extends Controller
         
         return view('companies.editJobPost', compact('edit_jobPost','edit_sr','edit_jt','edit_qu','edit_jc','edit_ex', 'edit_bi'));
     }
-
-
     public function show($id)
     {
         $jobDetail = DB::table('job_posts')
@@ -166,7 +217,6 @@ class JobPostController extends Controller
 
         return view('companies.jobDetail', compact('jobDetail'));
     }
-
     public function update(Request $request, $id)
     {
         $jobPost = JobPost::find($id);
@@ -195,7 +245,6 @@ class JobPostController extends Controller
 
         return redirect('/jobPost')->with('edit_jobPost', $jobPost);
     }
-
     public function destroy($id)
     {
         $jobPost = JobPost::find($id);
@@ -204,5 +253,25 @@ class JobPostController extends Controller
         $jobPost->delete();
         return redirect('/jobPost');
     }
+
+    public function selectPackage()
+    {
+        $company_id = Auth::guard('company')->user()->id;
+        $selectPackage = DB::table('service_approvals')
+        ->where('company_id', '=', $company_id)     
+        ->join('services', 'service_approvals.service_id', '=', 'services.id')
+        ->select(
+            'services.title as title',
+            'service_approvals.post_number as posts',
+            'service_approvals.id as service_id',
+            'services.id as id',
+            'service_approvals.approve as approve', 
+            'services.number_of_post as numbers')
+        ->get();
+        
+
+        return view('companies.selectPackage', compact('selectPackage'));
+    }
+
 }
     
