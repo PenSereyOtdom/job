@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-use DB;
+
 use App\User;
 use App\Admin;
 use App\Company;
@@ -62,43 +62,6 @@ class RegisterController extends Controller
         ]);
     }
 
-    private function sms($request) {
-        $token = getenv("TWILIO_AUTH_TOKEN");
-        $twilio_sid = getenv("TWILIO_SID");
-        $twilio_verify_sid = getenv("TWILIO_VERIFY_SID");
-
-        $twilio = new Client($twilio_sid, $token);
-
-        try {
-            $twilio->verify->v2->services($twilio_verify_sid)
-            ->verifications
-            ->create($request, "sms");
-    
-        } catch (\Exception $exception) {
-            return back()->with(['phone_number' => $request, 'error' => $exception->getMessage()]);
-        }
-    }
-    
-
-    private function smsVerify($request) {
-         // /* Get credentials from .env */
-        $token = getenv("TWILIO_AUTH_TOKEN");
-        $twilio_sid = getenv("TWILIO_SID");
-        $twilio_verify_sid = getenv("TWILIO_VERIFY_SID");
-        $twilio = new Client($twilio_sid, $token);
-
-        try {
-            $verification = $twilio->verify->v2->services($twilio_verify_sid)
-            ->verificationChecks
-            ->create($request['verification_code'], array('to' =>$request['phone_number']));
-            return $verification->valid;
-        } catch (\Exception $exception) {
-
-            dd($exception);
-            return false;
-        }
-    }
-
     public function showAdminRegisterForm()
     {
         return view('auth.register', ['url' => 'admin']);
@@ -115,115 +78,28 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-
-
-    protected function createUser(Request $request)
+    protected function create(array $data)
     {
+        /* Get credentials from .env */
+        $token = getenv("TWILIO_AUTH_TOKEN");
+        $twilio_sid = getenv("TWILIO_SID");
+        $twilio_verify_sid = getenv("TWILIO_VERIFY_SID");
 
+        $twilio = new Client($twilio_sid, $token);
 
-        $this->validator($request->all())->validate();
-        $this->sms($request['code'].$request['phone_number']);
-        $user = User::create([
-            'name' => $request['name'],
-            'phone_number' => $request['code'].$request['phone_number'],
-            'password' => Hash::make($request['password']),
+        $twilio->verify->v2->services($twilio_verify_sid)
+          ->verifications
+          ->create($data['phone_number'], "sms");
+
+        return User::create([
+            'name' => $data['name'],
+            'phone_number' => $data['phone_number'],
+            'password' => Hash::make($data['password']),
         ]);
-       
-        return redirect()->route('verify')->with(['phone_number' => $request['code'].$request['phone_number']]);
-
-       
+        return redirect()->route('verify')->with(['phone_number' => $data['phone_number']]);
     }
 
-
-    protected function createCompany(Request $request)
-    {
-
-
-        $this->validator($request->all())->validate();
-        $this->sms($request);
-        $company = Company::create([
-            'name' => $request['name'],
-            'phone_number' =>$request['code'].$request['phone_number'],
-            'password' => Hash::make($request['password']),
-        ]);
-        if (Auth::guard('company')->attempt(['phone_number' => $request['code'].$request['phone_number'], 'password' => $request->password], $request->get('remember'))) {
-            // return redirect()->intended('/verify');
-            return redirect()->route('verify')->with(['phone_number' => $request['code'].$request['phone_number']]);
-        }
-    }
-
-   
-
-    protected function verifyUser(Request $request)
-    {
-        $data = $request->validate([
-            'verification_code' => ['required', 'numeric'],
-            'phone_number' => ['required', 'string'],
-        ]);
-            
-        $verification = $this->smsVerify(
-            $request =([
-                'verification_code' => $data['verification_code'],
-                'phone_number' => $data['phone_number'],
-        ]));
-        
-        if ($verification) {
-            $user = tap(User::where('phone_number', $data['phone_number']))->update(['isVerified' => true]);
-            /* Authenticate user */
-            Auth::login($user->first());
-            return redirect()->route('login')->with(['message' => 'Phone number verified']);
-        }
-
-        return back()->with(['phone_number' => $data['phone_number'], 'error' => 'Invalid verification code entered!']);
-    }   
-
-    protected function verifyCompany(Request $request)
-    {
-        $data = $request->validate([
-            'verification_code' => ['required', 'numeric'],
-            'phone_number' => ['required', 'string'],
-        ]);
-
-
-        $verification = $this->smsVerify(
-            $request =([
-                'verification_code' => $data['verification_code'],
-                'phone_number' => $data['phone_number'],
-            ]));
-
-        if ($verification) {
-            $user = tap(User::where('phone_number', $data['phone_number']))->update(['isVerified' => true]);
-            /* Authenticate user */
-            Auth::login($user->first());
-            return redirect()->route('login/company')->with(['message' => 'Phone number verified']);
-        }
-        return back()->with(['phone_number' => $data['phone_number'], 'error' => 'Invalid verification code entered!']);
-    }
-
-
-
-    protected function resetPasswordUser(Request $request)
-    {
-
-        $user = DB::table('users')
-        ->where('phone_number','=',$request['code'].$request['phone_number'])
-        ->first();
-
-        if($user == null) {
-            return back()->with(['error' => 'Phone number not exite in your database']);
-        }  
-        $data = $request->validate([
-            'phone_number' => ['required', 'string'],
-        ]);
-        
-        $this->sms( $request['code'].$request['phone_number']);
-       
-        return redirect()->route('password/reset')->with(['phone_number' => $request['code'].$request['phone_number']]);
-
-    } 
-    
-
-    protected function verifyResetUser(Request $request)
+    protected function verify(Request $request)
     {
         $data = $request->validate([
             'verification_code' => ['required', 'numeric'],
@@ -231,103 +107,77 @@ class RegisterController extends Controller
         ]);
 
         /* Get credentials from .env */
-        $verification = $this->smsVerify(
-        $request =([
-            'verification_code' => $data['verification_code'],
-            'phone_number' => $data['phone_number'],
-        ]));
+        $token = getenv("TWILIO_AUTH_TOKEN");
+        $twilio_sid = getenv("TWILIO_SID");
+        $twilio_verify_sid = getenv("TWILIO_VERIFY_SID");
 
+        $twilio = new Client($twilio_sid, $token);
 
-        if ($verification) {
-            return redirect()->route('comfirm')->with(['phone_number' => $data['phone_number']]);
-        } 
-
-        return back()->with(['phone_number' => $data['phone_number'], 'error' => 'Invalid verification code entered!']);
-       
-
-    } 
-
-    protected function confirmUser(Request $request)
-    {
-        $data = $request->validate([
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-
-        $user = tap(User::where('phone_number', $request['phone_number']))->update(['isVerified' => true]);
-        Auth::login($user->first());
-        $user = Auth::user();
-        $user->password = bcrypt($request['password']);
-        $user->save();
-        Auth::logout();
-        return redirect()->route('login')->with(['phone_number' => $request['phone_number']]);
-
-    } 
-
-
-    protected function resetPasswordCompany(Request $request)
-    {
-
-        $user = DB::table('companies')
-        ->where('phone_number','=',$request['phone_number'])
-        ->first();
-
-        if($user == null) {
-            return back()->with(['error' => 'Phone number not exite in your database']);
-        }  
-
-        $data = $request->validate([
-            'phone_number' => ['required', 'string'],
-        ]);
-        
-
-       $this->sms( $request['code'].$request['phone_number']);
-
-       
-        return redirect()->route('password/reset/company')->with(['phone_number' => $request['phone_number']]);
-
-    } 
-
-    protected function verifyResetCompany(Request $request)
-    {
-        $data = $request->validate([
-            'verification_code' => ['required', 'numeric'],
-            'phone_number' => ['required', 'string'],
-        ]);
-
-        
-        $verification = $this->smsVerify(
-        $request =([
-                'verification_code' => $data['verification_code'],
-                'phone_number' => $data['phone_number'],
-        ]));
+        $verification = $twilio->verify->v2->services($twilio_verify_sid)
+            ->verificationChecks
+            ->create($data['verification_code'], array('to' => $data['phone_number']));
 
         if ($verification->valid) {
-            return redirect()->route('comfirm/company')->with(['phone_number' => $request['phone_number']]);
+            $user = tap(User::where('phone_number', $data['phone_number']))->update(['isVerified' => true]);
+            /* Authenticate user */
+            Auth::login($user->first());
+            return redirect()->route('user.home')->with(['message' => 'Phone number verified']);
         }
-
         return back()->with(['phone_number' => $data['phone_number'], 'error' => 'Invalid verification code entered!']);
-       
+    }
 
-    } 
-
-
-    protected function confirmCompany(Request $request)
+    protected function createAdmin(Request $request)
     {
-        $data = $request->validate([
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+
+        $token = getenv("TWILIO_AUTH_TOKEN");
+        $twilio_sid = getenv("TWILIO_SID");
+        $twilio_verify_sid = getenv("TWILIO_VERIFY_SID");
+
+        $twilio = new Client($twilio_sid, $token);
+
+        $twilio->verify->v2->services($twilio_verify_sid)
+            ->verifications
+            ->create($request['phone_number'], "sms");
+
+        $this->validator($request->all())->validate();
+        $admin = Admin::create([
+            'name' => $request['name'],
+            'phone_number' => $request['phone_number'],
+            'password' => Hash::make($request['password']),
         ]);
+        if (Auth::guard('admin')->attempt(['phone_number' => $request->phone_number, 'password' => $request->password], $request->get('remember'))) {
 
-        $user = tap(Company::where('phone_number', $request['phone_number']))->update(['isVerified' => true]);
-        Auth::login($user->first());
-        $user = Auth::user();
-        $user->password = bcrypt($request['password']);
-        $user->save();
-        return redirect()->route('login')->with(['phone_number' => $request['phone_number']]);
+            // return redirect()->intended('/admin');
+            return redirect()->route('verify')->with(['phone_number' => $request['phone_number']]);
 
-    } 
+        }
+    }
 
+    protected function createCompany(Request $request)
+    {
 
+        $token = getenv("TWILIO_AUTH_TOKEN");
+        $twilio_sid = getenv("TWILIO_SID");
+        $twilio_verify_sid = getenv("TWILIO_VERIFY_SID");
 
+        $twilio = new Client($twilio_sid, $token);
+
+        $twilio->verify->v2->services($twilio_verify_sid)
+            ->verifications
+            ->create($request['phone_number'], "sms");
+
+        $this->validator($request->all())->validate();
+        $company = Company::create([
+            'name' => $request['name'],
+            'phone_number' => $request['phone_number'],
+            'password' => Hash::make($request['password']),
+        ]);
+        if (Auth::guard('company')->attempt(['phone_number' => $request->phone_number, 'password' => $request->password], $request->get('remember'))) {
+
+            // return redirect()->intended('/verify');
+            return redirect()->route('verify')->with(['phone_number' => $request['phone_number']]);
+        }
+    }
 
 
 }

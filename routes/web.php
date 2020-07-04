@@ -22,7 +22,6 @@
         return "Cache is cleared";
     });
 
-
     Route::get('/register', function () {
         return view('auth.register');
     })->name('register');
@@ -36,20 +35,20 @@
 
     Route::post('/login', 'Auth\LoginController@login');
 
+
     Route::get('/', 'User\HomeController@create');
     Route::get('/searchfilter', 'User\SearchFilterController@create');
 
     Route::get('/jobs', 'User\JobsController@jobs');
     Route::post('/jobs', 'User\JobsController@jobs');
-    Route::get('/hotJobs', 'User\JobsController@hotjobs')->name('hotjobs');
-    Route::post('/hotJobs', 'User\JobsController@hotjobs');
     Route::get('/quick/{type}','User\JobsController@quickSearch');
+    Route::get('/hotJobs', 'User\HotjobsController@hotJobs');
     Route::get('/jobDetail/{id}', 'User\JobDetailController@show');
     Route::get('/careerAdvise', 'User\CareerAdviseController@careerAdvise');
-    Route::get('/careerAdvisePage/{id}', 'User\CareerAdviseController@show');
-
+    Route::get('/careerAdvisePage', 'User\CareerAdvisePageController@careerAdvisePage');
     Route::get('/aboutUs', 'User\AboutUsController@aboutUs');
     Route::get('/contactUs', 'User\ContactUsController@contactUs');
+
 
     //Job listing(Phaneth)
     Route::get('/jobDetail/{id}', 'User\JobDetailController@show');
@@ -57,45 +56,16 @@
 
     Route::get('/recruiter', 'Companies\LandingPageController@landingPage');
 
-    // Route::view('password/forget','auth.forgetpassword');
-    Route::get('/forgetpassword/company', function () {
-        return view('auth.forgetpassword');
-    })->name('forgetpasswordcompany');
-
-    Route::post('/forgetpassword/company','Auth\RegisterController@resetPasswordCompany');
-    
-    Route::view('password/reset/company','auth.verifycode')->name('password/reset');
-    Route::post('password/reset/company','Auth\RegisterController@verifyResetCompany');
-
-    Route::view('/comfirm/company','auth.confirmPassword')->name('comfirm');
-    Route::post('/comfirm/company','Auth\RegisterController@confirmCompany');
-
-    Route::get('/forgetpassword', function () {
-        return view('auth.forgetpassword');
-    })->name('forgetpassword');
-    Route::post('/forgetpassword','Auth\RegisterController@resetPasswordUser');
-    
-    Route::view('password/reset','auth.verifycode')->name('password/reset');
-    Route::post('password/reset','Auth\RegisterController@verifyResetUser');
-
-    Route::view('/comfirm','auth.confirmPassword')->name('comfirm');
-    Route::post('/comfirm','Auth\RegisterController@confirmUser');
-
-
-
-    Route::get('/verify', function () {
-        return view('auth.verify');
-    })->name('verify');
-
-    Route::post('/verify/Company', 'Auth\RegisterController@verifyCompany');
-    Route::post('/verify', 'Auth\RegisterController@verifyUser');
-
-    
+    Route::get('reset-password/{token}','Auth\ForgotPasswordController@showPasswordResetForm')->name('check.token');
 
 // Job seeker(user) Routes
 Route::group(['middleware' => 'auth'], function(){
 
     Route::view('/home', 'user.home');
+    Route::get('/verify', function () {
+        return view('auth.verify');
+    })->name('verify');
+    Route::post('/verify', 'Auth\RegisterController@verify')->name('verify');
 
     // User Profile
     Route::get('profile', 'User\ProfileController@create');
@@ -120,12 +90,9 @@ Route::group(['middleware' => 'auth'], function(){
     // Applied Job
     Route::get('appliedJob', 'User\ProfileController@appliedJob');
 
-    // delete Job
-    Route::post('deletejob/{id}', 'User\ProfileController@deletedJob');
-    
+
     // Saved Job
     Route::post('/save/{id}', 'User\JobDetailController@save');
-
 
 });
 
@@ -141,6 +108,7 @@ Route::group(['middleware' => ['auth:admin']], function () {
     Route::view('/admin', 'admin.home');
     Route::get('/admin', 'Admin\HomeController@index');
 
+
     // Career Advice
     Route::get('/career', 'Admin\CareerController@index');
     Route::get('/create/career', 'Admin\CareerController@create');
@@ -153,12 +121,9 @@ Route::group(['middleware' => ['auth:admin']], function () {
     //Admin payment managerment
     Route::get('/payments', 'Admin\PaymentController@index');
     Route::post('/payment/edit/{id}', 'Admin\PaymentController@edit');
-    Route::post('/paymentAba/edit/{id}', 'Admin\PaymentController@editaba');
-    Route::post('/paymentWing/edit/{id}', 'Admin\PaymentController@editwing');
-    Route::post('/contact/edit/{id}', 'Admin\PaymentController@editcontact');
-
     Route::post('/payment/{id}', 'Admin\PaymentController@update');
-    
+
+
     //Admin payment managerment
     Route::get('/service', 'Admin\ServicesController@index');
     Route::post('/service/edit/{id}', 'Admin\ServicesController@edit');
@@ -181,6 +146,7 @@ Route::group(['middleware' => ['auth:admin']], function () {
     Route::post('/create/master', 'Admin\MasterDataController@store');
     Route::post('/master/edit/{id}', 'Admin\MasterDataController@edit');
     Route::post('/master/{id}', 'Admin\MasterDataController@update');
+    // Route::delete('/career/{id}', 'Admin\MasterDataController@destroy');
 
     // Verify Package
     Route::get('/packgeRequest', 'Admin\VerifyPackageController@index');
@@ -194,7 +160,7 @@ Route::group(['middleware' => ['auth:admin']], function () {
 
     Route::get('/pdf/{id}','Admin\CandidateManagermentController@pdf');
 
-    
+
     // Recruiter Managerment
     Route::get('/recruiterManagerment', 'Admin\RecruiterManagermentController@index');
     Route::get('/recruiterDetails/{id}', 'Admin\RecruiterManagermentController@show');
@@ -209,20 +175,24 @@ Route::group(['middleware' => ['auth:admin']], function () {
 
     // Company Routes
     Route::get('/company', 'CompaniesController@index');
-
- 
+    Route::get('/verify', function () {
+        return view('auth.verify');
+    })->name('verify');
+    Route::post('/verify', 'Auth\RegisterController@verify')->name('verify');
 
     Route::get('/register/company', 'Auth\RegisterController@showCompanyRegisterForm');
     Route::post('/register/company', 'Auth\RegisterController@createCompany');
     Route::get('/login/company', 'Auth\LoginController@showCompanyLoginForm');
     Route::post('/login/company', 'Auth\LoginController@companyLogin');
 
-    // Route::get('/careerListing', 'User\CareerListingController@careerListing');
+    Route::get('/careerListing', 'User\CareerListingController@careerListing');
 
 Route::group(['middleware' => 'auth:company'], function () {
 
     Route::view('/company', 'companies.home');
+
     Route::get('/company', 'Companies\HomeController@index');
+
 
     //Job Post (Company)
     Route::get('/jobPost', 'Companies\JobPostController@index');
@@ -252,15 +222,12 @@ Route::group(['middleware' => 'auth:company'], function () {
     Route::get('/candidateReport/applied', 'Companies\AppliedController@index');
     Route::get('/userDetail/{id}', 'Companies\UserDetailController@show');
     Route::post('/userDetail/{id}', 'Companies\UserDetailController@update');
-    Route::get('/downloadPDF/{id}','Companies\UserDetailController@downloadPDF');
-
 
     // Our Service
     Route::get('/serviceListing', 'Companies\ServiceController@serviceListing');
     // Route::get('/serviceListing', 'Companies\ServiceController@edit');
 
     // Company Payment
-    
     Route::get('/payment', 'Companies\PaymentController@index');
 
     Route::get('/basic/{service_id}', 'Companies\PaymentController@indexbasic');

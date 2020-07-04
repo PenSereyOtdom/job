@@ -38,12 +38,8 @@
                     <span class="pr-3 py-2 font-weight-bold">Job Classifications</span>  
                 </div>
                 <div class="col-10">
-                <?php foreach($job_classifications as $indexKey => $job_classification){ ?>
-                    @if($indexKey < 5)
-                        <span class="pr-3 py-2"><a href="{{url('quick',$job_classification->job_classification )}}"><?php echo $job_classification->job_classification ?></a></span>
-                    @else
-                        <span class="pr-3 py-2"><a href="">View all</a></span>
-                    @endif
+                <?php foreach($job_classifications as $job_classification){ ?>
+                    <span class="pr-3 py-2"><a href="{{url('quick',$job_classification->job_classification )}}"><?php echo $job_classification->job_classification ?></a></span>
                 <?php } ?>
                 </div>  
             </div>
@@ -52,13 +48,8 @@
                     <span class="pr-3 py-2 font-weight-bold">Type of Job</span>
                 </div>
                 <div class="col-10">
-                <?php foreach($job_types as $indexKey => $job_type){ ?>
-                    @if($indexKey < 5)
-                        <span class="pr-3 py-2"><a href="{{url('quick',$job_type->job_type )}}"><?php echo $job_type->job_type?></a></span>
-                    @else
-                        <span class="pr-3 py-2"><a href="">View all</a></span>
-                    @endif
-                    
+                <?php foreach($job_types as $job_type){ ?>
+                    <span class="pr-3 py-2"><a href="{{url('quick',$job_type->job_type )}}"><?php echo $job_type->job_type?></a></span>
                 <?php } ?> 
                 </div>
             </div>
@@ -67,12 +58,8 @@
                     <span class="pr-3 py-2 font-weight-bold">Salary Range</span>
                 </div>
                 <div class="col-10">
-                <?php foreach($salary_ranges as $indexKey => $salary_range){ ?>
-                    @if($indexKey < 5)
-                        <span class="pr-3 py-2"><a href="{{url('quick',$salary_range->salary_range )}}"><?php echo $salary_range->salary_range?></a></span>
-                    @else 
-                        <span class="pr-3 py-2"><a href="">View all</a></span>
-                    @endif
+                <?php foreach($salary_ranges as $salary_range){ ?>
+                    <span class="pr-3 py-2"><a href="{{url('quick',$salary_range->salary_range )}}"><?php echo $salary_range->salary_range?></a></span>
                 <?php } ?> 
                 </div>
             </div>
@@ -81,12 +68,7 @@
                     <span class="pr-3 py-2 font-weight-bold">Location</span>
                 </div>
                 <div class="col-10">
-                    <span class="pr-3 py-2"><a href="{{url('quick', 'Phnom Penh')}}">Phnom Penh</a></span>
-                    <span class="pr-3 py-2"><a href="{{url('quick', 'Phnom Penh')}}">Phnom Penh</a></span>
-                    <span class="pr-3 py-2"><a href="{{url('quick', 'Phnom Penh')}}">Phnom Penh</a></span>
-                    <span class="pr-3 py-2"><a href="{{url('quick', 'Phnom Penh')}}">Phnom Penh</a></span>
-                    <span class="pr-3 py-2"><a href="{{url('quick', 'Phnom Penh')}}">Phnom Penh</a></span>
-                    <span class="pr-3 py-2"><a href="{{url('quick', 'Phnom Penh')}}">View all</a></span>
+                    <span class="pr-3 py-2"><a href="{{url('serviceListing' )}}">Phnom Penh</a></span>
                 </div>
             </div>
         </div>

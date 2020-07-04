@@ -37,14 +37,14 @@
                             <div class="nav-group-right">
                                 <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                                     <!-- Notifications-->    
-                                    <li class="nav-item dropdown">
+                                    <li class="nav-item dropdown notification">
                                         <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link">
                                             <i class="far fa-bell"></i>
                                             @if(count(auth()->user()->unreadNotifications))
                                                 <span class="badge bg-red badge-corner">{{count(auth()->guard('admin')->user()->unreadNotifications)}}</span>
                                             @endif
                                         </a>
-                                        <ul aria-labelledby="notifications" class="dropdown-menu notification">
+                                        <ul aria-labelledby="notifications" class="dropdown-menu">
                                             @forelse (auth()->guard('admin')->user()->unreadNotifications as $notification) 
                                                 @if ($notification->type=='App\Notifications\CompanyBuyPlan')
                                                     <li class="dropdown-item">

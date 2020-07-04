@@ -24,128 +24,79 @@
         <div class="profile card mb-5">
             <div class="container px-5 py-4">
                 <div class="tab-content" id="pills-tabContent">
-                
                     <div class="tab-pane fade show active" id="pills-cash" role="tabpanel" aria-labelledby="pills-cash-tab">
-                        <h2 class="font-weight-bold pb-4">Cash Method</h2>
-                        @foreach($payment_cash as $cash)                        
-                        <form action="{{action('Admin\PaymentController@edit', $cash->id)}}" method="post">
-                            {{csrf_field()}}           
-
+                        @foreach($payment_cash as $cash)                 
                         <div class="form-group row">
-                            <label class="col-sm-3 form-control-label">Jobnow office address:</label>
+                            <label class="col-sm-3 form-control-label">@lang('admin.jobnowoffice')</label>
                             <div class="col-sm-9">
                             <p>{{$cash->address}}</p>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-3 form-control-label">Map:</label>
+                            <label class="col-sm-3 form-control-label">@lang('admin.map')</label>
                             <div class="col-sm-9">
                             <p>{{$cash->map}}</p>
                             </div>
                         </div>
-                        <button class="btn btn-primary" type="submit"><i type="submit" class="far fa-edit"></i> Edit</button>
-
+                        <form action="{{action('Admin\PaymentController@edit', $cash->id)}}" method="post">
+                            {{csrf_field()}}
+                            <button class="btn btn-primary" type="submit"><i type="submit" class="far fa-edit"></i> @lang('admin.edit')</button>
                         </form>
                         @endforeach
                     </div>                                              
 
                     <div class="tab-pane fade" id="pills-aba" role="tabpanel" aria-labelledby="pills-aba-tab">
-                        <h2 class="font-weight-bold pb-4">ABA Method</h2>
                         @foreach($payment_aba as $aba)
-                            <form action="{{action('Admin\PaymentController@editaba', $aba->id)}}" method="post">
-                                {{csrf_field()}}
-                                <div class="row">
-                                    <div class="col-3">
-                                        <div class="col-8 pl-0"> 
-                                            @if($aba->qr_aba)
-                                                <img class="card-img-top profile-pic qr-pic img-thumbnail" src="{{ asset('/storage/qr_aba/' . $aba->qr_aba) }}"/>
-                                            @else
-                                                <img class="card-img-top profile-pic qr-pic img-thumbnail" src="{{asset('/img/qr.jpg')}}"/>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="form-group row pt-3">
-                                            <label class="col-sm-3 form-control-label">Account Name:</label>
-                                            <div class="col-sm-9">
-                                                <p>{{$aba->acc_name}}</p>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-3 form-control-label">Account Number:</label>
-                                            <div class="col-sm-9">
-                                                <p>{{$aba->acc_number}}</p>
-                                            </div>
-                                        </div>
-                                        <button class="btn btn-primary" type="submit"><i type="submit" class="far fa-edit"></i> Edit</button>
-                                    </div>
-                                </div>
-                            </form>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">@lang('admin.accountname')</label>
+                            <div class="col-sm-9">
+                            <p>{{$aba->acc_name}}</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">@lang('admin.accountnumber')</label>
+                            <div class="col-sm-9">
+                            <p>{{$aba->acc_number}}</p>
+                            </div>
+                        </div>
+                        @endforeach
+                        <form action="{{action('Admin\PaymentController@edit', $aba->id)}}" method="post">
+                            {{csrf_field()}}
+                            <button class="btn btn-primary" type="submit"><i type="submit" class="far fa-edit"></i> @lang('admin.edit')</button>
+                        </form>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="pills-wing" role="tabpanel" aria-labelledby="pills-wing-tab">
+                        @foreach($payment_wing as $wing)
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">@lang('admin.accountname')</label>
+                            <div class="col-sm-9">
+                            <p>{{$wing->acc_name}}</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">@lang('admin.accountnumber')</label>
+                            <div class="col-sm-9">
+                            <p>{{$wing->acc_number}}</p>
+                            </div>
+                        </div>
+                        <form action="{{action('Admin\PaymentController@edit', $wing->id)}}" method="post">
+                            {{csrf_field()}}
+                            <button class="btn btn-primary" type="submit"><i type="submit" class="far fa-edit"></i> @lang('admin.edit')</button>
+                        </form>
                         @endforeach
                     </div>
 
-                    <div class="tab-pane fade" id="pills-wing" role="tabpanel" aria-labelledby="pills-wing-tab">
-                        <h2 class="font-weight-bold pb-4">Wing Method</h2>
-                        @foreach($payment_wing as $wing)
-                            <form action="{{action('Admin\PaymentController@editwing', $wing->id)}}" method="post">
-                                {{csrf_field()}}
-                                <div class="row">
-                                    <div class="col-3">
-                                        <div class="col-8 pl-0"> 
-                                            @if($wing->qr_wing)
-                                                <img class="card-img-top profile-pic qr-pic img-thumbnail" src="{{ asset('/storage/qr_wing/' . $wing->qr_wing) }}"/>
-                                            @else
-                                                <img class="card-img-top profile-pic qr-pic img-thumbnail" src="{{asset('/img/qr.jpg')}}"/>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="form-group row pt-3">
-                                            <label class="col-sm-3 form-control-label">Account Name:</label>
-                                            <div class="col-sm-9">
-                                            <p>{{$wing->acc_name}}</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label class="col-sm-3 form-control-label">Account Number:</label>
-                                            <div class="col-sm-9">
-                                            <p>{{$wing->acc_number}}</p>
-                                            </div>
-                                        </div>
-                                        <button class="btn btn-primary" type="submit"><i type="submit" class="far fa-edit"></i> Edit</button>
-                                    </div>
-                                </div>
-                            </form>
-                        @endforeach                        
-                    </div>
-
                     <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                        <h2 class="font-weight-bold pb-4">Contacts</h2>
                         @foreach($contact as $contacts)
-                        <form action="{{action('Admin\PaymentController@editcontact', $contacts->id)}}" method="post">
-                            {{csrf_field()}}
                             <div class="form-group row">
-                                <label class="col-sm-2 form-control-label">Phone Number:</label>
-                                <div class="col-sm-10">
-                                <p>{{$contacts->contact1}}</p>
+                                <label class="col-sm-3 form-control-label">@lang('admin.contact')</label>
+                                <div class="col-sm-9">
+                                <p>{{$contacts->contact}}</p>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 form-control-label">Phone Number:</label>
-                                <div class="col-sm-10">
-                                <p>{{$contacts->contact2}}</p>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 form-control-label">Email:</label>
-                                <div class="col-sm-10">
-                                <p>{{$contacts->gmail}}</p>
-                                </div>
-                            </div>
-                            <button class="btn btn-primary" type="submit"><i type="submit" class="far fa-edit"></i> Edit</button>
-
-                        </form>
                         @endforeach
                     </div>
 

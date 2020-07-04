@@ -12,12 +12,12 @@
                 {!! csrf_field() !!}
                 <!-- Job Classification -->
                 <input type="hidden" name="title">
-                <h4 class="font-weight-bold">Job Classification</h4>
+                <h4 class="font-weight-bold">@lang('admin.jobclass')</h4>
                 <input name="admin_id" value="{{$admin_id}}" type="hidden">
                 <p>
-                    <a href="javascript:void(0)" id="add-edu"><i class="fa fa-plus-circle"></i> Add </a>
+                    <a href="javascript:void(0)" id="add-edu"><i class="fa fa-plus-circle"></i> @lang('admin.add') </a>
                     <span class="remove">|
-                    <a href="javascript:void(0)" id="remove-edu"><i class="fa fa-minus-circle"></i> Remove</a></span>
+                    <a href="javascript:void(0)" id="remove-edu"><i class="fa fa-minus-circle"></i> @lang('admin.remove')</a></span>
                 </p>
                 <div id="job-classification">
                     <div class="edu-element">
@@ -30,12 +30,12 @@
                 </div>
 
                 <!-- Qualification -->
-                <h4 class="font-weight-bold">Qualification</h4>
+                <h4 class="font-weight-bold">@lang('admin.qualification')</h4>
                 <input name="admin_id" value="{{$admin_id}}" type="hidden">
                 <p>
-                    <a href="javascript:void(0)" id="add-exp"><i class="fa fa-plus-circle"></i> Add </a>
+                    <a href="javascript:void(0)" id="add-exp"><i class="fa fa-plus-circle"></i> @lang('admin.add') </a>
                     <span class="remove">|
-                    <a href="javascript:void(0)" id="remove-exp"><i class="fa fa-minus-circle"></i> Remove</a></span>
+                    <a href="javascript:void(0)" id="remove-exp"><i class="fa fa-minus-circle"></i> @lang('admin.remove')</a></span>
                 </p>
                 <div id="lang-exp">
                     <div class="exp-element">
@@ -48,12 +48,12 @@
                 </div>
 
                 <!-- Job Type -->
-                <h4 class="font-weight-bold">Job Type</h4>
+                <h4 class="font-weight-bold">@lang('admin.jobtype')</h4>
                 <input name="admin_id" value="{{$admin_id}}" type="hidden">
                 <p>
-                    <a href="javascript:void(0)" id="add-ach"><i class="fa fa-plus-circle"></i> Add </a>
+                    <a href="javascript:void(0)" id="add-ach"><i class="fa fa-plus-circle"></i> @lang('admin.add') </a>
                     <span class="remove">|
-                    <a href="javascript:void(0)" id="remove-ach"><i class="fa fa-minus-circle"></i> Remove</a></span>
+                    <a href="javascript:void(0)" id="remove-ach"><i class="fa fa-minus-circle"></i> @lang('admin.remove')</a></span>
                 </p>
                 <div id="lang-ach">
                     <div class="ach-element">
@@ -66,12 +66,12 @@
                 </div>
 
                 <!-- Salary Range -->
-                <h4 class="font-weight-bold">Salary Range</h4>
+                <h4 class="font-weight-bold">@lang('admin.salary')</h4>
                 <input name="admin_id" value="{{$admin_id}}" type="hidden">
                 <p>
-                    <a href="javascript:void(0)" id="add-sr"><i class="fa fa-plus-circle"></i> Add </a>
+                    <a href="javascript:void(0)" id="add-sr"><i class="fa fa-plus-circle"></i> @lang('admin.add') </a>
                     <span class="remove">|
-                    <a href="javascript:void(0)" id="remove-sr"><i class="fa fa-minus-circle"></i> Remove</a></span>
+                    <a href="javascript:void(0)" id="remove-sr"><i class="fa fa-minus-circle"></i> @lang('admin.remove')</a></span>
                 </p>
                 <div id="lang-sr">
                     <div class="sr-element">
@@ -84,12 +84,12 @@
                 </div>
 
                 <!-- Experience Level -->
-                <h4 class="font-weight-bold">Experience Level</h4>
+                <h4 class="font-weight-bold">@lang('admin.experience')</h4>
                 <input name="admin_id" value="{{$admin_id}}" type="hidden">
                 <p>
-                    <a href="javascript:void(0)" id="add-el"><i class="fa fa-plus-circle"></i> Add </a>
+                    <a href="javascript:void(0)" id="add-el"><i class="fa fa-plus-circle"></i> @lang('admin.add') </a>
                     <span class="remove">|
-                    <a href="javascript:void(0)" id="remove-el"><i class="fa fa-minus-circle"></i> Remove</a></span>
+                    <a href="javascript:void(0)" id="remove-el"><i class="fa fa-minus-circle"></i> @lang('admin.remove')</a></span>
                 </p>
                 <div id="lang-el">
                     <div class="el-element">
@@ -102,12 +102,12 @@
                 </div>
 
                 <!-- Job Industry -->
-                <h4 class="font-weight-bold">Job Industry</h4>
+                <h4 class="font-weight-bold">@lang('admin.jobindustry')</h4>
                 <input name="admin_id" value="{{$admin_id}}" type="hidden">
                 <p>
-                    <a href="javascript:void(0)" id="add-bi"><i class="fa fa-plus-circle"></i> Add </a>
+                    <a href="javascript:void(0)" id="add-bi"><i class="fa fa-plus-circle"></i> @lang('admin.add') </a>
                     <span class="remove">|
-                    <a href="javascript:void(0)" id="remove-bi"><i class="fa fa-minus-circle"></i> Remove</a></span>
+                    <a href="javascript:void(0)" id="remove-bi"><i class="fa fa-minus-circle"></i> @lang('admin.remove')</a></span>
                 </p>
                 <div id="lang-bi">
                     <div class="bi-element">
@@ -122,8 +122,8 @@
                 <!-- Save Button -->
                 <div class="form-group  mt-5">
                     <div class="">
-                        <button type="submit" class="btn btn-primary mr-2">Save Changes</button>
-                        <a class="btn btn-outline-primary" href="/admin/setting">Cancel</a>
+                        <button type="submit" class="btn btn-primary mr-2">@lang('admin.save')</button>
+                        <a class="btn btn-outline-primary" href="/admin/setting">@lang('admin.cancle')</a>
                     </div>
                 </div>
             </form>
