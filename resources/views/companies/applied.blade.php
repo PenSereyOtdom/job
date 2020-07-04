@@ -16,9 +16,9 @@
                             </tr>
                             <tr>
                                 <th>#</th>
-                                <th>@lang('admin.username')</th>
-                                <th>@lang('admin.jobtitle')</th>
-                                <th>@lang('admin.apply')</th>
+                                <th>@lang('company.username')</th>
+                                <th>@lang('company.jobtitle')</th>
+                                <th>@lang('company.apply')</th>
                             </tr>
                         </thead>
                         <tbody>

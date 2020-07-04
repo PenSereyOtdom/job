@@ -16,21 +16,21 @@
                 <th scope="col"><input type="text" class="form-control" name="search" placeholder="Search term..."></th>
                 <th colspan="2">
                     <select class="form-control">
-                        <option>All</option>
-                        <option>Active</option>
-                        <option>Inactive</option>
-                        <option>Draft</option>
+                        <option>@lang('company.all')</option>
+                        <option>@lang('company.active')</option>
+                        <option>@lang('company.inactive')</option>
+                        <option>@lang('company.draft')</option>
                     </select>
                 </th>
                 </tr>
                 <tr>
-                <th scope="col">Job Tilte</th>
-                <th scope="col">Job Type</th>
-                <th scope="col">Salary</th>
-                <th scope="col">Location</th>
-                <th scope="col">Publish Date</th>
-                <th scope="col">Status</th>
-                <th scope="col">Actions</th>
+                <th scope="col">@lang('company.jobtitle')</th>
+                <th scope="col">@lang('company.jobtype')</th>
+                <th scope="col">@lang('company.salary')</th>
+                <th scope="col">@lang('company.location')</th>
+                <th scope="col">@lang('company.publishdate')</th>
+                <th scope="col">@lang('company.status')</th>
+                <th scope="col">@lang('company.action')</th>
                 </tr>
             </thead>
 
@@ -60,13 +60,13 @@
                                     <i class="fa fa-trash fa-3x" style="color:white;"></i>
                                 </div>
                                 <div class="modal-body text-center bg-white">
-                                    <p>Do you want to Delete your CV?</p>
-                                    <small><i class="fa fa-exclamation-circle" aria-hidden="true"></i> If you delete your CV, You could not be able to get it back.</small>
+                                    <p>@lang('company.deletecv')</p>
+                                    <small><i class="fa fa-exclamation-circle" aria-hidden="true"></i> @lang('company.ifyoudelete')</small>
                                     <form action="{{action('Companies\JobPostController@destroy', $job->id)}}" method="post" class="mt-3">
                                         {{csrf_field()}}
                                         <input name="_method" type="hidden" value="DELETE">
-                                        <button type="submit" class="btn btn-primary">Delete</button>
-                                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-primary">@lang('company.delete')</button>
+                                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">@lang('company.cancel')</button>
                                     </form>
                                 </div>
                             </div>

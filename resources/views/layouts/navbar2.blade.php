@@ -6,10 +6,10 @@
                 <div class="float-right">
                     <ul class="d-flex mb-0">
                         <li class="nav-item mr-2 active" href="locale/en">
-                            <a href="locale/en">EN</a>
+                            <a href="{{ route(Route::currentRouteName(), 'en') }}">EN</a>
                         </li>
                         <li class="nav-item">
-                            <a href="locale/kh">KH</a>
+                            <a href="{{ route(Route::currentRouteName(), 'kh') }}">KH</a>
                         </li>
                     </ul>
                 </div>

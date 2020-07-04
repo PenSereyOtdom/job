@@ -53,7 +53,7 @@
             <div class="login border p-3">
             <div class="text-center logo my-3"><a href="/"><img src="{{asset('img/jobnow_logo.svg')}}" alt="Job Now Logo"></a></div>
             <h3 class="text-center font-weight-bold">{{ isset($url) ? ucwords($url) : ""}} {{ __('Sign In') }}</h3>
-            <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}" class="form-validate">
+            <form method="POST" action="{{ route('login', app()->getLocale()) }}" aria-label="{{ __('Login') }}" class="form-validate">
             @csrf
             <div class="form-group">
                 <label for="inputUsername" class="nav nav-pills mb-2" id="pills-tab" role="tablist"> 
@@ -90,7 +90,7 @@
                 @endif
             </div>
             @if (Route::has('password.request'))
-                <p class="float-right mb-0"><a class="forgot-pass small" href="{{ route('password.request') }}">@lang('home.forgetpass')</a></p>
+                <p class="float-right mb-0"><a class="forgot-pass small" href="{{ route('password.request', app()->getLocale()) }}">@lang('home.forgetpass')</a></p>
             @endif
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -107,7 +107,7 @@
                 <div class="ml-auto"><a href="{{ route('login')}}" class="small">@lang('home.jonseeker')</a></div>
                 @endif
                 @else
-                <p class="small">@lang('home.notmember')<a href="{{ route('register') }}"> @lang('home.register')</a></p>
+                <p class="small">@lang('home.notmember')<a href="{{ route('register', app()->getLocale()) }}"> @lang('home.register')</a></p>
                 <div class="ml-auto"><a href="{{ url('login/company')}}" class="small">@lang('home.employer')</a></div>
             @endisset
         </div>

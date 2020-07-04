@@ -17,7 +17,7 @@
                 <div class="row">
                     <div class="col-lg-10">
                         <h2 class="card-title font-weight-bold">{{$job->job_title}}</h2>
-                        <p class="card-text">ABA Bank Co.Ltd</p>
+                        <p class="card-text">@lang('company.aba')</p>
                     </div>
                     <div class="col-lg-2 my-auto">
                         <div class="picture-container">
@@ -32,17 +32,17 @@
                     </div>
                 </div>
                 <hr>
-                <h5 class="mb-3 font-weight-bold">Job Summary</h5>
+                <h5 class="mb-3 font-weight-bold">@lang('company.jobsummary')</h5>
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="row">
-                            <div class="col-lg-5"><small class="text-secondary">Job Classification:</small></div>
+                            <div class="col-lg-5"><small class="text-secondary">@lang('company.jobclass'):</small></div>
                             <div class="col-lg-7"><small>{{$job->job_classification}}</small></div>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="row">
-                            <div class="col-lg-5"><small class="text-secondary">Type of Job:</small></div>
+                            <div class="col-lg-5"><small class="text-secondary">@lang('company.typeofjob'):</small></div>
                             <div class="col-lg-7"><small>{{$job->job_type}}</small></div>
                         </div>
                     </div>
@@ -51,13 +51,13 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="row">
-                            <div class="col-lg-5"><small class="text-secondary">Job Industry:</small></div>
+                            <div class="col-lg-5"><small class="text-secondary">@lang('company.jobindustry'):</small></div>
                             <div class="col-lg-7"><small>{{$job->job_industry}}</small></div>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="row">
-                            <div class="col-lg-5"><small class="text-secondary">Experience Level:</small></div>
+                            <div class="col-lg-5"><small class="text-secondary">@lang('company.experience'):</small></div>
                             <div class="col-lg-7"><small>{{$job->experience_level}}</small></div>
                         </div>
                     </div>
@@ -66,13 +66,13 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="row">
-                            <div class="col-lg-5"><small class="text-secondary">Qualification:</small></div>
+                            <div class="col-lg-5"><small class="text-secondary">@lang('company.qualification'):</small></div>
                             <div class="col-lg-7"><small>{{$job->qualification}}</small></div>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="row">
-                            <div class="col-lg-5"><small class="text-secondary">Hiring:</small></div>
+                            <div class="col-lg-5"><small class="text-secondary">@lang('company.hiring'):</small></div>
                             <div class="col-lg-7"><small>{{$job->number_of_hiring}}</small></div>
                         </div>
                     </div>
@@ -81,13 +81,13 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="row">
-                            <div class="col-lg-5"><small class="text-secondary">Salary:</small></div>
+                            <div class="col-lg-5"><small class="text-secondary">@lang('company.salary'):</small></div>
                             <div class="col-lg-7"><small>{{$job->salary}}</small></div>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="row">
-                            <div class="col-lg-5"><small class="text-secondary">Language:</small></div>
+                            <div class="col-lg-5"><small class="text-secondary">@lang('company.language'):</small></div>
                             <div class="col-lg-7"><small>{{$job->language}}</small></div>
                         </div>
                     </div>
@@ -96,13 +96,13 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="row">
-                            <div class="col-lg-5"><small class="text-secondary">Location:</small></div>
+                            <div class="col-lg-5"><small class="text-secondary">@lang('company.location'):</small></div>
                             <div class="col-lg-7"><small>{{$job->location}}</small></div>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="row">
-                            <div class="col-lg-5"><small class="text-secondary">Closing Date:</small></div>
+                            <div class="col-lg-5"><small class="text-secondary">@lang('company.closing'):</small></div>
                             <div class="col-lg-7"><small>{{$job->closing_date}}</small></div>
                         </div>
                     </div>
@@ -110,34 +110,34 @@
 
                 <!-- Job Description -->
                 @if(isset($job->description))
-                <h5 class="mt-5 font-weight-bold">Job Description</h5>
+                <h5 class="mt-5 font-weight-bold">@lang('company.jobdescription')</h5>
                 <p><?php echo $job->description; ?></p>
                 @else
                 @endif
                 <!-- Job Requirement -->
                 @if(isset($job->requirement))
-                <h5 class="mt-5 font-weight-bold">Job Requirement</h5>
+                <h5 class="mt-5 font-weight-bold">@lang('company.jonrequirement')</h5>
                 <p><?php echo $job->requirement; ?></p>
                 @else
                 @endif
                 <!-- Job Condition -->
                 @if(isset($job->condition))
-                <h5 class="mt-5 font-weight-bold">Job Conditon</h5>
+                <h5 class="mt-5 font-weight-bold">@lang('company.jobcondition')</h5>
                 <p><?php echo $job->condition; ?></p>
                 @else
                 @endif
                 <!-- About Company -->
-                <h5 class="mt-5 font-weight-bold">About Company</h5>
+                <h5 class="mt-5 font-weight-bold">@lang('company.aboutcompany')</h5>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus eaque eligendi necessitatibus,
                 voluptatibus excepturi maiores omnis inventore quidem. Suscipit aspernatur eveniet accusantium adipisci 
                 nemo fuga reiciendis, tempore cumque nam voluptatem.</p>
 
                 <!-- Contact Informantion -->
-                <h5 class="mt-5 font-weight-bold">Contact Informantion</h5>
+                <h5 class="mt-5 font-weight-bold">@lang('company.contactinfo')</h5>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="row">
-                            <div class="col-lg-4"><small class="text-secondary">Name:</small></div>
+                            <div class="col-lg-4"><small class="text-secondary">@lang('company.name'):</small></div>
                             <div class="col-lg-8"><small>{{$job->recruiter_name}}</small></div>
                         </div>
                     </div>
@@ -146,7 +146,7 @@
                 <div class="row">   
                     <div class="col-lg-12">
                         <div class="row">
-                            <div class="col-lg-4"><small class="text-secondary">Phone Number:</small></div>
+                            <div class="col-lg-4"><small class="text-secondary">@lang('company.phone'):</small></div>
                             <div class="col-lg-8"><small>{{$job->phone_number}}</small></div>
                         </div>
                     </div>
@@ -155,7 +155,7 @@
                 <div class="row">   
                     <div class="col-lg-12">
                         <div class="row">
-                            <div class="col-lg-4"><small class="text-secondary">Email:</small></div>
+                            <div class="col-lg-4"><small class="text-secondary">@lang('company.email'):</small></div>
                             <div class="col-lg-8"><small>{{$job->email}}</small></div>
                         </div>
                     </div>
@@ -164,7 +164,7 @@
                 <div class="row">   
                     <div class="col-lg-12">
                         <div class="row">
-                            <div class="col-lg-4"><small class="text-secondary">Address</small></div>
+                            <div class="col-lg-4"><small class="text-secondary">@lang('company.address')</small></div>
                             <div class="col-lg-8"><small>{{$job->address}}</small></div>
                         </div>
                     </div>

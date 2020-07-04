@@ -12,22 +12,22 @@
                 @if(sizeof($service_approval__check) == 0 || $service_approval__check[0]->post_number <= 0)
                 <form class="form-horizontal" method="POST" action="{{url('/basic')}}" enctype="multiple/form-data">
                     {!! csrf_field() !!}
-                    <input name="admin_id" value="1" type="hidden">
+                    <input name="company_id" value="1" type="hidden">
                     <input name="service_id" value="2" type="hidden">
 
-                    <h3 class="font-weight-bold pb-3">How do you want to pay?</h3>  
+                    <h3 class="font-weight-bold pb-3">@lang('company.pay')</h3>
 
                     <div class="row my-3">
-                        <div class="col-2"><p class="text-secondary small mb-0">Service Type</p> <p>Classic</p></div>
-                        <div class="col-2"><p class="text-secondary small mb-0">Price</p> <p>285$</p></div>
+                        <div class="col-2"><p class="text-secondary small mb-0">@lang('company.service')</p> <p>@lang('company.classic')</p></div>
+                        <div class="col-2"><p class="text-secondary small mb-0">@lang('company.price')</p> <p>285$</p></div>
                     </div>
-                    <h>Select one payment method below</h5><br>
+                    <h>@lang('company.select')</h5><br>
 
                     <ul class="nav nav-pills" id="pills-tab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="pills-cash-tab" data-toggle="pill" href="#pills-cash" role="tab" aria-controls="pills-cash" aria-selected="true">
                                 <img class="img-fluid" src="{{asset('img/cash-payment.svg')}}"> 
-                                <p class="text-center">Cash</p>
+                                <p class="text-center">@lang('company.cash')</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -48,25 +48,25 @@
                     <div class="tab-content" id="pills-tabContent"> 
 
                         <div class="tab-pane fade show active" id="pills-cash" role="tabpanel" aria-labelledby="pills-cash-tab"> 
-                            <p><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Our staff will contact you soon!!</p>
-                            <button name="payment_id" value="1" type="submit" class="btn btn-primary">Finish</button>     
+                            <p><i class="fa fa-exclamation-circle" aria-hidden="true"></i> @lang('company.contactsoon')</p>
+                            <button name="payment_id" value="1" type="submit" class="btn btn-primary">@lang('company.finish')</button>
                         </div>
 
                         <div class="tab-pane fade" id="pills-aba" role="tabpanel" aria-labelledby="pills-aba-tab">
                             <div class="form-group">
-                                <label class="form-control-label">Place Your Transaction Number Here:</label>
+                                <label class="form-control-label">@lang('company.transaction'):</label>
                                 <input type="text" name="transaction_aba" value="" placeholder="5463542132..." class="form-control w-50">
                             </div>
-                            <button name="payment_id" value="2"  type="submit" class="btn btn-primary">Finish</button>
+                            <button name="payment_id" value="2"  type="submit" class="btn btn-primary">@lang('company.finish')</button>
                         </div>
 
                         
                         <div class="tab-pane fade" id="pills-wing" role="tabpanel" aria-labelledby="pills-wing-tab">
                             <div class="form-group">
-                                <label class="form-control-label">Place Your Transaction Number Here:</label>
+                                <label class="form-control-label">@lang('company.transaction'):</label>
                                 <input type="text" name="transaction_wing" value="" placeholder="5463542132..." class="form-control w-50">                                    
                             </div>
-                            <button name="payment_id" value="3" type="submit" class="btn btn-primary">Finish</button>
+                            <button name="payment_id" value="3" type="submit" class="btn btn-primary">@lang('company.finish')</button>
                         </div>   
 
                     </div>

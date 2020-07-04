@@ -20,17 +20,17 @@
             <div class="container py-2">
                 <a class="navbar-brand" href="/">
                     <img src="{{asset('img/jobnow_logo_white.svg')}}" alt="Job Now Logo" class="img-fluid">
-                    <p class="text-white mb-0"><a class="text-white font-weight-bold" href="/login/company">Sign in</a> or <a class="text-white font-weight-bold" href="/register/company">Register</a> | <a class="text-white font-weight-bold" href="{{ url('/')}}">Job Seeker Site</a>
+                    <p class="text-white mb-0"><a class="text-white font-weight-bold" href="/login/company">@lang('company.signin')</a> @lang('company.normal') <a class="text-white font-weight-bold" href="/register/company">@lang('company.register')</a> | <a class="text-white font-weight-bold" href="{{ url('/')}}">@lang('company.jobseeker')</a>
                 </a>
             </div>
         </nav>
         <section class="container my-5">
             <div class="row">
                 <div class="col-6 my-auto">
-                    <h1 class="font-weight-bold">Find experts that fit your company</h1>
+                    <h1 class="font-weight-bold">@lang('company.findexperts')</h1>
                     <p>This is overview contect. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Hendrerit ut libero, ut dui volutpat. Lectus eget diam, pulvinar maecenas in est interdum eu duis.</p>
-                    <button class="btn btn-primary">Get Started</button>
+                    <button class="btn btn-primary">@lang('company.getstart')</button>
                 </div>
                 <div class="col-6 my-auto">
                     <img class="img-fluid" src="img/hero-background.svg" alt="Background">
@@ -44,17 +44,17 @@
                         <img class="img-fluid" src="img/mission-vision.svg" alt="Mission Vision">
                     </div>
                     <div class="col-6 my-auto">
-                        <h3 class="font-weight-bold">Vision</h3>
+                        <h3 class="font-weight-bold">@lang('company.vision')</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, ut dolor facere velit saepe sint?</p>
-                        <h3 class="font-weight-bold">Mission</h3>
+                        <h3 class="font-weight-bold">@lang('company.mission')</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, ut dolor facere velit saepe sint?</p>    
-                        <button class="btn btn-primary">Get Started</button>    
+                        <button class="btn btn-primary">@lang('company.getstart')</button>
                     </div>
                 </div>
             </div>
         </section>
         <section class="container my-5">
-            <h3 class="font-weight-bold text-center">Commitment</h3>
+            <h3 class="font-weight-bold text-center">@lang('company.commitment')</h3>
             <div class="row text-center pt-3">
                 <div class="col-4">
                     <div class="my-3">
@@ -77,90 +77,90 @@
             </div>
         </section>
         <section class="container py-5">
-            <h3 class="font-weight-bold text-center">Our Services</h3>
+            <h3 class="font-weight-bold text-center">@lang('company.ourservices')</h3>
             <div class="row mt-5 mb-4">
                 <div class="col-lg-3 col-md-6 col-sm-6 pb-5">
                     <div class="card p-4">
                         <div class="text-center">
-                            <h3 class="font-weight-bold text-trail">Trail Plan</h3>
+                            <h3 class="font-weight-bold text-trail">@lang('company.trailplan')</h3>
                             <h4 class="font-weight-bold pt-2">$10</h4>
                         </div>
-                        <p>Benefits :</p>
-                        <p><i class="fa fa-check-circle-o mr-2"></i> Normal post</p>
-                        <p><i class="fa fa-check-circle-o mr-2"></i> 3 job posts</p>
-                        <p><i class="fa fa-check-circle-o mr-2"></i> Job expiry 15 days</p>
-                        <button class="btn btn-trail">Buy</button>
+                        <p>@lang('company.benefit') :</p>
+                        <p><i class="fa fa-check-circle-o mr-2"></i> @lang('company.normal')</p>
+                        <p><i class="fa fa-check-circle-o mr-2"></i> @lang('company.3job')</p>
+                        <p><i class="fa fa-check-circle-o mr-2"></i> @lang('company.jobexpiry')</p>
+                        <button class="btn btn-trail">@lang('company.buy')</button>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 pb-5">
                     <div class="card p-4">
                         <div class="text-center">
-                            <h3 class="font-weight-bold text-basic">Basic Plan</h3>
+                            <h3 class="font-weight-bold text-basic">@lang('company.basicplan')</h3>
                             <h4 class="font-weight-bold pt-2">$15</h4>
                         </div>
-                        <p>Benefits :</p>
-                        <p><i class="fa fa-check-circle-o mr-2"></i> Normal post</p>
-                        <p><i class="fa fa-check-circle-o mr-2"></i> 5 job posts</p>
-                        <p><i class="fa fa-check-circle-o mr-2"></i> Job expiry 30 days</p>
-                        <button class="btn btn-basic">Buy</button>
+                        <p>@lang('company.benefit') :</p>
+                        <p><i class="fa fa-check-circle-o mr-2"></i> @lang('company.normal')</p>
+                        <p><i class="fa fa-check-circle-o mr-2"></i> @lang('company.5job')</p>
+                        <p><i class="fa fa-check-circle-o mr-2"></i> @lang('company.jobexpiry30')</p>
+                        <button class="btn btn-basic">@lang('company.buy')</button>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 pb-5">
                     <div class="card p-4">
                         <div class="text-center">
-                            <h3 class="font-weight-bold text-urgent">Urgent Plan</h3>
+                            <h3 class="font-weight-bold text-urgent">@lang('company.urgentplan')</h3>
                             <h4 class="font-weight-bold pt-2">$30</h4>
                         </div>
                         <p>Benefits :</p>
-                        <p><i class="fa fa-check-circle-o mr-2"></i> Urgent post</p>
-                        <p><i class="fa fa-check-circle-o mr-2"></i> 5 job posts</p>
-                        <p><i class="fa fa-check-circle-o mr-2"></i> Job expiry 30 days</p>
-                        <button class="btn btn-urgent">Buy</button>
+                        <p><i class="fa fa-check-circle-o mr-2"></i> @lang('company.urgentpost')</p>
+                        <p><i class="fa fa-check-circle-o mr-2"></i> @lang('company.5job')</p>
+                        <p><i class="fa fa-check-circle-o mr-2"></i> @lang('company.jobexpiry30')</p>
+                        <button class="btn btn-urgent">@lang('company.buy')</button>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 pb-5">
                     <div class="card p-4">
                         <div class="text-center">
-                            <h3 class="font-weight-bold text-premium">Premium Plan</h3>
+                            <h3 class="font-weight-bold text-premium">@lang('company.premiumplan')</h3>
                             <h4 class="font-weight-bold pt-2">$100</h4>
                         </div>
                         <p>Benefits :</p>
-                        <p><i class="fa fa-check-circle-o mr-2"></i> Normal post</p>
-                        <p><i class="fa fa-check-circle-o mr-2"></i> Unlimited job posts</p>
-                        <p><i class="fa fa-check-circle-o mr-2"></i> Job expiry 30 days</p>
-                        <button class="btn btn-primary">Buy</button>
+                        <p><i class="fa fa-check-circle-o mr-2"></i> @lang('company.normal')</p>
+                        <p><i class="fa fa-check-circle-o mr-2"></i> @lang('company.unlimited')</p>
+                        <p><i class="fa fa-check-circle-o mr-2"></i> @lang('company.jobexpiry30')</p>
+                        <button class="btn btn-primary">@lang('company.buy')</button>
                     </div>
                 </div>
             </div>
-            <p class="text-center small">Notice: Job expiry is being counted once each job post is published.</p>
+            <p class="text-center small">@lang('company.noted')</p>
         </section>
         <section class="container py-5">
-            <h3 class="font-weight-bold text-center">Payment Methods</h3>
+            <h3 class="font-weight-bold text-center">@lang('company.payment')</h3>
             <div class="row text-center pt-3">
                 <div class="col-4">
                     <div class="my-3">
                         <img class="img-fluid rounded-circle" style="width:100px;" src="img/cash-payment.svg" alt="user_female">
                     </div>
-                    <h5 class="font-weight-bold">Cash</h5>
-                    <p>Come and visit us at JOBNOW office or we can contact you back to collect the payment.</p>
+                    <h5 class="font-weight-bold">@lang('company.cash')</h5>
+                    <p>@lang('company.comeandvisit')</p>
                 </div>
                 <div class="col-4">
                     <div class="my-3">
                         <img class="img-fluid rounded-circle" style="width:100px;" src="img/bank-payment.svg" alt="user_female">
                     </div>
                     <h5 class="font-weight-bold">ABA Bank</h5>
-                    <p>Visit your nearest ABA branch to deposit your payment or pay directly from your mobile</p>
+                    <p>@lang('company.visityournearest')</p>
                 </div>
                 <div class="col-4">
                     <div class="my-3">
                         <img class="img-fluid rounded-circle" style="width:100px;" src="img/bank-payment.svg" alt="user_female">
                     </div>
                     <h5 class="font-weight-bold">Wing</h5>
-                    <p>You don’t need to have a wing account; simply pay your bill through any wing cash express or pay directly from your mobile</p>
+                    <p>@lang('company.youdonthavewing')</p>
                 </div>
             </div>
             <div class="text-center">
-                <button class="btn btn-primary">Get Started</button>
+                <button class="btn btn-primary">@lang('company.getstart')</button>
             </div>
         </section>
         <footer class="footer bg-recruiter">
@@ -172,20 +172,20 @@
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
-                        <h6 class="font-weight-bold">Phnone Number</h6>
+                        <h6 class="font-weight-bold">@lang('company.phone')</h6>
                         <p class="mb-0">+855 12 000 222</p>
                         <p>+855 12 000 222</p>
                     </div>
                     <div class="col-lg-3 col-md-6">
-                        <h6 class="font-weight-bold">Email</h6>
+                        <h6 class="font-weight-bold">@lang('company.email')</h6>
                         <p>jobnow@info.com</p>
                     </div>
                     <div class="col-lg-3 col-md-6">
-                        <h6 class="font-weight-bold">Address</h6>
-                        <p>#12, Street 2001, Phum Paprak Khang Tboung, Sangkat Kakab, Khan Porsenchey, Phnom Penh, Cambodia</p>
+                        <h6 class="font-weight-bold">@lang('company.address')</h6>
+                        <p>@lang('company.street')</p>
                     </div>
                 </div>
-                <p class="text-center mb-0">© JOBNOW. All rights reserved.</p>
+                <p class="text-center mb-0">@lang('company.jobnow')</p>
             </div>
         </footer>
     </body>

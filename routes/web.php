@@ -18,10 +18,10 @@
     });
 
     Auth::routes(['verify' => true]);
-   
+
     Route::get('/', 'User\HomeController@create');
     Route::get('/searchfilter', 'User\SearchFilterController@create');
-        
+
     Route::get('/jobs', 'User\JobsController@jobs');
     Route::post('/jobs', 'User\JobsController@jobs');
     Route::get('/quick/{type}','User\JobsController@quickSearch');
@@ -32,12 +32,6 @@
     Route::get('/aboutUs', 'User\AboutUsController@aboutUs');
     Route::get('/contactUs', 'User\ContactUsController@contactUs');
 
-// Route for change language
-Route::get('locale/{locale}',function ($locale){
-    Session::put('locale',$locale);
-    return redirect()->back();
-    /*This Link will add session of language when they click to change language*/
-});
 
     //Job listing(Phaneth)
     Route::get('/jobDetail/{id}', 'User\JobDetailController@show');
@@ -57,10 +51,10 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/verify', 'Auth\RegisterController@verify')->name('verify');
 
     // User Profile
-    Route::get('profile', 'User\ProfileController@create');   
+    Route::get('profile', 'User\ProfileController@create');
     Route::get('profile', 'User\ProfileController@profile');
     Route::post('profile/{profile}', 'User\ProfileController@update');
-    
+
     // Change password user
     Route::get('setting','User\ProfileController@showChangePasswordForm');
     Route::post('setting','User\ProfileController@changePassword')->name('setting');
@@ -75,10 +69,10 @@ Route::group(['middleware' => 'auth'], function(){
 
     // Saved Job
     Route::get('savedJob', 'User\ProfileController@savedJob');
-    
+
     // Applied Job
     Route::get('appliedJob', 'User\ProfileController@appliedJob');
-    
+
 
     // Saved Job
     Route::post('/save/{id}', 'User\JobDetailController@save');
@@ -112,23 +106,23 @@ Route::group(['middleware' => ['auth:admin']], function () {
     Route::post('/payment/edit/{id}', 'Admin\PaymentController@edit');
     Route::post('/payment/{id}', 'Admin\PaymentController@update');
 
-    
+
     //Admin payment managerment
     Route::get('/service', 'Admin\ServicesController@index');
     Route::post('/service/edit/{id}', 'Admin\ServicesController@edit');
     Route::post('/service/{id}', 'Admin\ServicesController@update');
 
-    
+
     //Admin Setting
     Route::resource('admin/setting', 'Admin\AdminSettingController');
     Route::get('admin/setting', 'Admin\AdminSettingController@index');
     Route::post('admin/setting/{setting}', 'Admin\AdminSettingController@update');
     Route::post('admin/setting/{setting}/edit', 'Admin\AdminSettingController@edit');
 
-    // Change password admin    
+    // Change password admin
     Route::get('settingTesting','Admin\AdminSettingController@showChangePasswordForm');
     Route::post('settingTesting','Admin\AdminSettingController@changePassword')->name('settingTesting');
-    
+
     //Master Data
     Route::get('/master', 'Admin\MasterDataController@index');
     Route::get('/create/master', 'Admin\MasterDataController@create');
@@ -142,11 +136,11 @@ Route::group(['middleware' => ['auth:admin']], function () {
     Route::get('/verifyPackge/{id}', 'Admin\VerifyPackageController@show');
     Route::post('/verifyPackge/edit/{id}', 'Admin\VerifyPackageController@edit');
     Route::post('/verifyPackge/{id}', 'Admin\VerifyPackageController@update');
-    
+
     // Recruiter Managerment
     Route::get('/candidateManagerment', 'Admin\CandidateManagermentController@index');
     Route::get('/candidateDetails/{id}', 'Admin\CandidateManagermentController@show');
-    
+
     // Recruiter Managerment
     Route::get('/recruiterManagerment', 'Admin\RecruiterManagermentController@index');
     Route::get('/recruiterDetails/{id}', 'Admin\RecruiterManagermentController@show');
@@ -157,7 +151,7 @@ Route::group(['middleware' => ['auth:admin']], function () {
         auth()->user()->unreadNotifications->markAsRead();
     });
 
-});    
+});
 
     // Company Routes
     Route::get('/company', 'CompaniesController@index');
@@ -221,11 +215,11 @@ Route::group(['middleware' => 'auth:company'], function () {
 
     Route::get('/trail/{service_id}', 'Companies\PaymentController@indextrail');
     Route::post('/trail', 'Companies\PaymentController@storetrail');
-    
+
     Route::get('/urgent/{service_id}', 'Companies\PaymentController@indexurgent');
     Route::post('/urgent', 'Companies\PaymentController@storeurgent');
 
-    
+
     Route::get('/premium/{service_id}', 'Companies\PaymentController@indexpremium');
     Route::post('/premium', 'Companies\PaymentController@storepremium');
 
@@ -233,4 +227,3 @@ Route::group(['middleware' => 'auth:company'], function () {
     Route::get('/whyUs', 'Companies\WhyUsController@index');
 
 });
-    

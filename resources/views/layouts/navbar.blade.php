@@ -6,10 +6,10 @@
                 <div class="float-right">
                     <ul class="d-flex mb-0">
                         <li class="nav-item mr-2 active" href="locale/en">
-                            <a href="locale/en">EN</a>
+                            <a href="">EN</a>
                         </li>
                         <li class="nav-item">
-                            <a href="locale/kh">KH</a>
+                            <a href="">KH</a>
                         </li>
                     </ul>
                 </div>
@@ -38,7 +38,7 @@
                     </div>
                 </div>
             @else
-                <p class="mb-0"><a class="link" href="/login">@lang('home.signin_menu')</a> or <a class="link" href="/register">@lang('home.register_menu')</a> | <a class="link" href="{{ url('/recruiter')}}">@lang('home.recruiter_menu')</a></p>
+                <p class="mb-0"><a class="link" href="/login">{{__('home.signin_menu')}}</a> or <a class="link" href="/register">@lang('home.register_menu')</a> | <a class="link" href="{{ url('/recruiter')}}">@lang('home.recruiter_menu')</a></p>
             @endif
             </div>
         </div>
