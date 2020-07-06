@@ -11,7 +11,7 @@
     </div>
     <div class="row">
         <div class="col-6 my-auto">
-            <h1 class="font-weight-bold">Overview</h1>
+            <h1 class="font-weight-bold">@lang('company.overview')</h1>
             <p>This is overview contect. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Hendrerit ut libero, ut dui volutpat. Lectus eget diam, pulvinar maecenas in est interdum eu duis.</p>
         </div>
@@ -26,7 +26,7 @@
             <img class="img-fluid" src="img/mission-vision.svg" alt="Mission Vision">
         </div>
         <div class="col-6 my-auto">
-            <h3 class="font-weight-bold">Vision</h3>
+            <h3 class="font-weight-bold">@lang('company.vision')</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, ut dolor facere velit saepe sint?</p>
             <h3 class="font-weight-bold">Mission</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, ut dolor facere velit saepe sint?</p>    
@@ -34,7 +34,7 @@
     </div>
 </section>
 <section class="container">
-    <h3 class="font-weight-bold text-center">Commitment</h3>
+    <h3 class="font-weight-bold text-center">@lang('company.commitment')</h3>
     <div class="row text-center pt-3">
         <div class="col-4">
             <div class="my-3">
@@ -58,6 +58,6 @@
 </section>
 
 <div class="text-center">
-    <button class="btn btn-lg btn-primary">Get Started</button>
+    <button class="btn btn-lg btn-primary">@lang('company.getstart')</button>
 </div>
 @endsection

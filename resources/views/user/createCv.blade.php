@@ -11,23 +11,23 @@
       <div class="container p-5">
         <form method="POST" action="{{url('/create/cv')}}" enctype="multiple/form-data">
           {!! csrf_field() !!}
-          <h4 class="font-weight-bold">Personal Statement</h4>
+          <h4 class="font-weight-bold">@lang('user.persionalstatement')</h4>
           <hr>
           <div class="form-group row">
-            <label class="col-sm-3 form-control-label">Full Name <span class="text-danger text-bold">*</span></label>
+            <label class="col-sm-3 form-control-label">@lang('user.fullname') <span class="text-danger text-bold">*</span></label>
             <div class="col-sm-9">
               <input type="text" name="full_name" placeholder="Please enter your fulltname..."
                 class="form-control">
             </div>
           </div>
           <div class="form-group row">
-            <label class="col-sm-3 form-control-label">Email <span class="text-danger text-bold">*</span></label>
+            <label class="col-sm-3 form-control-label">@lang('user.email') <span class="text-danger text-bold">*</span></label>
             <div class="col-sm-9">
               <input type="email" name="email" placeholder="Please enter your email address..." class="form-control">
             </div>
           </div>
           <div class="form-group row">
-            <label class="col-sm-3 form-control-label">Contact <span class="text-danger text-bold">*</span></label>
+            <label class="col-sm-3 form-control-label">@lang('user.contact') <span class="text-danger text-bold">*</span></label>
             <div class="col-sm-9">
               <div class="input-group">
                 <div class="input-group-append">
@@ -38,7 +38,7 @@
             </div>
           </div>
           <div class="form-group row">
-            <label class="col-sm-3 form-control-label" for="exampleFormControlTextarea1">Summary <span class="text-danger text-bold">*</span></label>
+            <label class="col-sm-3 form-control-label" for="exampleFormControlTextarea1">@lang('user.summary') <span class="text-danger text-bold">*</span></label>
             <div class="col-sm-9">
               <textarea class="form-control" name="summary" id="exampleFormControlTextarea1"
                 rows="3" placeholder="Please enter your Summary..."></textarea>
@@ -46,19 +46,19 @@
           </div>
           
           <!-- Education -->
-          <h4 class="font-weight-bold">Education</h4><br>
+          <h4 class="font-weight-bold">@lang('user.education')</h4><br>
           <input name="user_id" value="{{$user_id}}" type="hidden">
           <p>
-            <a href="javascript:void(0)" id="add-edu"><i class="fa fa-plus-circle"></i> Add </a>
+            <a href="javascript:void(0)" id="add-edu"><i class="fa fa-plus-circle"></i> @lang('user.add') </a>
             <span class="remove">|
-              <a href="javascript:void(0)" id="remove-edu"><i class="fa fa-minus-circle"></i> Remove</a></span>
+              <a href="javascript:void(0)" id="remove-edu"><i class="fa fa-minus-circle"></i> @lang('user.remove')</a></span>
           </p>
           <div id="lang-edu">
             <div class="edu-element">
               <hr>
 
               <div class="form-group row">
-                <label class="col-sm-3 form-control-label">School Name</label>
+                <label class="col-sm-3 form-control-label">@lang('user.schoolname')</label>
                 <div class="col-sm-9">
                   <input type="text" name="school_name[]" placeholder="Please enter your school name..."
                     class="form-control">
@@ -66,29 +66,28 @@
               </div>
 
               <div class="form-group row">
-                <label class="col-sm-3 form-control-label">Major</label>
+                <label class="col-sm-3 form-control-label">@lang('user.major')</label>
                 <div class="col-sm-9">
                   <input type="text" name="major[]" placeholder="Please enter your major..." class="form-control">
                 </div>
               </div>
 
               <div class="form-group row">
-                <label class="col-sm-3 form-control-label">Start Date</label>
+                <label class="col-sm-3 form-control-label">@lang('user.startdate')</label>
                 <div class="col-sm-9">
                     <input type="date" name="edu_start_date[]" placeholder="start date" class="form-control">
                 </div>
               </div>
 
               <div class="form-group row">
-                <label class="col-sm-3 form-control-label">End Date</label>
+                <label class="col-sm-3 form-control-label">@lang('user.enddate')</label>
                 <div class="col-sm-9">
                     <input type="date" name="edu_end_date[]" placeholder="end date" class="form-control">
                 </div>
               </div>
 
               <div class="form-group row">
-                <label class="col-sm-3 form-control-label" for="exampleFormControlTextarea1">Education
-                  Detail</label>
+                <label class="col-sm-3 form-control-label" for="exampleFormControlTextarea1">@lang('user.educationdetail')</label>
                 <div class="col-sm-9">
                   <textarea class="form-control" name="edu_detail[]" id="exampleFormControlTextarea1"
                     rows="3" placeholder="Please enter your education detail..."></textarea>
@@ -99,25 +98,25 @@
           </div>
           
           <!-- Experience -->
-          <h4 class="font-weight-bold">Experience</h4><br>
+          <h4 class="font-weight-bold">@lang('user.experience')</h4><br>
           <input name="user_id" value="{{$user_id}}" type="hidden">
           <p>
-            <a href="javascript:void(0)" id="add-exp"><i class="fa fa-plus-circle"></i> Add </a>
+            <a href="javascript:void(0)" id="add-exp"><i class="fa fa-plus-circle"></i> @lang('user.add') </a>
             <span class="remove">|
-              <a href="javascript:void(0)" id="remove-exp"><i class="fa fa-minus-circle"></i> Remove</a></span>
+              <a href="javascript:void(0)" id="remove-exp"><i class="fa fa-minus-circle"></i> @lang('user.remove')</a></span>
           </p>
           <div id="lang-exp">
             <div class="exp-element">
               <hr>
               <div class="form-group row">
-                <label class="col-sm-3 form-control-label">Workplace Name</label>
+                <label class="col-sm-3 form-control-label">@lang('user.workplacename')</label>
                 <div class="col-sm-9">
                   <input type="text" name="exp_workplace_name[]" placeholder="Please enter your workplace name..."
                     class="form-control">
                 </div>
               </div>
               <div class="form-group row">
-                <label class="col-sm-3 form-control-label">Experience Title</label>
+                <label class="col-sm-3 form-control-label">@lang('user.experinecetitle')</label>
                 <div class="col-sm-9">
                   <input type="text" name="exp_title[]" placeholder="Please enter your experience..."
                     class="form-control">
@@ -125,22 +124,21 @@
               </div>
 
               <div class="form-group row">
-                <label class="col-sm-3 form-control-label">Start Date</label>
+                <label class="col-sm-3 form-control-label">@lang('user.startdate')</label>
                 <div class="col-sm-9">
                   <input type="date" name="exp_start_date[]" placeholder="start date" class="form-control">
                 </div>
               </div>
 
               <div class="form-group row">
-                <label class="col-sm-3 form-control-label">End Date</label>
+                <label class="col-sm-3 form-control-label">@lang('user.enddate')</label>
                 <div class="col-sm-9">
                   <input type="date" name="exp_end_date[]" placeholder="end date" class="form-control">
                 </div>
               </div>
 
               <div class="form-group row">
-                <label class="col-sm-3 form-control-label" for="exampleFormControlTextarea1">Education
-                  Detail</label>
+                <label class="col-sm-3 form-control-label" for="exampleFormControlTextarea1">@lang('user.educationdetail')</label>
                 <div class="col-sm-9">
                   <textarea class="form-control" name="exp_detail[]" id="exampleFormControlTextarea1"
                     rows="3" placeholder="Please enter your experience detail..."></textarea>
@@ -151,33 +149,32 @@
           </div>
 
           <!-- Achievement -->
-          <h4 class="font-weight-bold">Achievement</h4><br>
+          <h4 class="font-weight-bold">@lang('user.achievement')</h4><br>
           <input name="user_id" value="{{$user_id}}" type="hidden">
           <p>
-            <a href="javascript:void(0)" id="add-ach"><i class="fa fa-plus-circle"></i> Add </a>
+            <a href="javascript:void(0)" id="add-ach"><i class="fa fa-plus-circle"></i> @lang('user.add') </a>
             <span class="remove">|
-              <a href="javascript:void(0)" id="remove-ach"><i class="fa fa-minus-circle"></i> Remove</a></span>
+              <a href="javascript:void(0)" id="remove-ach"><i class="fa fa-minus-circle"></i> @lang('user.remove')</a></span>
           </p>
           <div id="lang-ach">
             <div class="ach-element">
               <hr>
               <div class="form-group row">
-                <label class="col-sm-3 form-control-label">Achievement Title</label>
+                <label class="col-sm-3 form-control-label">@lang('user.achievementtitle')</label>
                 <div class="col-sm-9">
                   <input type="text" name="ach_title[]" placeholder="Please enter your title..."
                     class="form-control">
                 </div>
               </div>
               <div class="form-group row">
-                <label class="col-sm-3 form-control-label">Date</label>
+                <label class="col-sm-3 form-control-label">@lang('user.date')</label>
                 <div class="col-sm-9">
                   <input type="date" name="ach_date[]" placeholder="Please enter your achievement date..."
                     class="form-control">
                 </div>
               </div>
               <div class="form-group row">
-                <label class="col-sm-3 form-control-label" for="exampleFormControlTextarea1">Achievement
-                  Detail</label>
+                <label class="col-sm-3 form-control-label" for="exampleFormControlTextarea1">@lang('user.achievementdetail')</label>
                 <div class="col-sm-9">
                   <textarea class="form-control" name="ach_detail[]" id="exampleFormControlTextarea1"
                     rows="3" placeholder="Please enter your achievement detail..."></textarea>
@@ -187,33 +184,33 @@
           </div>
 
           <!-- Language -->
-          <h4 class="font-weight-bold">Language</h4><br>
+          <h4 class="font-weight-bold">@lang('user.language')</h4><br>
           <input name="user_id" value="{{$user_id}}" type="hidden">
           <p>
-            <a href="javascript:void(0)" id="add"><i class="fa fa-plus-circle"></i> Add </a>
+            <a href="javascript:void(0)" id="add"><i class="fa fa-plus-circle"></i> @lang('user.add') </a>
             <span class="remove">|
-              <a href="javascript:void(0)" id="remove"><i class="fa fa-minus-circle"></i> Remove</a></span>
+              <a href="javascript:void(0)" id="remove"><i class="fa fa-minus-circle"></i> @lang('user.remove')</a></span>
           </p>
 
           <div id="form_data">
             <div class="radio">
               <hr>
               <div class="form-group row">
-                <label class="col-sm-3 form-control-label">Language</label>
+                <label class="col-sm-3 form-control-label">@lang('user.language')</label>
                 <div class="col-sm-9">
                   <input type="text" name="lang[]" placeholder="Please enter your language..."
                     class="form-control">
                 </div>
               </div>
               <div class="form-group row">
-                <label class="col-sm-3 form-control-label">Level</label>
+                <label class="col-sm-3 form-control-label">@lang('user.level')</label>
                 <div class="col-sm-9">
                   <select class="form-control" name="level[]">
-                    <option>Choose your level</option>
-                    <option value="Beginner">Beginner</option>
-                    <option value="Intermidate">Intermidate</option>
-                    <option value="Advance">Advance</option>
-                    <option value="Native">Native</option>
+                    <option>@lang('user.chooseyourlevel')</option>
+                    <option value="Beginner">@lang('user.beginner')</option>
+                    <option value="Intermidate">@lang('user.intermidate')</option>
+                    <option value="Advance">@lang('user.advance')</option>
+                    <option value="Native">@lang('user.native')</option>
                   </select>
                 </div>
               </div>
@@ -222,8 +219,8 @@
 
             <div class="form-group row mt-5">
               <div class="col-sm-4 offset-sm-3">
-                <button type="submit" class="btn btn-primary">Save Changes</button>
-                <a class="btn btn-outline-primary" href="/cv">Cancel</a>
+                <button type="submit" class="btn btn-primary">@lang('user.savechange')</button>
+                <a class="btn btn-outline-primary" href="/cv">@lang('user.cancel')</a>
               </div>
             </div>
           </form>
