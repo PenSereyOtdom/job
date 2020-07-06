@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Companies;
 
 use DB;
-use App\JobPost;
+use App\Models\JobPost;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -46,10 +46,24 @@ class HomeController extends Controller
                 'service_approvals.approve as approve', 
                 'services.number_of_post as numbers')
             ->get();
-        
-        // dd($count_applied_candidate);
 
-        return view('companies.home', compact('count_jobpost', 'count_active_job','count_draft_job','count_applied_candidate','services'));
+        $count_jobposts = JobPost::where('status', '=', 'Active')
+            ->where('company_id', '=', $company_id)
+            ->count();
+
+        if($count_jobpost>0){
+            $count_average_candidate = round(($count_applied_candidate/$count_jobposts)*100);
+        }
+        else{
+            $count_jobposts = 0;
+            $count_applied_candidate = 0;
+            $count_average_candidate = 0;
+        }
+
+
+        // dd($count_average_candidate);
+        
+        return view('companies.home', compact('count_jobpost', 'count_active_job','count_draft_job','count_applied_candidate','services', 'count_average_candidate'));
 
     }
 

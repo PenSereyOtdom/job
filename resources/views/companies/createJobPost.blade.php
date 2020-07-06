@@ -7,7 +7,7 @@
 @section('content')
 <div class="container">
     <div class="card px-5 py-3">
-        <h3 class="font-weight-bold mb-5">@lang('company.create')</h3>
+        <h3 class="font-weight-bold mb-5">Create New Job</h3>
         <form class="form-horizontal" method="POST" action="{{url('/create/jobPost/')}}" enctype="multiple/form-data">
         
             {!! csrf_field() !!}
@@ -16,18 +16,18 @@
 
 
             <!-- Job Summary -->
-            <h5 class="font-weight-bold mb-4">@lang('company.jobsummary')</h5>
+            <h5 class="font-weight-bold mb-4">Job Summary</h5>
             <div class="form-group">
-                <label class="form-control-label">@lang('company.jobtitle')</label>
+                <label class="form-control-label">Job Title</label>
                 <input type="text" name="job_title" placeholder="Web Designer" class="form-control">    
             </div>
 
             <div class="row">
                 <div class="col-lg-4">
                     <div class="form-group">
-                        <label class="form-control-label">@lang('company.jobclass')</label>
+                        <label class="form-control-label">Job Classification</label>
                         <select data-placeholder="Choose Job Classification..." name="job_classification" class="form-control">
-                            <option>@lang('company.choosejobclass')</option>
+                            <option>Choose Job Classification...</option>
                             <?php foreach($display_jobClassification as $job_classification){ ?>
                             <option value="<?php echo $job_classification->job_classification ?>"><?php echo $job_classification->job_classification ?></option>
                             <?php } ?>
@@ -36,9 +36,9 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="form-group">
-                        <label class="form-control-label">@lang('company.jobindustry')</label>
+                        <label class="form-control-label">Job Industry</label>
                         <select data-placeholder="Choose Job Industry..." name="job_industry" class="form-control">
-                            <option>@lang('company.choosejobindustry')</option>
+                            <option>Choose Job Industry...</option>
                             <?php foreach($display_businessIndustry as $business_industry){ ?>
                             <option value="<?php echo $business_industry->business_industry ?>"><?php echo $business_industry->business_industry ?></option>
                             <?php } ?>
@@ -47,9 +47,9 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="form-group">
-                        <label class="form-control-label">@lang('company.jobtype')</label>
+                        <label class="form-control-label">Job Type</label>
                         <select data-placeholder="Choose Job Types..." name="job_type" class="form-control">
-                            <option>@lang('company.choosejobtype')</option>
+                            <option>Choose Job Types...</option>
                             <?php foreach($display_jobType as $job_type){ ?>
                                 <option value="<?php echo $job_type->job_type ?>"><?php echo $job_type->job_type ?></option>
                             <?php } ?>
@@ -58,42 +58,42 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="form-group">
-                        <label class="form-control-label">@lang('company.location')</label>
+                        <label class="form-control-label">Location</label>
                         <select data-placeholder="Choose a Location..." name="location" class="form-control">
-                            <option value="">@lang('company.choose')</option>
-                            <option value="Banteay Meanchey">@lang('company.bmc')</option>
-                            <option value="Battambang">@lang('company.btb')</option>
-                            <option value="Kampong Cham">@lang('company.kpc')</option>
-                            <option value="Kampong Chhnang">@lang('company.kpch')</option>
-                            <option value="Kampong Speu">@lang('company.kps')</option>
-                            <option value="Kampong Thom">@lang('company.kpt')</option>
-                            <option value="Kampot">@lang('company.kp')</option>
-                            <option value="Kandal">@lang('company.kd')</option>
-                            <option value="Kep">@lang('company.k')</option>
-                            <option value="Koh Kong">@lang('company.kk')</option>
-                            <option value="Kratie">@lang('company.kt')</option>
-                            <option value="Mondulkiri">@lang('company.mkr')</option>
-                            <option value="Oddar Meanchey">@lang('company.odmc')</option>
-                            <option value="Pailin">@lang('company.pl')</option>
-                            <option value="Phnom Penh">@lang('company.pp')</option>
-                            <option value="Preah Vihear">@lang('company.pvh')</option>
-                            <option value="Prey Veng">@lang('company.pv')</option>
-                            <option value="Pursat">@lang('company.ps')</option>
-                            <option value="Ratanakiri">@lang('company.rtkr')</option>
-                            <option value="Siem Reap">@lang('company.sr')</option>
-                            <option value="Sihanoukville">@lang('company.shnv')</option>
-                            <option value="Stung Treng">@lang('company.st')</option>
-                            <option value="Svay Rieng">@lang('company.svr')</option>
-                            <option value="Takeo">@lang('company.tk')</option>
-                            <option value="Tbong Khmum">@lang('company.tbk')</option>
+                            <option>Choose a Location...</option>
+                            <option value="Banteay Meanchey">Banteay Meanchey</option>
+                            <option value="Battambang">Battambang</option>         
+                            <option value="Kampong Cham">Kampong Cham</option>
+                            <option value="Kampong Chhnang">Kampong Chhnang</option>
+                            <option value="Kampong Speu">Kampong Speu</option>
+                            <option value="Kampong Thom">Kampong Thom</option>
+                            <option value="Kampot">Kampot</option>
+                            <option value="Kandal">Kandal</option>
+                            <option value="Kep">Kep</option>
+                            <option value="Koh Kong">Koh Kong</option>
+                            <option value="Kratie">Kratie</option>
+                            <option value="Mondulkiri">Mondulkiri</option>
+                            <option value="Oddar Meanchey">Oddar Meanchey</option>
+                            <option value="Pailin">Pailin</option>
+                            <option value="Phnom Penh">Phnom Penh</option>
+                            <option value="Preah Vihear">Preah Vihear</option>
+                            <option value="Prey Veng">Prey Veng</option>
+                            <option value="Pursat">Pursat</option>
+                            <option value="Ratanakiri">Ratanakiri</option>
+                            <option value="Siem Reap">Siem Reap</option>
+                            <option value="Sihanoukville">Sihanoukville</option>
+                            <option value="Stung Treng">Stung Treng</option>
+                            <option value="Svay Rieng">Svay Rieng</option>
+                            <option value="Takeo">Takeo</option>
+                            <option value="Tbong Khmum">Tbong Khmum</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="form-group">
-                        <label class="form-control-label">@lang('company.salary')</label>
+                        <label class="form-control-label">Salary Range</label>
                         <select data-placeholder="Choose Salary..." name="salary" class="form-control">
-                            <option>@lang('company.choosesalary')</option>
+                            <option>Choose Salary...</option>
                             <?php foreach($display_salary as $salary_range){ ?>
                             <option value="<?php echo $salary_range->salary_range ?>"><?php echo $salary_range->salary_range ?></option>
                             <?php } ?>
@@ -102,9 +102,9 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="form-group">
-                        <label class="form-control-label">@lang('company.qualification')</label>
+                        <label class="form-control-label">Qualification</label>
                         <select data-placeholder="Choose Qualification..." name="qualification" class="form-control">
-                            <option>@lang('company.choosequalification')</option>
+                            <option>Choose Qualification...</option>
                             <?php foreach($display_qualification as $qualification){ ?>
                             <option value="<?php echo $qualification->qualification ?>"><?php echo $qualification->qualification ?></option>
                             <?php } ?>
@@ -113,9 +113,9 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="form-group">
-                        <label class="form-control-label">@lang('company.experience')</label>
+                        <label class="form-control-label">Experience Level</label>
                         <select data-placeholder="Choose Experience Level..." name="experience_level" class="form-control">
-                            <option>@lang('company.chooseexperience')</option>
+                            <option>Choose Experience Level...</option>
                             <?php foreach($display_experienceLevel as $experience_level){ ?>
                             <option value="<?php echo $experience_level->experience_level ?>"><?php echo $experience_level->experience_level ?></option>
                             <?php } ?>                                  
@@ -124,19 +124,19 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="form-group">
-                        <label class="form-control-label">@lang('company.language')</label>
+                        <label class="form-control-label">Language</label>
                         <select data-placeholder="Choose Language..." name="language" class="form-control">
-                            <option>@lang('company.chooselanguage')</option>
-                            <option value="English">@lang('company.english')</option>
-                            <option value="Khmer">@lang('company.khmer')</option>
-                            <option value="Japanese">@lang('company.japan')</option>
-                            <option value="French">@lang('company.french')</option>
+                            <option>Choose Language...</option>
+                            <option value="English">English</option>
+                            <option value="Khmer">Khmer</option>
+                            <option value="Japanese">Japanese</option>
+                            <option value="French">French</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="form-group">
-                        <label class="form-control-label">@lang('company.jobpriority')</label>
+                        <label class="form-control-label">Job Priority</label>
                         <select data-placeholder="Choose Job Priority..." name="job_priority" class="form-control">
                             <option value="<?php echo $service_type->type ?>">{{$service_type->type}}</option>
                         </select>
@@ -144,51 +144,51 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="form-group">
-                        <label class="form-control-label">@lang('company.number')</label>
+                        <label class="form-control-label">Number of Hiring</label>
                         <div class="input-group">
                             <input type="number" name="number_of_hiring" placeholder="Please enter number of hiring..." class="form-control">
                             <div class="input-group-append">
-                            <span class="input-group-text">@lang('company.pax')</span>
+                            <span class="input-group-text">pax</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="form-group">
-                        <label class="form-control-label">@lang('company.closing')</label>
+                        <label class="form-control-label">Closing Date</label>
                         <input type="date" value="<?php echo $max_date ?>"name="closing_date" placeholder="closing date" class="form-control" readonly>
                     </div>
                 </div>
             </div>
             <!-- Contact Information -->
-            <h5 class="font-weight-bold my-4">@lang('company.contactinfo')</h5>
+            <h5 class="font-weight-bold my-4">Contact Information</h5>
             <div class="row">
                 <div class="col-lg-4">
                     <div class="form-group">
-                        <label class="form-control-label">@lang('company.email')</label>
+                        <label class="form-control-label">Email</label>
                         <input type="text" name="email" placeholder="Email" class="form-control">
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="form-group">
-                        <label class="form-control-label">@lang('company.phone')</label>
+                        <label class="form-control-label">Phone Number</label>
                         <input type="tel" name="phone_number" placeholder="+855 12 35 23 23" class="form-control">
                     </div>
                 </div>
             </div>
             <!-- Job Description -->
-            <h5 class="font-weight-bold my-4">@lang('company.jobdescription')</h5>
+            <h5 class="font-weight-bold my-4">Job Description</h5>
             <textarea class="form-control" id="description" name="description" placeholder="Please enter job descriptions..."></textarea>
             <!-- Job Requirement -->
-            <h5 class="font-weight-bold my-4">@lang('company.jonrequirement')</h5>
+            <h5 class="font-weight-bold my-4">Job Requirement</h5>
             <textarea class="form-control" id="requirement" name="requirement" placeholder="Please enter job requirement..."></textarea>
             <!-- Job Condition -->
-            <h5 class="font-weight-bold my-4">@lang('company.jobconditon')</h5>
+            <h5 class="font-weight-bold my-4">Job Condition</h5>
             <textarea class="form-control" id="condition" name="condition" placeholder="Please enter job condition..."></textarea>
             <div class="mt-3 float-right">
-                <button type="button" class="btn btn-outline-primary" href="/jobPost">@lang('company.cancel')</button>
-                <button type="submit" class="btn btn-secondary" name="status" value="Draft" type="hidden">@lang('company.save')</button>
-                <button type="submit" class="btn btn-primary" name="status" value="Active" type="hidden">@lang('company.public')</button>
+                <button type="button" class="btn btn-outline-primary" href="/jobPost">Cancel</button>
+                <button type="submit" class="btn btn-secondary" name="status" value="Draft" type="hidden">Save Draft</button>
+                <button type="submit" class="btn btn-primary" name="status" value="Active" type="hidden">Public</button>
             </div>                  
         </form>
     </div>

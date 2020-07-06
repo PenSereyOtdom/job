@@ -5,7 +5,7 @@
         </div>
     </div>
     <div>
-        <p>{{$notification->data['adminMessage']}}</p>
-        <p>{{$notification->created_at}}</p>
+        <p> {{$notification->data['adminMessage']}}</p>
+        <p> {{$notification->created_at}}</p>
     </div>
 </div>

@@ -10,29 +10,29 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="card container py-3">
-                        <h4 class="font-weight-bold">@lang('admin.recruiter')</h4>
+                        <h4 class="font-weight-bold">Recruiter Statistics</h4>
                         <div class="row">
                             <div class="col-6">
                                 <div class="text-center px-4">
-                                    <h1 class="text-bold">30</h1>
-                                    <p>@lang('admin.recruiter')</p>
+                                    <h1 class="text-bold">{{$count_company}}</h1>
+                                    <p>Recruiter Registered</p>
                                     <select class="form-control">
-                                        <option>@lang('admin.last30')</option>
-                                        <option>@lang('admin.last7')</option>
-                                        <option>@lang('admin.yesterday')</option>
-                                        <option>@lang('admin.today')</option>
+                                        <option>Last 30 Days</option>
+                                        <option>Last 7 Days</option>
+                                        <option>Yesterday</option>
+                                        <option>Today</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-6 border-left">
                                 <div class="text-center px-4">
-                                    <h1 class="text-bold">120</h1>
-                                    <p>@lang('admin.jobpost')</p>
+                                    <h1 class="text-bold">{{$count_jobpost}}</h1>
+                                    <p>Jobs Posted</p>
                                     <select class="form-control">
-                                        <option>@lang('admin.last30')</option>
-                                        <option>@lang('admin.last7')</option>
-                                        <option>@lang('admin.yesterday')</option>
-                                        <option>@lang('admin.today')</option>
+                                        <option>Last 30 Days</option>
+                                        <option>Last 7 Days</option>
+                                        <option>Yesterday</option>
+                                        <option>Today</option>
                                     </select>
                                 </div>
                             </div>
@@ -46,10 +46,10 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>@lang('admin.comname')</th>
-                                <th>@lang('admin.phone')</th>
-                                <th>@lang('admin.membersince')</th>
-                                <th>@lang('admin.publicjob')</th>
+                                <th>Company Name</th>
+                                <th>Phone Number</th>
+                                <th>Member Since</th>
+                                <th>Public Job</th> 
                             </tr>
                         </thead>
                         <tbody>

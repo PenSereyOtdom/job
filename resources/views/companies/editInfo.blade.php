@@ -40,60 +40,60 @@
                         </div>
 
                         <div class="col-8">
-                            <h3 class="font-weight-bold">@lang('company.companyinfo')</h3><hr>
+                            <h3 class="font-weight-bold">Company Information</h3><hr>
                             <div class="form-group row">
-                                <label class="col-sm-3 form-control-label">@lang('company.username')</label>
+                                <label class="col-sm-3 form-control-label">Username</label>
                                 <div class="col-sm-9">
                                 <input type="text" name="name" value="{{$edit_info->name}}"
                                     placeholder="Please enter your company name..." class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-3 form-control-label">@lang('company.contact')</label>
+                                <label class="col-sm-3 form-control-label">Contact</label>
                                 <div class="col-sm-9">
                                 <input type="text" name="phone_number" class="form-control" value={{$edit_info->phone_number}}>
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-sm-3 form-control-label">@lang('company.address')</label>
+                                <label class="col-sm-3 form-control-label">Address</label>
                                 <div class="col-sm-9">
                                 <textarea type="text" name="address" class="form-control">{{$edit_info->address}}</textarea>
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-sm-3 form-control-label">@lang('company.city')</label>
+                                <label class="col-sm-3 form-control-label">City</label>
                                 <div class="col-sm-9">
                                 <textarea type="text" name="city"
                                     class="form-control">{{$edit_info->city}}</textarea>
                                 </div>
                             </div>
 
-                            <h3 class="font-weight-bold">@lang('company.recruiterinfo')</h3><hr>
+                            <h3 class="font-weight-bold">Recruiter Information</h3><hr>
                             <div class="form-group row">
-                                <label class="col-sm-3 form-control-label">@lang('company.recruitername')</label>
+                                <label class="col-sm-3 form-control-label">Recruiter Name</label>
                                 <div class="col-sm-9">
                                 <input type="text" name="recruiter_name" class="form-control" value="{{$edit_info->recruiter_name}}">
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-sm-3 form-control-label">@lang('company.recruiterposition')</label>
+                                <label class="col-sm-3 form-control-label">Recruiter Position</label>
                                 <div class="col-sm-9">
                                 <input type="text" name="recruiter_position" class="form-control" value="{{$edit_info->recruiter_position}}">
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-sm-3 form-control-label">@lang('company.website')</label>
+                                <label class="col-sm-3 form-control-label">Website</label>
                                 <div class="col-sm-9">
                                 <input type="text" name="website" class="form-control" value="{{$edit_info->website}}">
                                 </div>
                             </div>
                             <div class="mb-4">
-                                <button type="submit" class="btn btn-primary">@lang('company.savechange')</button>
-                                <a class="btn btn-outline-primary" href="/company/setting">@lang('company.cancel')</a>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                                <a class="btn btn-outline-primary" href="/company/setting">Cancel</a>
                             </div>
                         </div>
                     </div>

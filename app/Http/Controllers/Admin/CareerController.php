@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use DB;
 use File;
-use App\Career;
+use App\App\Models\Career;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
@@ -28,27 +28,14 @@ class CareerController extends Controller
 
     public function store(Request $request)
     {
-
-
-        $career = new Career();
-        $career->admin_id = Auth::guard('admin')->user()->id;
-        $career->title = $request->input('title');
-        $career->content = $request->input('content');
-
-        if ($request->hasFile('cover')) {
-            $filenameWithExt = $request->file('cover')->getClientOriginalName();
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            $extension = $request->file('cover')->getClientOriginalExtension();
-            $fileNameToStore = $filename . '_' . time() . '.' . $extension;
-            $path = $request->file('cover')->storeAs('cover', $fileNameToStore);
-            $career->cover = $fileNameToStore;
-        }else{
-            return $request;
-            $career->cover=' ';
-        }
+        $career = new Career([
+            'admin_id' => Auth::guard('admin')->user()->id,
+            'title'    => $request->get('title'),
+            'content'    => $request->get('content'),
+        ]);
         $career->save();
-        return redirect('/career');
 
+        return redirect('/career');
     }
 
     public function edit($id)
@@ -73,6 +60,25 @@ class CareerController extends Controller
 
         $career->delete();
         return redirect('/career');
+    }
+
+    public function uploadImage(Request $request) {
+        $CKEditor = $request->input('CKEditor');
+        $funcNum  = $request->input('CKEditorFuncNum');
+        $message  = $url = '';
+        if (Input::hasFile('upload')) {
+            $file = Input::file('upload');
+            if ($file->isValid()) {
+                $filename =rand(1000,9999).$file->getClientOriginalName();
+                $file->move(public_path().'/img/', $filename);
+                $url = url('img/' . $filename);
+            } else {
+                $message = 'An error occurred while uploading the file.';
+            }
+        } else {
+            $message = 'No file uploaded.';
+        }
+        return '<script>window.parent.CKEDITOR.tools.callFunction('.$funcNum.', "'.$url.'", "'.$message.'")</script>';
     }
 
 }

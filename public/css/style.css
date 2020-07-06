@@ -1,17 +1,5 @@
 /* Font */
-* {margin: 0;padding: 0;box-sizing: border-box;list-style: none;text-decoration: none;font-family: 'Roboto', sans-serif;}
-@media (max-width: 576px) {
-    p, a{font-size: 0.7rem;}
-}
-@media (min-width: 576px) {
-    p, a{font-size: 0.8rem;}
-}
-@media (min-width: 768px) {
-    p, a{font-size: 0.9rem;}
-}
-@media (min-width: 992px) {
-    p, a{font-size: 1rem;}
-}
+* {margin: 0;padding: 0;box-sizing: border-box;list-style: none;text-decoration: none;font-family: 'Roboto', sans-serif;}   
 
 /* Sign in and Register alert */
 .register-section{background-color: #f2f2f2;}
@@ -26,11 +14,12 @@
 
 /* Button */
 .btn-outline-secondary {background-color: transparent !important;border-color: #fff !important;color: #fff !important;border-radius: 0 !important;position: relative;}
-.btn-primary {background: linear-gradient(0deg, rgba(251,167,7,1) 0%, rgba(231,248,128,1) 100%) !important;color: #04385D !important;border-radius: 0 !important;border: 0px !important;}
+.btn-primary {background: linear-gradient(0deg, rgba(251,167,7,1) 0%, rgba(231,248,128,1) 100%) !important;color: #04385D !important;border-radius: 0 !important;border: 0px !important; height: 50px;}
 .btn-outline-primary{background-color: transparent !important;border-color: #04385D !important;color: #04385D !important;border-radius: 0 !important;}
+.btn-link{color: #04385D !important; font-weight: bold !important;}
 
 /* Form Control */
-.form-control{border-radius: 0 !important;}
+.form-control{border-radius: 0 !important;height: 50px !important;}
 
 /* Link */
 .link{color: #04385D !important; font-weight: bold !important; text-decoration: none;}
@@ -47,7 +36,7 @@
 
 /* Navbar */
 .wrapper{width: 100%;}
-.wrapper .top-nav{width: 100%;height: 65px;background: #fff;padding: 0 50px;display: flex;justify-content: space-between; ;align-items: center;} 
+.wrapper .top-nav{width: 100%;height: 80px;background: #fff;padding: 0 50px;display: flex;justify-content: space-between; ;align-items: center;} 
 .wrapper .bottom-nav{width: 100%;height: auto;padding-bottom: 5px; background-color: #04385D;}
 .navbar{padding: 0 !important;}
 .nav-link{color: #000;width: 200px;}
@@ -73,7 +62,7 @@
     .wrapper .img-fluid{width: 60% !important;}
     .bottom-nav .nav-item .nav-link{padding:0.5rem 3rem;}
     .bottom-nav .d-none{display: block !important}
-    .collapse-jobseeker {display: none;}
+    .collapse-jobseeker {display: none; margin-right:10% ;}
     .profile-nav .d-flex{display: none !important;}
     /* Menu */
     .menu {width:25px !important;height:25px !important;}
@@ -109,7 +98,7 @@
     .top-nav{padding: 0px 100px !important;}
     .bottom-nav .d-none{display: none !important}
     .jobseeker-dropdown {display: none;}
-    .collapse-jobseeker {display: block;}
+    .collapse-jobseeker {display: block; }
     .profile-nav .d-flex{display: flex !important;}
     /* Menu */
     .menu{display: none;}
@@ -186,6 +175,10 @@
 @media (max-width: 768px) {
     hr.m-2{display: none;}
 }
+@media (max-width: 576px) {
+    .card-img-top{display: none !important;}
+}
+.card-img-top{width: 100px !important; height: 100px !important;}
 
 /* Pagination */
 .pagination .page-item .page-link{border-radius: 0px; color: black;}
@@ -195,11 +188,17 @@
 .card-footer{border-style: none !important; background-color: #fff !important;}
 
 /* Profile */
-.square-picture{width: 80px;height: 80px;margin: 0px auto;overflow: hidden;}
+.profile-pic-preview{width: 200px !important;height: 200px !important;margin: 0px auto;overflow: hidden;}
+.profile-pic{width: 150px !important;height: 150px !important;margin: 0px auto;overflow: hidden;}
 .profile-nav .active{background-color: transparent !important; border-bottom: 2px solid #04385D; color: #04385D; font-weight: bold;}
 .profile{min-height: 400px;}
 @media (max-width: 576px) {
     .square-picture{width: 50px;height: 50px;margin: 0px auto;overflow: hidden;}
+    .my-profile .p-5{padding: 10px !important;}
+    .button-center{text-align: center;}
+}
+@media(max-width: 992px){
+    .profile-pic-preview{width: 150px !important;height: 150px !important;}
 }
 
 /* CV */
@@ -210,4 +209,10 @@
 
 /* Contact Us */
 .map{width:100% !important;height:500px !important; border: transparent !important;}
+
+
+.logo{ 
+    margin-left: 10%;
+}
+
 

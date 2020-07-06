@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use DB;
-use App\Service;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -35,6 +35,7 @@ class ServicesController extends Controller
 
         return view('admin.service', compact('service_trial', 'service_basic', 'service_urgent', 'service_premium'));
     }
+
     public function edit($id)
     {
         
@@ -58,6 +59,7 @@ class ServicesController extends Controller
 
         return view('admin.editService', compact('editService','edit_trial','edit_basic','edit_urgent','edit_premium'));
     }
+
     public function update(Request $request, $id)
     {
         $service = Service::find($id);

@@ -11,22 +11,29 @@
         <div class="card-body">
             @if (session('error'))
             <div class="alert alert-danger" role="alert">
-                {{session('error')}}
+            {{session('error')}}
             </div>
             @endif
             <p>The verification code was sent to your phone number: {{session('phone_number')}}</p>
             <p>Please enter the code.</p>
-            <form action="{{route('verify')}}" method="post">
+            @isset($url)
+                <form method="POST" action='{{ route("verify/$url") }}' class="form-validate">
+            @else
+                <form method="POST" action="{{ route('verify') }}"  class="form-validate">
+            @endisset
                 @csrf
                 <div class="form-group">
-                    <input id="verification_code" type="tel" class="form-control{{ $errors->has('verification_code') ? ' is-invalid' : '' }}" name="verification_code" value="{{ old('verification_code') }}" required>
+                    <input type="hidden" name="phone_number" value="{{session('phone_number')}}">
+                    <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    type = "number"
+                    maxlength = "6" id="verification_code"  class="form-control{{ $errors->has('verification_code') ? ' is-invalid' : '' }}" name="verification_code" value="{{ old('verification_code') }}" required>
                     @if ($errors->has('verification_code'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @endif
                 </div>
-                <button type="submit" class="btn btn-primary w-100">Verify Phnone Number</button>
+                <button type="submit" class="btn btn-primary w-100"> {{ __('Verify Phone Number') }}</button>
             </form>
         </div>
     </div>
