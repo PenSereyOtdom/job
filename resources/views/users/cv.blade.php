@@ -12,7 +12,7 @@
     <div class="cv card mb-5">
         @if ($count_cv < 1)
         <div class="container text-center my-auto">
-            <a href="{{url('create/cv')}}"><button class="btn btn-lg btn-primary">Create Resume</button></a>
+            <a href="{{url('create/cv')}}"><button class="btn btn-lg btn-primary">@lang('user.cancel')Create Resume</button></a>
         </div>
         @elseif ($count_cv == 1)
             @foreach($display_cv as $cv)

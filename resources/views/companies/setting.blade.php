@@ -25,57 +25,57 @@
                                         </div>
                                     </div>
                                     <div class="col-8">
-                                        <h3 class="font-weight-bold">Company Information</h3><hr>
+                                        <h3 class="font-weight-bold">@lang('company.companyinfo')</h3><hr>
                                         <div class="form-group row">
-                                            <label class="col-sm-3 form-control-label">Company:</label>
+                                            <label class="col-sm-3 form-control-label">@lang('company.company'):</label>
                                             <div class="col-sm-9">
                                                 <p>{{ $companies->name }}</p>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-sm-3 form-control-label">Contact:</label>
+                                            <label class="col-sm-3 form-control-label">@lang('company.contact'):</label>
                                             <div class="col-sm-9">
                                                 <p>{{ $companies->phone_number }}</p>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-sm-3 form-control-label">Address:</label>
+                                            <label class="col-sm-3 form-control-label">@lang('company.address'):</label>
                                             <div class="col-sm-9">
                                                 <p>{{ $companies->address }}</p>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-sm-3 form-control-label">City:</label>
+                                            <label class="col-sm-3 form-control-label">@lang('company.city'):</label>
                                             <div class="col-sm-9">
                                                 <p>{{ $companies->city }}</p>
                                             </div>
                                         </div>
 
-                                        <h3 class="font-weight-bold">Recruiter Information</h3><hr>
+                                        <h3 class="font-weight-bold">@lang('company.recruiterinfo')</h3><hr>
 
                                         <div class="form-group row">
-                                            <label class="col-sm-3 form-control-label">Recruiter Name:</label>
+                                            <label class="col-sm-3 form-control-label">@lang('company.recruitername'):</label>
                                             <div class="col-sm-9">
                                                 <p>{{ $companies->recruiter_name}}</p>
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="col-sm-3 form-control-label">Recruiter Position:</label>
+                                            <label class="col-sm-3 form-control-label">@lang('company.recruiterposition'):</label>
                                             <div class="col-sm-9">
                                                 <p>{{ $companies->recruiter_position }}</p>
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="col-sm-3 form-control-label">Website:</label>
+                                            <label class="col-sm-3 form-control-label">@lang('company.website'):</label>
                                             <div class="col-sm-9">
                                                 <p>{{ $companies->website}}</p>
                                             </div>
                                         </div>
                                         <form action="{{action('Companies\CompaniesSettingController@edit', $companies->id)}}" method="post" enctype="multipart/form-data">
                                             {{csrf_field()}}
-                                            <button class="btn btn-primary">Edit Information</button>
+                                            <button class="btn btn-primary">@lang('company.editinfo')</button>
                                         </form>
                                     </div>
                                 </div>
@@ -90,7 +90,7 @@
     <div class="container mt-5">
         <div class="card mb-5">
             <div class="container p-5">
-                <h3>Change password</h3><br>
+                <h3>@lang('company.changepw')</h3><br>
                 @if (session('error'))
                     <div class="alert alert-danger">
                         {{ session('error') }}
@@ -105,7 +105,7 @@
                     {{ csrf_field() }}
 
                     <div class="form-group{{ $errors->has('current-password') ? ' has-error' : '' }}">
-                        <label for="current-password" class="col-md-4 control-label">Current Password</label>
+                        <label for="current-password" class="col-md-4 control-label">@lang('company.currentpw')</label>
 
                         <div class="col-md-6">
                             <input id="current-password" type="password" class="form-control" name="current-password" required>
@@ -119,7 +119,7 @@
                     </div>
 
                     <div class="form-group{{ $errors->has('new-password') ? ' has-error' : '' }}">
-                        <label for="new-password" class="col-md-4 control-label">New Password</label>
+                        <label for="new-password" class="col-md-4 control-label">@lang('company.newpw')</label>
 
                         <div class="col-md-6">
                             <input id="new-password" type="password" class="form-control" name="new-password" required>
@@ -133,7 +133,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="new-password-confirm" class="col-md-4 control-label">Confirm New Password</label>
+                        <label for="new-password-confirm" class="col-md-4 control-label">@lang('company.confirmnewpw')</label>
                         <div class="col-md-6">
                             <input id="new-password-confirm" type="password" class="form-control" name="new-password_confirmation" required>
                         </div>
@@ -142,7 +142,7 @@
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
                             <button type="submit" class="btn btn-primary">
-                                Change Password
+                                @lang('company.changepw')
                             </button>
                         </div>
                     </div>

@@ -12,14 +12,14 @@
         <div class="col-lg-3 col-md-6 col-sm-6 pb-5">
             <div class="card p-4">
                 <div class="text-center">
-                    <h3 class="font-weight-bold text-trail">Trail Plan</h3>
+                    <h3 class="font-weight-bold text-trail">@lang('company.trailplan')</h3>
                     <h4 class="font-weight-bold pt-2">{{$trial->price}}</h4>
                 </div>
-                <p>Benefits :</p>
+                <p>@lang('company.benefit') :</p>
                 <p><i class="far fa-check-circle mr-2"></i> {{$trial->type}}</p>
-                <p><i class="far fa-check-circle mr-2"></i> {{$trial->number_of_post}} job posts</p>
-                <p><i class="far fa-check-circle mr-2"></i> Job expiry {{$trial->valid_days}} days</p>
-                <a href="{{url('/trail', $trial->id )}}" class="btn btn-trail">Buy</a>
+                <p><i class="far fa-check-circle mr-2"></i> {{$trial->number_of_post}} @lang('company.jobpost')</p>
+                <p><i class="far fa-check-circle mr-2"></i> Job expiry {{$trial->valid_days}} @lang('company.day')</p>
+                <a href="{{url('/trail', $trial->id )}}" class="btn btn-trail">@lang('company.buy')</a>
             </div>
         </div>
         @endforeach
@@ -28,14 +28,14 @@
         <div class="col-lg-3 col-md-6 col-sm-6 pb-5">
             <div class="card p-4">
                 <div class="text-center">
-                    <h3 class="font-weight-bold text-basic">Basic Plan</h3>
+                    <h3 class="font-weight-bold text-basic">@lang('company.basicplan')</h3>
                     <h4 class="font-weight-bold pt-2">{{$basic->price}}</h4>
                 </div>
-                <p>Benefits :</p>
+                <p>@lang('company.benefit') :</p>
                 <p><i class="far fa-check-circle mr-2"></i> {{$basic->type}}</p>
-                <p><i class="far fa-check-circle mr-2"></i> {{$basic->number_of_post}} job posts</p>
-                <p><i class="far fa-check-circle mr-2"></i> Job expiry {{$basic->valid_days}} days</p>
-                <a href="{{url('/basic',$basic->id)}}" class="btn btn-basic">Buy</a>
+                <p><i class="far fa-check-circle mr-2"></i> {{$basic->number_of_post}} @lang('company.jobpost')</p>
+                <p><i class="far fa-check-circle mr-2"></i> Job expiry {{$basic->valid_days}} @lang('company.day')</p>
+                <a href="{{url('/basic',$basic->id)}}" class="btn btn-basic">@lang('company.buy')</a>
             </div>
         </div>
         @endforeach
@@ -44,14 +44,14 @@
         <div class="col-lg-3 col-md-6 col-sm-6 pb-5">
             <div class="card p-4">
                 <div class="text-center">
-                    <h3 class="font-weight-bold text-urgent">Urgent Plan</h3>
+                    <h3 class="font-weight-bold text-urgent">@lang('company.urgentplan')</h3>
                     <h4 class="font-weight-bold pt-2">{{$urgent->price}}</h4>
                 </div>
-                <p>Benefits :</p>
+                <p>@lang('company.benefit') :</p>
                 <p><i class="far fa-check-circle mr-2"></i>{{$urgent->type}}</p>
-                <p><i class="far fa-check-circle mr-2"></i> {{$urgent->number_of_post}} job posts</p>
-                <p><i class="far fa-check-circle mr-2"></i> Job expiry {{$urgent->valid_days}} days</p>
-                <a href="{{url('/urgent',$urgent->id)}}" class="btn btn-urgent">Buy</a>
+                <p><i class="far fa-check-circle mr-2"></i> {{$urgent->number_of_post}} @lang('company.jobpost')</p>
+                <p><i class="far fa-check-circle mr-2"></i> Job expiry {{$urgent->valid_days}} @lang('company.day')</p>
+                <a href="{{url('/urgent',$urgent->id)}}" class="btn btn-urgent">@lang('company.buy')</a>
             </div>
         </div>
         @endforeach
@@ -60,14 +60,14 @@
         <div class="col-lg-3 col-md-6 col-sm-6 pb-5">
             <div class="card p-4">
                 <div class="text-center">
-                    <h3 class="font-weight-bold text-premium">Premium Plan</h3>
+                    <h3 class="font-weight-bold text-premium">@lang('company.premiumplan')</h3>
                     <h4 class="font-weight-bold pt-2">{{$premium->price}}</h4>
                 </div>
-                <p>Benefits :</p>
+                <p>@lang('company.benefit') :</p>
                 <p><i class="far fa-check-circle mr-2"></i> {{$premium->type}}</p>
-                <p><i class="far fa-check-circle mr-2"></i> {{$premium->number_of_post}} job posts</p>
-                <p><i class="far fa-check-circle mr-2"></i> Job expiry {{$premium->valid_days}} days</p>
-                <a href="{{url('/premium',$premium->id)}}" class="btn btn-primary" >Buy</a>
+                <p><i class="far fa-check-circle mr-2"></i> {{$premium->number_of_post}} @lang('company.jobpost')</p>
+                <p><i class="far fa-check-circle mr-2"></i> Job expiry {{$premium->valid_days}} @lang('company.day')</p>
+                <a href="{{url('/premium',$premium->id)}}" class="btn btn-primary" >@lang('company.buy')</a>
             </div>
         </div>
         @endforeach

@@ -8,15 +8,15 @@
 <div class="container my-5">
     <div class="row">
         <div class="col-lg-6 col-sm-12">
-            <h4 class="font-weight-bold">Contact Information</h4>
-            <h6 class="font-weight-bold">Address</h6>
-            <p>#12, Street 2001, Phum Paprak Khang Tboung, Sangkat Kakab, Khan Porsenchey, Phnom Penh, Cambodia.</p>
-            <h6 class="font-weight-bold">Phone Number</h6>
+            <h4 class="font-weight-bold">@lang('user.contactinfo')</h4>
+            <h6 class="font-weight-bold">@lang('user.address')</h6>
+            <p>@lang('user.street')</p>
+            <h6 class="font-weight-bold">@lang('user.phone')</h6>
             <p class="mb-0">+885 12 345 678</p>
             <p>+885 12 345 678</p>
         </div>
         <div class="col-lg-6 col-sm-12">
-            <h4 class="font-weight-bold mb-3">Send Message</h4>
+            <h4 class="font-weight-bold mb-3">@lang('user.sendmessage')</h4>
             <form action="#" method="post">
                 @if (Session::has('done-message'))
                     <div class="alert alert-success" role="alert">
@@ -24,21 +24,21 @@
                     </div>
                 @endif
                 <div class="form-group">
-                    <label for="name">Full Name :</label>
+                    <label for="name">@lang('user.fullname')</label>
                     <input type="text" id="name" class="form-control" name="name" placeholder="Your Name">
                     @if ($errors->has('name'))
                     <small class="text-danger">{{$errors->first('name')}}</small>
                     @endif
                 </div>
                 <div class="form-group">
-                    <label for="email">Email :</label>
+                    <label for="email">@lang('user.email')</label>
                     <input type="text" id="email" class="form-control"name="email" placeholder="Your Email">
                     @if ($errors->has('email'))
                     <small class="text-danger">{{$errors->first('email')}}</small>
                     @endif
                 </div>
                 <div class="form-group">
-                    <label for="message">Message :</label>
+                    <label for="message">@lang('user.message')</label>
                     <textarea cols="30" rows="7" id="message" class="form-control" name="message" placeholder="Message"></textarea>
                     @if ($errors->has('message'))
                     <small class="text-danger">{{$errors->first('message')}}</small>
@@ -46,7 +46,7 @@
                 </div>
                 <div class="form-group">
                     @csrf
-                    <button class="btn btn-outline-primary" type="submit">Send Message</button>
+                    <button class="btn btn-outline-primary" type="submit">@lang('user.sendmessage')</button>
                 </div>
             </form>
         </div>
