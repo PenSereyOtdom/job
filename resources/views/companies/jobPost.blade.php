@@ -6,31 +6,43 @@
 
 @section('content')
 
-<div class="container">
 
+<div class="container">
+    <a href="{{url('jobPost/selectPackage')}}"><button class="btn btn-primary">Create Job Post</button></a>
     @if(count($jobPost) > '0')
     <div class="card mt-5">
         <table class="table mb-0">
             <thead>
                 <tr>
-                <th scope="col"><input type="text" class="form-control" name="search" placeholder="Search term..."></th>
+                <h2 class="heading-title mb-4">Search Your Job</h2>
+                <form method="GET" action="/jobPost">
+                <div class="form-group row">
+                    <div class="input-group col-sm-12">
+                    <input name="search" type="text" placeholder="Search" class="form-control form-control-md" aria-label="Search">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i> Search</button>
+                        </div>
+                    </div>
+                </div>
+                </form>
+
                 <th colspan="2">
                     <select class="form-control">
-                        <option>@lang('company.all')</option>
-                        <option>@lang('company.active')</option>
-                        <option>@lang('company.inactive')</option>
-                        <option>@lang('company.draft')</option>
+                        <option>All</option>
+                        <option>Active</option>
+                        <option>Inactive</option>
+                        <option>Draft</option>
                     </select>
                 </th>
                 </tr>
                 <tr>
-                <th scope="col">@lang('company.jobtitle')</th>
-                <th scope="col">@lang('company.jobtype')</th>
-                <th scope="col">@lang('company.salary')</th>
-                <th scope="col">@lang('company.location')</th>
-                <th scope="col">@lang('company.publishdate')</th>
-                <th scope="col">@lang('company.status')</th>
-                <th scope="col">@lang('company.action')</th>
+                <th scope="col">Job Tilte</th>
+                <th scope="col">Job Type</th>
+                <th scope="col">Salary</th>
+                <th scope="col">Location</th>
+                <th scope="col">Publish Date</th>
+                <th scope="col">Status</th>
+                <th scope="col">Actions</th>
                 </tr>
             </thead>
 
@@ -60,13 +72,13 @@
                                     <i class="fa fa-trash fa-3x" style="color:white;"></i>
                                 </div>
                                 <div class="modal-body text-center bg-white">
-                                    <p>@lang('company.deletecv')</p>
-                                    <small><i class="fa fa-exclamation-circle" aria-hidden="true"></i> @lang('company.ifyoudelete')</small>
+                                    <p>Do you want to Delete your CV?</p>
+                                    <small><i class="fa fa-exclamation-circle" aria-hidden="true"></i> If you delete your CV, You could not be able to get it back.</small>
                                     <form action="{{action('Companies\JobPostController@destroy', $job->id)}}" method="post" class="mt-3">
                                         {{csrf_field()}}
                                         <input name="_method" type="hidden" value="DELETE">
-                                        <button type="submit" class="btn btn-primary">@lang('company.delete')</button>
-                                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">@lang('company.cancel')</button>
+                                        <button type="submit" class="btn btn-primary">Delete</button>
+                                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
                                     </form>
                                 </div>
                             </div>

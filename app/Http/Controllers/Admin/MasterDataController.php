@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use DB;
-use App\SalaryRange;
-use App\JobType;
-use App\Master;
-use App\Qualification;
-use App\JobClassification;
-use App\ExperienceLevel;
-use App\BusinessIndustry;
+use App\Models\SalaryRange;
+use App\Models\JobType;
+use App\Models\Master;
+use App\Models\Qualification;
+use App\Models\JobClassification;
+use App\Models\ExperienceLevel;
+use App\Models\BusinessIndustry;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;

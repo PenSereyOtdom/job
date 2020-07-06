@@ -5,12 +5,12 @@
                 <div class=""></div>
                 <div class="float-right">
                     <ul class="d-flex mb-0">
-                        <li class="nav-item mr-2 active">
-                            <a href="locale/en">EN</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="locale/kh">KH</a>
-                        </li>
+                    <li class="nav-item mr-2 active">
+                        <a href="lang/en">EN</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="lang/kh">KH</a>
+                    </li>
                     </ul>
                 </div>
             </div>
@@ -27,10 +27,10 @@
                 <div class="dropdown show">
                     <a href="#" class="link" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }} <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="/profile"><i class="fa fa-user mr-3"></i>@lang('home.myprofile_menu')</a>
-                        <a class="dropdown-item" href="/cv"><i class="fa fa-file mr-3"></i>@lang('home.myresume_menu')</a>
-                        <a class="dropdown-item" href="/savedJob"><i class="fa fa-star mr-3"></i>@lang('home.savejob_menu')</a>
-                        <a class="dropdown-item" href="/appliedJob"><i class="fa fa-check mr-3"></i>@lang('home.applyjob_menu')</a>
+                        <a class="dropdown-item" href="/profile"><i class="fa fa-user mr-3"></i>My Profile</a>
+                        <a class="dropdown-item" href="/cv"><i class="fa fa-file mr-3"></i>My Resume</a>
+                        <a class="dropdown-item" href="/savedJob"><i class="fa fa-star mr-3"></i>Saved Jobs</a>
+                        <a class="dropdown-item" href="/appliedJob"><i class="fa fa-check mr-3"></i>Applied Jobs</a>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out mr-3"></i>{{ __('Logout') }}</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
@@ -38,7 +38,7 @@
                     </div>
                 </div>
             @else
-                <p class="mb-0"><a href="/login">{{__('home.signin_menu')}}</a> or <a class="pr-2" href="/register">@lang('home.register_menu')</a> | <a class="pl-2" href="{{ url('/recruiter')}}">@lang('home.recruiter_menu')</a></p>
+                <p class="mb-0"><a href="/login">Sign in</a> or <a class="pr-2" href="/register">Register</a> | <a class="pl-2" href="{{ url('/recruiter')}}">Recruiter Site</a></p>
             @endif
             </div>
         </div>

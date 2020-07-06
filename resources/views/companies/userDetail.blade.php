@@ -35,7 +35,12 @@
 @foreach($userDetail as $cv)
     <div class="container">
         <div class="card p-5">
+<<<<<<< HEAD
+            <a href="{{action('Companies\UserDetailController@downloadPDF', $cv->id)}}" data-toggle="tooltip" data-placement="top" title="Download CV" ><i class="fas fa-download pt-1"></i></a>
+            <h4 class="font-weight-bold">Candidate Information</h4>
+=======
             <h4 class="font-weight-bold">@lang('company.candidateinfo')</h4>
+>>>>>>> master
             <div class="form-group row mb-0">
                 <label class="col-sm-3 form-control-label">@lang('company.fullname')</label>
                 <div class="col-sm-9">

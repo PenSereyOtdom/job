@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Companies;
 
 use DB;
 use File;
-use App\Company;
+use App\Models\Company;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;

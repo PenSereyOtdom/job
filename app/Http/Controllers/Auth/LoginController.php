@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers\Auth;
 
+
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Twilio\Rest\Client;
 use Auth;
-
+use DB;
+use Illuminate\Support\Facades\Hash;
+use App\Helpers\SMSHelper;
+use App\Models\User;
+use App\Models\Admin;
+use App\Models\Company;
 class LoginController extends Controller
 {
     /*
@@ -42,55 +48,74 @@ class LoginController extends Controller
         $this->middleware('guest:company')->except('logout');
     }
 
-    protected function credentials(Request $request)
-    {    
-        if(is_numeric($request->get('email'))){
-        return ['phone_number' =>$request->get('email'),'password'=>$request->get('password')];
-        }else{
-            return ['name' =>$request->get('email'),'password'=>$request->get('password')];
-        }
-
-        return $request->only($this->username(), 'password');
-    }
 
     public function showAdminLoginForm()
     {
         return view('auth.login', ['url' => 'admin']);
     }
 
-    public function adminLogin(Request $request)
-    {
-
-        // dd(request()->all());
-        // $this->validate($request, [
-            // 'name'   => 'required',
-            // 'phone_number'   => 'required',
-            // 'password' => 'required|min:6'
-        // ]);
-        
-        if(Auth::guard('admin')->attempt(['phone_number' => request('email'), 'password' => request('password')]) || Auth::guard('admin')->attempt(['name' => request('email'), 'password' => request('password')]) ){
-            return redirect()->intended('/admin');
-        }
-        return back()->withInput($request->only('phone_number', 'remember'));
-
-    }
 
     public function showCompanyLoginForm()
     {
         return view('auth.login', ['url' => 'company']);
     }
 
+
+    public function adminLogin(Request $request)
+    {
+
+        $admin = Auth::guard('admin')->attempt(['name' => $request['username'], 'password' => $request['password']]);
+
+        if($admin){
+            $check_verify  = DB::table('admins')->where('name','=', Auth::guard('admin')->id())->first();
+            return redirect()->intended('/admin');
+        } else {
+            return back()->with(['error' => 'user is not exite in your database']);
+        }
+        return back()->withInput($request->only('phone_number', 'remember'));
+
+    }
+
     public function companyLogin(Request $request)
     {
-        // $this->validate($request, [
-            // 'name'   => 'required',
-            // 'phone_number'   => 'required',
-            // 'password' => 'required|min:6'
-        // ]);
+    
+        $company = Auth::guard('company')->attempt(['name' => $request['username'], 'password' => $request['password']]);
 
+        if($company) {
+            
+            if(Auth::guard('company')->user()->isVerified == 0) {
+                SMSHelper::sms(Auth::guard('company')->user()->phone_number);
+                $phone  = $check_verify->phone_number;
+                return redirect()->route('verify/company')->with(['phone_number' => $phone]);
+            } else {
+                return redirect()->intended('/company');
+            }
 
-        if(Auth::guard('company')->attempt(['phone_number' => request('email'), 'password' => request('password')]) || Auth::guard('company')->attempt(['name' => request('email'), 'password' => request('password')]) ){
-            return redirect()->intended('/company');
+        } else {
+            return back()->with(['error' => 'user isnot exite in your database']);
+        }
+
+        return back()->withInput($request->only('name', 'remember'));
+        
+    }
+
+    public function login(Request $request)
+    {
+        
+        $user = Auth::attempt(['name' => $request['username'], 'password' => $request['password']]) || Auth::attempt(['phone_number' => $request['code'].$request['phone_number'], 'password' => $request['password']]) ;
+        
+        if ($user) {
+
+            if($user-user()->isVerified->isVerified == 0) {
+                SMSHelper::sms($check_verify->phone_number);
+                $phone  = $check_verify->phone_number;
+                return redirect()->route('verify')->with(['phone_number' => $phone]);
+            } else {
+                return redirect()->intended('/home');
+            }
+           
+        } else {
+            return back()->with(['error' => 'user is not exite in your database']);
         }
         return back()->withInput($request->only('phone_number', 'remember'));
         

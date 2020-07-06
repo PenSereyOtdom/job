@@ -72,9 +72,14 @@
 
                 </form>
                 @elseif ($service_approval__check[0]->approve == 0)
-                    <p>satus padding {{$service_approval__check[0]->approve}}</p>
+                    <h3 class="font-weight-bold pb-3">You have purchased Trail Plan.</h3>
+                    <p>Your Request has been sent to Admin.</p>
+                    <p>We will contact you soon.</p>
+                    <p>Thank You!</p>
                 @else
-                    <p>your reminding {{$service_approval__check[0]->post_number}}</p>  
+                    <h3 class="font-weight-bold pb-3">Trail Plan.</h3>
+                    <p>You cannot purchase more ticket. Please use your remaining first.</p>
+                    <p>Your remaining ticket: {{$service_approval__check[0]->post_number}}.</p>  
                 @endif  
             </div>
         </div>

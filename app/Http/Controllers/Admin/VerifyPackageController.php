@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use DB;
-use App\ServiceApproval;
+use App\Models\ServiceApproval;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;

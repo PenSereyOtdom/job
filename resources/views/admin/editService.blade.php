@@ -13,7 +13,7 @@
                     {!! csrf_field() !!}
 
                     <div class="form-group row">
-                        <label class="col-sm-3 form-control-label">@lang('admin.price')<span class="text-danger text-bold"></span></label>
+                        <label class="col-sm-3 form-control-label">Price<span class="text-danger text-bold"></span></label>
                         <div class="col-sm-9">
                         <input type="text" name="price" value="{{$editService->price}}" placeholder="Please enter your firstname..."
                             class="form-control">
@@ -21,7 +21,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-3 form-control-label">@lang('admin.numberofpost')<span class="text-danger text-bold"></span></label>
+                        <label class="col-sm-3 form-control-label">Number of Post<span class="text-danger text-bold"></span></label>
                         <div class="col-sm-9">
                         <input type="text" name="number_of_post" value="{{$editService->number_of_post}}" placeholder="Please enter your firstname..."
                             class="form-control">
@@ -29,7 +29,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-3 form-control-label">@lang('admin.numberofpost')<span class="text-danger text-bold"></span></label>
+                        <label class="col-sm-3 form-control-label">Number of Post<span class="text-danger text-bold"></span></label>
                         <div class="col-sm-9">
                         <input type="text" name="valid_days" value="{{$editService->valid_days}}" placeholder="Please enter your firstname..."
                             class="form-control">
@@ -39,8 +39,8 @@
                     <div class="line"></div>
                     <div class="form-group row">
                         <div class="col-sm-4 offset-sm-3">
-                            <button type="submit" class="btn btn-primary">@lang('admin.save')</button>
-                            <a class="btn btn-outline-primary" href="/service">@lang('admin.cancel')</a>
+                            <button type="submit" class="btn btn-primary">Save Change</button>
+                            <a class="btn btn-outline-primary" href="/service">Cancel</a>
                         </div>
                     </div>
                     

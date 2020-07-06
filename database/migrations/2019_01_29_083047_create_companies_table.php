@@ -17,6 +17,7 @@ class CreateCompaniesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('admin_id')->default(1);
             $table->string('name');
+            $table->string('companyname')->nullable();
             $table->string('password');
             $table->string('company_profile')->nullable();
             $table->string('address')->nullable();
